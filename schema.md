@@ -16,6 +16,13 @@ Schema
 - id
 - name
 - photo
+- teacher
+
+### Teacher (PFUser)
+- id
+- name
+- email
+- password
 
 ### Student-Trait
 - id
