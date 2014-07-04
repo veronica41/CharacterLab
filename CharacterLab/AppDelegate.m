@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "Trait.h"
+#import "Question.h"
+#import "Student.h"
+#import "Teacher.h"
+#import "Assessment.h"
 #import <Parse/Parse.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Trait registerSubclass];
+    [Question registerSubclass];
+    [Student registerSubclass];
+    [Teacher registerSubclass];
+    [Assessment registerSubclass];
     [Parse setApplicationId:@"uZlzv42bdzha3eHuQq7Hb6cuWYxWeHqXc7U9bfhu"
                   clientKey:@"o9iiYvoduL1hul44RByxsjTYQa4VHrEvmIX2CwWs"];
 
