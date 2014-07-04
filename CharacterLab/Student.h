@@ -12,7 +12,7 @@
 @interface Student : PFObject <PFSubclassing>
 
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSURL *photoUrl;
+@property (nonatomic, copy, readonly) NSString *photoUrl;
 @property (nonatomic, copy, readonly) Teacher *teacher;
 
 @end

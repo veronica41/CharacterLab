@@ -12,6 +12,6 @@
 
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *description;
-@property (nonatomic, copy, readonly) NSURL *imageUrl;
+@property (nonatomic, copy, readonly) NSString *imageUrl;
 
 @end

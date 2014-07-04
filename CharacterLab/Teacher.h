@@ -10,6 +10,6 @@
 
 @interface Teacher : PFUser <PFSubclassing>
 
-@property (nonatomic, copy, readonly) NSURL *photoUrl;
+@property (nonatomic, copy, readonly) NSString *photoUrl;
 
 @end

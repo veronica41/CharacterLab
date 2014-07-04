@@ -11,10 +11,6 @@
 
 @implementation Teacher
 
-+ (NSString *)parseClassName {
-    return @"Teacher";
-}
-
 @dynamic photoUrl;
 
 @end
