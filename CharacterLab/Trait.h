@@ -10,8 +10,8 @@
 
 @interface Trait : PFObject <PFSubclassing>
 
-@property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *description;
-@property (nonatomic, copy, readonly) NSString *imageUrl;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *imageUrl;
 
 @end

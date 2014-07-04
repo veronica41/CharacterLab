@@ -12,8 +12,8 @@
 
 @interface Assessment : PFObject <PFSubclassing>
 
-@property (nonatomic, copy, readonly) Student *student;
-@property (nonatomic, copy, readonly) Trait *trait;
-@property (nonatomic, assign, readonly) NSInteger score;
+@property (nonatomic, copy) Student *student;
+@property (nonatomic, copy) Trait *trait;
+@property (nonatomic, assign) NSInteger score;
 
 @end
