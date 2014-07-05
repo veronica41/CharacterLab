@@ -16,7 +16,7 @@
 }
 
 @dynamic name;
-@dynamic description;
+@dynamic desc;
 @dynamic imageUrl;
 
 @end

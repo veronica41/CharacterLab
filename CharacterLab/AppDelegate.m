@@ -12,6 +12,7 @@
 #import "Student.h"
 #import "Teacher.h"
 #import "Assessment.h"
+#import "TraitsPageViewController.h"
 #import <Parse/Parse.h>
 
 @implementation AppDelegate
@@ -27,6 +28,8 @@
                   clientKey:@"o9iiYvoduL1hul44RByxsjTYQa4VHrEvmIX2CwWs"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    self.window.rootViewController = [[TraitsPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

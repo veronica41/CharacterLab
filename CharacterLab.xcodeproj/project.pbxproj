@@ -13,6 +13,10 @@
 		13E01BFC1966453500A94277 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01BFB1966453500A94277 /* Student.m */; };
 		13E01BFF196645AB00A94277 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01BFE196645AB00A94277 /* Teacher.m */; };
 		13E01C021966462700A94277 /* Assessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C011966462700A94277 /* Assessment.m */; };
+		13E01C0719675C7300A94277 /* TraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C0519675C7300A94277 /* TraitViewController.m */; };
+		13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C0619675C7300A94277 /* TraitViewController.xib */; };
+		13E01C0C1967D5B500A94277 /* TraitsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C0A1967D5B500A94277 /* TraitsPageViewController.m */; };
+		13E01C0D1967D5B500A94277 /* TraitsPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C0B1967D5B500A94277 /* TraitsPageViewController.xib */; };
 		B300BA27196640790063E27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA26196640790063E27D /* Foundation.framework */; };
 		B300BA29196640790063E27D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA28196640790063E27D /* CoreGraphics.framework */; };
 		B300BA2B196640790063E27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA2A196640790063E27D /* UIKit.framework */; };
@@ -48,6 +52,12 @@
 		13E01BFE196645AB00A94277 /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
 		13E01C001966462700A94277 /* Assessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assessment.h; sourceTree = "<group>"; };
 		13E01C011966462700A94277 /* Assessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assessment.m; sourceTree = "<group>"; };
+		13E01C0419675C7300A94277 /* TraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitViewController.h; sourceTree = "<group>"; };
+		13E01C0519675C7300A94277 /* TraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraitViewController.m; sourceTree = "<group>"; };
+		13E01C0619675C7300A94277 /* TraitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitViewController.xib; sourceTree = "<group>"; };
+		13E01C091967D5B500A94277 /* TraitsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitsPageViewController.h; sourceTree = "<group>"; };
+		13E01C0A1967D5B500A94277 /* TraitsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraitsPageViewController.m; sourceTree = "<group>"; };
+		13E01C0B1967D5B500A94277 /* TraitsPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitsPageViewController.xib; sourceTree = "<group>"; };
 		6C386EB60CDD4C31A58A2C13 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C1A229C964F13A256BF97 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B300BA23196640790063E27D /* CharacterLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +120,19 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		13E01C0319675C5800A94277 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				13E01C0419675C7300A94277 /* TraitViewController.h */,
+				13E01C0519675C7300A94277 /* TraitViewController.m */,
+				13E01C0619675C7300A94277 /* TraitViewController.xib */,
+				13E01C091967D5B500A94277 /* TraitsPageViewController.h */,
+				13E01C0A1967D5B500A94277 /* TraitsPageViewController.m */,
+				13E01C0B1967D5B500A94277 /* TraitsPageViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		B300BA1A196640790063E27D = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +168,7 @@
 		B300BA2C196640790063E27D /* CharacterLab */ = {
 			isa = PBXGroup;
 			children = (
+				13E01C0319675C5800A94277 /* View Controllers */,
 				13E01BF31966429000A94277 /* Models */,
 				B300BA35196640790063E27D /* AppDelegate.h */,
 				B300BA36196640790063E27D /* AppDelegate.m */,
@@ -260,6 +284,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13E01C0D1967D5B500A94277 /* TraitsPageViewController.xib in Resources */,
+				13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */,
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
 			);
@@ -316,8 +342,10 @@
 				13E01BFF196645AB00A94277 /* Teacher.m in Sources */,
 				13E01BF6196642A100A94277 /* Trait.m in Sources */,
 				13E01BF91966447A00A94277 /* Question.m in Sources */,
+				13E01C0719675C7300A94277 /* TraitViewController.m in Sources */,
 				13E01BFC1966453500A94277 /* Student.m in Sources */,
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
+				13E01C0C1967D5B500A94277 /* TraitsPageViewController.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,
 				B300BA33196640790063E27D /* main.m in Sources */,
 			);
