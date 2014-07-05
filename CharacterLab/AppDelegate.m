@@ -13,6 +13,7 @@
 #import "Teacher.h"
 #import "Assessment.h"
 #import "TraitsPageViewController.h"
+#import "StudentsViewController.h"
 #import <Parse/Parse.h>
 
 @implementation AppDelegate
@@ -29,7 +30,18 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    self.window.rootViewController = [[TraitsPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    TraitsPageViewController *traitsVC = [[TraitsPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    UINavigationController *traitsNVC = [[UINavigationController alloc] initWithRootViewController:traitsVC];
+    traitsNVC.tabBarItem.title = @"Traits";
+
+    StudentsViewController *studentsVC = [[StudentsViewController alloc] init];
+    UINavigationController *studentsNVC = [[UINavigationController alloc] initWithRootViewController:studentsVC];
+    studentsNVC.tabBarItem.title = @"Students";
+
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[traitsNVC, studentsNVC];
+
+    self.window.rootViewController = tabBarController;
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -21,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.title = @"Traits";
     }
     return self;
 }
@@ -33,9 +33,6 @@
     self.dataSource = self;
 
     [[Trait query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        for (Trait *trait in objects) {
-            NSLog(@"trait %@", trait);
-        }
         self.traits = objects;
         [self setViewControllers:@[[self viewControllerAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }];
@@ -46,6 +43,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     Trait *trait = ((TraitViewController *) viewController).trait;

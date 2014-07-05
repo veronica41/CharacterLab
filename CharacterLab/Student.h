@@ -13,6 +13,6 @@
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *photoUrl;
-@property (nonatomic, copy) Teacher *teacher;
+@property (nonatomic, strong) Teacher *teacher;
 
 @end

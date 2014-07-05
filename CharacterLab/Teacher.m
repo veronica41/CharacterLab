@@ -11,6 +11,7 @@
 
 @implementation Teacher
 
+@dynamic name;
 @dynamic photoUrl;
 
 @end

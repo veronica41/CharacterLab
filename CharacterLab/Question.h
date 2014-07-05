@@ -12,6 +12,6 @@
 @interface Question : PFObject <PFSubclassing>
 
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) Trait *trait;
+@property (nonatomic, strong) Trait *trait;
 
 @end
