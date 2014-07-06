@@ -1,0 +1,14 @@
+//
+//  TraitsViewController.h
+//  CharacterLab
+//
+//  Created by Rajeev Nayak on 7/8/14.
+//  Copyright (c) 2014 Dropbox. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "MultiPageViewController.h"
+
+@interface TraitsViewController : UIViewController <MultiPageViewControllerDataSource>
+
+@end

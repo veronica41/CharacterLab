@@ -15,12 +15,15 @@
 		13E01C021966462700A94277 /* Assessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C011966462700A94277 /* Assessment.m */; };
 		13E01C0719675C7300A94277 /* TraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C0519675C7300A94277 /* TraitViewController.m */; };
 		13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C0619675C7300A94277 /* TraitViewController.xib */; };
-		13E01C0C1967D5B500A94277 /* TraitsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C0A1967D5B500A94277 /* TraitsPageViewController.m */; };
-		13E01C0D1967D5B500A94277 /* TraitsPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C0B1967D5B500A94277 /* TraitsPageViewController.xib */; };
 		13E01C111968A42000A94277 /* StudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C0F1968A42000A94277 /* StudentsViewController.m */; };
 		13E01C121968A42000A94277 /* StudentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C101968A42000A94277 /* StudentsViewController.xib */; };
 		13E01C151968A63500A94277 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C141968A63500A94277 /* StudentCell.xib */; };
 		13E01C181968A67800A94277 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C171968A67800A94277 /* StudentCell.m */; };
+		13E01C1C1968DA4B00A94277 /* MultiPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C1A1968DA4B00A94277 /* MultiPageViewController.m */; };
+		13E01C1D1968DA4B00A94277 /* MultiPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C1B1968DA4B00A94277 /* MultiPageViewController.xib */; };
+		13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C2B196BEEAE00A94277 /* TraitsViewController.m */; };
+		13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C2C196BEEAE00A94277 /* TraitsViewController.xib */; };
+		13E01C33196BF1FF00A94277 /* TouchInterceptingContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C32196BF1FF00A94277 /* TouchInterceptingContainerView.m */; };
 		96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3C7196B75720071F8FD /* LoginViewController.m */; };
 		96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3C8196B75720071F8FD /* LoginViewController.xib */; };
 		96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */; };
@@ -66,15 +69,20 @@
 		13E01C0419675C7300A94277 /* TraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitViewController.h; sourceTree = "<group>"; };
 		13E01C0519675C7300A94277 /* TraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraitViewController.m; sourceTree = "<group>"; };
 		13E01C0619675C7300A94277 /* TraitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitViewController.xib; sourceTree = "<group>"; };
-		13E01C091967D5B500A94277 /* TraitsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitsPageViewController.h; sourceTree = "<group>"; };
-		13E01C0A1967D5B500A94277 /* TraitsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraitsPageViewController.m; sourceTree = "<group>"; };
-		13E01C0B1967D5B500A94277 /* TraitsPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitsPageViewController.xib; sourceTree = "<group>"; };
 		13E01C0E1968A42000A94277 /* StudentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsViewController.h; sourceTree = "<group>"; };
 		13E01C0F1968A42000A94277 /* StudentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsViewController.m; sourceTree = "<group>"; };
 		13E01C101968A42000A94277 /* StudentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentsViewController.xib; sourceTree = "<group>"; };
 		13E01C141968A63500A94277 /* StudentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
 		13E01C161968A67800A94277 /* StudentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
 		13E01C171968A67800A94277 /* StudentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
+		13E01C191968DA4B00A94277 /* MultiPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPageViewController.h; sourceTree = "<group>"; };
+		13E01C1A1968DA4B00A94277 /* MultiPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPageViewController.m; sourceTree = "<group>"; };
+		13E01C1B1968DA4B00A94277 /* MultiPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiPageViewController.xib; sourceTree = "<group>"; };
+		13E01C2A196BEEAE00A94277 /* TraitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitsViewController.h; sourceTree = "<group>"; };
+		13E01C2B196BEEAE00A94277 /* TraitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraitsViewController.m; sourceTree = "<group>"; };
+		13E01C2C196BEEAE00A94277 /* TraitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitsViewController.xib; sourceTree = "<group>"; };
+		13E01C31196BF1FF00A94277 /* TouchInterceptingContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchInterceptingContainerView.h; sourceTree = "<group>"; };
+		13E01C32196BF1FF00A94277 /* TouchInterceptingContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchInterceptingContainerView.m; sourceTree = "<group>"; };
 		6C386EB60CDD4C31A58A2C13 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C1A229C964F13A256BF97 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		96B3A3C6196B75720071F8FD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -154,9 +162,6 @@
 				13E01C0419675C7300A94277 /* TraitViewController.h */,
 				13E01C0519675C7300A94277 /* TraitViewController.m */,
 				13E01C0619675C7300A94277 /* TraitViewController.xib */,
-				13E01C091967D5B500A94277 /* TraitsPageViewController.h */,
-				13E01C0A1967D5B500A94277 /* TraitsPageViewController.m */,
-				13E01C0B1967D5B500A94277 /* TraitsPageViewController.xib */,
 				13E01C0E1968A42000A94277 /* StudentsViewController.h */,
 				13E01C0F1968A42000A94277 /* StudentsViewController.m */,
 				13E01C101968A42000A94277 /* StudentsViewController.xib */,
@@ -169,6 +174,9 @@
 				96B3A3CB196B8C130071F8FD /* TraitDetailViewController.h */,
 				96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */,
 				96B3A3CD196B8C130071F8FD /* TraitDetailViewController.xib */,
+				13E01C2A196BEEAE00A94277 /* TraitsViewController.h */,
+				13E01C2B196BEEAE00A94277 /* TraitsViewController.m */,
+				13E01C2C196BEEAE00A94277 /* TraitsViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -183,9 +191,30 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		13E01C2F196BF12F00A94277 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				13E01C191968DA4B00A94277 /* MultiPageViewController.h */,
+				13E01C1A1968DA4B00A94277 /* MultiPageViewController.m */,
+				13E01C1B1968DA4B00A94277 /* MultiPageViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		13E01C30196BF13E00A94277 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13E01C31196BF1FF00A94277 /* TouchInterceptingContainerView.h */,
+				13E01C32196BF1FF00A94277 /* TouchInterceptingContainerView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		96B3A3D0196B8FB40071F8FD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				13E01C30196BF13E00A94277 /* Views */,
+				13E01C2F196BF12F00A94277 /* View Controllers */,
 				96B3A3D1196B8FBD0071F8FD /* Categories */,
 			);
 			name = Utilities;
@@ -354,13 +383,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */,
-				13E01C0D1967D5B500A94277 /* TraitsPageViewController.xib in Resources */,
 				13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */,
 				B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */,
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
+				13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */,
 				96B3A3CF196B8C130071F8FD /* TraitDetailViewController.xib in Resources */,
 				13E01C121968A42000A94277 /* StudentsViewController.xib in Resources */,
+				13E01C1D1968DA4B00A94277 /* MultiPageViewController.xib in Resources */,
 				13E01C151968A63500A94277 /* StudentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,15 +448,17 @@
 				96B3A3D4196B90050071F8FD /* UIColor+CharacterLab.m in Sources */,
 				96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */,
 				13E01BF91966447A00A94277 /* Question.m in Sources */,
+				13E01C1C1968DA4B00A94277 /* MultiPageViewController.m in Sources */,
 				13E01C0719675C7300A94277 /* TraitViewController.m in Sources */,
 				B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */,
 				13E01BFC1966453500A94277 /* Student.m in Sources */,
 				13E01C181968A67800A94277 /* StudentCell.m in Sources */,
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
-				13E01C0C1967D5B500A94277 /* TraitsPageViewController.m in Sources */,
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
+				13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,
 				13E01C111968A42000A94277 /* StudentsViewController.m in Sources */,
+				13E01C33196BF1FF00A94277 /* TouchInterceptingContainerView.m in Sources */,
 				B300BA33196640790063E27D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

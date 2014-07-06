@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TraitsViewController">
+            <connections>
+                <outlet property="contentView" destination="aA9-Cm-avP" id="Aai-9f-ZkP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-Cm-avP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-3f-hFW">
+                    <rect key="frame" x="65" y="524" width="190" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="Manage Your Students">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onStudentsButton:" destination="-1" eventType="touchUpInside" id="9qa-FR-anB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aA9-Cm-avP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HBa-7c-4TN"/>
+                <constraint firstAttribute="centerX" secondItem="YRO-3f-hFW" secondAttribute="centerX" id="RnL-Wx-TjM"/>
+                <constraint firstItem="YRO-3f-hFW" firstAttribute="top" secondItem="aA9-Cm-avP" secondAttribute="bottom" id="VBe-bd-Gha"/>
+                <constraint firstAttribute="trailing" secondItem="aA9-Cm-avP" secondAttribute="trailing" id="Xm3-X9-yi3"/>
+                <constraint firstAttribute="bottom" secondItem="YRO-3f-hFW" secondAttribute="bottom" constant="10" id="m0y-CJ-9P3"/>
+                <constraint firstItem="aA9-Cm-avP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mvO-gv-NzH"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

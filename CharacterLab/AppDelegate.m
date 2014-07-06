@@ -12,14 +12,14 @@
 #import "Student.h"
 #import "Teacher.h"
 #import "Assessment.h"
-#import "TraitsPageViewController.h"
+#import "TraitsViewController.h"
 #import "StudentsViewController.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate () <LoginViewControllerDelegate>
 
-@property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) UIViewController *mainViewController;
 
 @end
 
@@ -38,25 +38,13 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    // setup tabBarController
-    TraitsPageViewController *traitsVC = [[TraitsPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    UINavigationController *traitsNVC = [[UINavigationController alloc] initWithRootViewController:traitsVC];
-    traitsNVC.tabBarItem.title = @"Traits";
-    
-    StudentsViewController *studentsVC = [[StudentsViewController alloc] init];
-    UINavigationController *studentsNVC = [[UINavigationController alloc] initWithRootViewController:studentsVC];
-    studentsNVC.tabBarItem.title = @"Students";
-    
-    self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[traitsNVC, studentsNVC];
-
-
+    self.mainViewController = [[TraitsViewController alloc] init];
     if (![PFUser currentUser]) {
         LoginViewController *loginController = [[LoginViewController alloc] init];
         loginController.delegate = self;
         self.window.rootViewController = loginController;
     } else {
-        self.window.rootViewController = self.tabBarController;
+        self.window.rootViewController = self.mainViewController;
     }
 
     self.window.backgroundColor = [UIColor whiteColor];
@@ -94,7 +82,7 @@
 #pragma mark - LoginViewControllerDelegate
 
 - (void)userDidLogin {
-    [self.window.rootViewController presentViewController:self.tabBarController animated:NO completion:nil];
+    [self.window.rootViewController presentViewController:self.mainViewController animated:NO completion:nil];
 }
 
 @end

@@ -57,10 +57,6 @@
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.students.count;
 }
@@ -70,8 +66,6 @@
     cell.student = self.students[indexPath.row];
     return cell;
 }
-
-
 
 #pragma mark - UICollectionViewDelegate
 
