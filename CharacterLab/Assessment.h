@@ -14,6 +14,6 @@
 
 @property (nonatomic, strong) Student *student;
 @property (nonatomic, strong) Trait *trait;
-@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, assign) NSInteger score; // 1 to 10
 
 @end
