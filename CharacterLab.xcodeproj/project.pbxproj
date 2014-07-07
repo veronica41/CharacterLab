@@ -33,6 +33,8 @@
 		B300BA42196640790063E27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA2A196640790063E27D /* UIKit.framework */; };
 		B300BA4A196640790063E27D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B300BA48196640790063E27D /* InfoPlist.strings */; };
 		B300BA4C196640790063E27D /* CharacterLabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B300BA4B196640790063E27D /* CharacterLabTests.m */; };
+		B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3021B23196A2470006751D3 /* StudentProfileViewController.m */; };
+		B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3021B24196A2470006751D3 /* StudentProfileViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,9 @@
 		B300BA47196640790063E27D /* CharacterLabTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CharacterLabTests-Info.plist"; sourceTree = "<group>"; };
 		B300BA49196640790063E27D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B300BA4B196640790063E27D /* CharacterLabTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterLabTests.m; sourceTree = "<group>"; };
+		B3021B22196A2470006751D3 /* StudentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentProfileViewController.h; sourceTree = "<group>"; };
+		B3021B23196A2470006751D3 /* StudentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentProfileViewController.m; sourceTree = "<group>"; };
+		B3021B24196A2470006751D3 /* StudentProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentProfileViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +147,9 @@
 				13E01C0E1968A42000A94277 /* StudentsViewController.h */,
 				13E01C0F1968A42000A94277 /* StudentsViewController.m */,
 				13E01C101968A42000A94277 /* StudentsViewController.xib */,
+				B3021B22196A2470006751D3 /* StudentProfileViewController.h */,
+				B3021B23196A2470006751D3 /* StudentProfileViewController.m */,
+				B3021B24196A2470006751D3 /* StudentProfileViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 			files = (
 				13E01C0D1967D5B500A94277 /* TraitsPageViewController.xib in Resources */,
 				13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */,
+				B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */,
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
 				13E01C121968A42000A94277 /* StudentsViewController.xib in Resources */,
@@ -369,6 +378,7 @@
 				13E01BF6196642A100A94277 /* Trait.m in Sources */,
 				13E01BF91966447A00A94277 /* Question.m in Sources */,
 				13E01C0719675C7300A94277 /* TraitViewController.m in Sources */,
+				B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */,
 				13E01BFC1966453500A94277 /* Student.m in Sources */,
 				13E01C181968A67800A94277 /* StudentCell.m in Sources */,
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,

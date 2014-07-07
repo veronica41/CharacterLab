@@ -9,6 +9,7 @@
 #import "StudentsViewController.h"
 #import "Student.h"
 #import "StudentCell.h"
+#import "StudentProfileViewController.h"
 
 @interface StudentsViewController ()
 
@@ -70,12 +71,16 @@
     return cell;
 }
 
+
+
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:NO];
 
-    // TODO: push the student detail view controller
+    StudentProfileViewController *spvc = [[StudentProfileViewController alloc] init];
+    spvc.student = self.students[indexPath.row];
+    [self.navigationController pushViewController:spvc animated:YES];
 }
 
 @end
