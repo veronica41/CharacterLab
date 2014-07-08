@@ -23,6 +23,9 @@
 		13E01C181968A67800A94277 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C171968A67800A94277 /* StudentCell.m */; };
 		96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3C7196B75720071F8FD /* LoginViewController.m */; };
 		96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3C8196B75720071F8FD /* LoginViewController.xib */; };
+		96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */; };
+		96B3A3CF196B8C130071F8FD /* TraitDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3CD196B8C130071F8FD /* TraitDetailViewController.xib */; };
+		96B3A3D4196B90050071F8FD /* UIColor+CharacterLab.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3D3196B90050071F8FD /* UIColor+CharacterLab.m */; };
 		B300BA27196640790063E27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA26196640790063E27D /* Foundation.framework */; };
 		B300BA29196640790063E27D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA28196640790063E27D /* CoreGraphics.framework */; };
 		B300BA2B196640790063E27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA2A196640790063E27D /* UIKit.framework */; };
@@ -77,6 +80,11 @@
 		96B3A3C6196B75720071F8FD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96B3A3C7196B75720071F8FD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		96B3A3C8196B75720071F8FD /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		96B3A3CB196B8C130071F8FD /* TraitDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitDetailViewController.h; sourceTree = "<group>"; };
+		96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraitDetailViewController.m; sourceTree = "<group>"; };
+		96B3A3CD196B8C130071F8FD /* TraitDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitDetailViewController.xib; sourceTree = "<group>"; };
+		96B3A3D2196B90050071F8FD /* UIColor+CharacterLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CharacterLab.h"; sourceTree = "<group>"; };
+		96B3A3D3196B90050071F8FD /* UIColor+CharacterLab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CharacterLab.m"; sourceTree = "<group>"; };
 		B300BA23196640790063E27D /* CharacterLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B300BA26196640790063E27D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B300BA28196640790063E27D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,6 +166,9 @@
 				96B3A3C6196B75720071F8FD /* LoginViewController.h */,
 				96B3A3C7196B75720071F8FD /* LoginViewController.m */,
 				96B3A3C8196B75720071F8FD /* LoginViewController.xib */,
+				96B3A3CB196B8C130071F8FD /* TraitDetailViewController.h */,
+				96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */,
+				96B3A3CD196B8C130071F8FD /* TraitDetailViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -170,6 +181,23 @@
 				13E01C171968A67800A94277 /* StudentCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		96B3A3D0196B8FB40071F8FD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				96B3A3D1196B8FBD0071F8FD /* Categories */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		96B3A3D1196B8FBD0071F8FD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				96B3A3D2196B90050071F8FD /* UIColor+CharacterLab.h */,
+				96B3A3D3196B90050071F8FD /* UIColor+CharacterLab.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		B300BA1A196640790063E27D = {
@@ -207,6 +235,7 @@
 		B300BA2C196640790063E27D /* CharacterLab */ = {
 			isa = PBXGroup;
 			children = (
+				96B3A3D0196B8FB40071F8FD /* Utilities */,
 				13E01C131968A46B00A94277 /* Views */,
 				13E01C0319675C5800A94277 /* View Controllers */,
 				13E01BF31966429000A94277 /* Models */,
@@ -330,6 +359,7 @@
 				B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */,
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
+				96B3A3CF196B8C130071F8FD /* TraitDetailViewController.xib in Resources */,
 				13E01C121968A42000A94277 /* StudentsViewController.xib in Resources */,
 				13E01C151968A63500A94277 /* StudentCell.xib in Resources */,
 			);
@@ -385,6 +415,7 @@
 			files = (
 				13E01BFF196645AB00A94277 /* Teacher.m in Sources */,
 				13E01BF6196642A100A94277 /* Trait.m in Sources */,
+				96B3A3D4196B90050071F8FD /* UIColor+CharacterLab.m in Sources */,
 				96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */,
 				13E01BF91966447A00A94277 /* Question.m in Sources */,
 				13E01C0719675C7300A94277 /* TraitViewController.m in Sources */,
@@ -393,6 +424,7 @@
 				13E01C181968A67800A94277 /* StudentCell.m in Sources */,
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
 				13E01C0C1967D5B500A94277 /* TraitsPageViewController.m in Sources */,
+				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,
 				13E01C111968A42000A94277 /* StudentsViewController.m in Sources */,
 				B300BA33196640790063E27D /* main.m in Sources */,
