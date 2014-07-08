@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@protocol LoginViewControllerDelegate <NSObject>
+
+- (void)userDidLogin;
+
+@end
+
+
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
+
+@property (nonatomic, weak) id<LoginViewControllerDelegate> delegate;
 
 @end

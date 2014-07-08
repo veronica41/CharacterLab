@@ -14,7 +14,15 @@
 #import "Assessment.h"
 #import "TraitsPageViewController.h"
 #import "StudentsViewController.h"
+#import "LoginViewController.h"
 #import <Parse/Parse.h>
+
+@interface AppDelegate () <LoginViewControllerDelegate>
+
+@property (nonatomic, strong) UITabBarController *tabBarController;
+
+@end
+
 
 @implementation AppDelegate
 
@@ -30,18 +38,26 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+    // setup tabBarController
     TraitsPageViewController *traitsVC = [[TraitsPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     UINavigationController *traitsNVC = [[UINavigationController alloc] initWithRootViewController:traitsVC];
     traitsNVC.tabBarItem.title = @"Traits";
-
+    
     StudentsViewController *studentsVC = [[StudentsViewController alloc] init];
     UINavigationController *studentsNVC = [[UINavigationController alloc] initWithRootViewController:studentsVC];
     studentsNVC.tabBarItem.title = @"Students";
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = @[traitsNVC, studentsNVC];
 
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[traitsNVC, studentsNVC];
 
-    self.window.rootViewController = tabBarController;
+    if (![PFUser currentUser]) {
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        loginController.delegate = self;
+        self.window.rootViewController = loginController;
+    } else {
+        self.window.rootViewController = self.tabBarController;
+    }
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -73,6 +89,12 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - LoginViewControllerDelegate
+
+- (void)userDidLogin {
+    [self.window.rootViewController presentViewController:self.tabBarController animated:NO completion:nil];
 }
 
 @end

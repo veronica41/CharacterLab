@@ -7,14 +7,16 @@
 //
 
 #import "LoginViewController.h"
+#import "UIColor+CharacterLab.h"
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
 
-@property (nonatomic, strong) PFUser *user;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-- (IBAction)onSignup:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+
 - (IBAction)onLogin:(id)sender;
 
 @end
@@ -22,19 +24,64 @@
 
 @implementation LoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self registerForKeyboardNotifications];
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = [UIColor aquamarineColor];
+    self.loginButton.backgroundColor = [UIColor pencilYellowColor];
+    self.loginButton.layer.cornerRadius = 4.0;
+
+    self.userNameField.delegate = self;
+    self.passwordField.delegate = self;
+
+    [self.userNameField becomeFirstResponder];
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    [self.scrollView scrollRectToVisible:self.loginButton.frame animated:YES];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.userNameField) {
+        [self.passwordField becomeFirstResponder];
+    } else if (textField == self.passwordField) {
+        [textField resignFirstResponder];
+        [self onLogin:self];
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,34 +90,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)onSignup:(id)sender {
-    self.user = [PFUser user];
-    self.user.username = self.userNameField.text;
-    self.user.password = self.passwordField.text;
-    //self.user.email = @"email@example.com";
-    //self.user[@"phone"] = @"415-392-0202";
-    
-    [self.user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            [self onLogin:sender];
-        } else {
-            NSString *errorString = [error userInfo][@"error"];
-            NSLog(@"Error: %@", errorString);
-        }
-    }];
-
-}
-
 - (IBAction)onLogin:(id)sender {
-    [PFUser logInWithUsernameInBackground:self.userNameField.text
-                                 password:self.passwordField.text
-                                    block:^(PFUser *user, NSError *error) {
-                                        if (user) {
-                                            self.user = user;
-                                        } else {
-                                            // The login failed. Check error to see why.
-                                        }
-                                    }];
+    [self.userNameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
 
+    NSString *username = self.userNameField.text;
+    NSString *password = self.passwordField.text;
+    if (username && password && username.length > 0 && password.length > 0) {
+        [PFUser logInWithUsernameInBackground:username
+                                     password:password
+                                        block:^(PFUser *user, NSError *error) {
+                                            if (user) {
+                                                [self.delegate userDidLogin];
+                                            } else {
+                                                [[[UIAlertView alloc] initWithTitle:@"Invalid login credentials"
+                                                                            message:error.localizedDescription
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"Ok"
+                                                                  otherButtonTitles:nil] show];
+
+                                            }
+                                        }];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Missing Information"
+                                    message:@"Username and password should not be empty."
+                                   delegate:nil
+                          cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil] show];
+    }
 }
+
 @end
