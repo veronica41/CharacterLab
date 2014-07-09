@@ -7,6 +7,7 @@
 //
 
 #import "TraitViewController.h"
+#import "UIColor+CharacterLab.h"
 #import <UIImageView+AFNetworking.h>
 
 @interface TraitViewController ()
@@ -33,6 +34,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // add a drop shadow
+    CALayer *layer = self.view.layer;
+    layer.shadowOffset = CGSizeMake(1, 1);
+    layer.shadowColor = [[UIColor blackColor] CGColor];
+    layer.shadowRadius = 1;
+    layer.shadowOpacity = 0.2;
+    // TODO(rajeev): figure this out if perf is bad
+//    layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.view.bounds] CGPath];
 
     self.titleLabel.text = self.trait.name;
     self.descriptionLabel.text = self.trait.desc;
