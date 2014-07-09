@@ -29,6 +29,8 @@
 		96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */; };
 		96B3A3CF196B8C130071F8FD /* TraitDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3CD196B8C130071F8FD /* TraitDetailViewController.xib */; };
 		96B3A3D4196B90050071F8FD /* UIColor+CharacterLab.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3D3196B90050071F8FD /* UIColor+CharacterLab.m */; };
+		96B3A407196D104C0071F8FD /* StudentsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A406196D104C0071F8FD /* StudentsCollectionViewCell.m */; };
+		96B3A409196D27CA0071F8FD /* TraitQuestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A408196D27CA0071F8FD /* TraitQuestionsView.xib */; };
 		B300BA27196640790063E27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA26196640790063E27D /* Foundation.framework */; };
 		B300BA29196640790063E27D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA28196640790063E27D /* CoreGraphics.framework */; };
 		B300BA2B196640790063E27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B300BA2A196640790063E27D /* UIKit.framework */; };
@@ -93,6 +95,9 @@
 		96B3A3CD196B8C130071F8FD /* TraitDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitDetailViewController.xib; sourceTree = "<group>"; };
 		96B3A3D2196B90050071F8FD /* UIColor+CharacterLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CharacterLab.h"; sourceTree = "<group>"; };
 		96B3A3D3196B90050071F8FD /* UIColor+CharacterLab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CharacterLab.m"; sourceTree = "<group>"; };
+		96B3A405196D104C0071F8FD /* StudentsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsCollectionViewCell.h; sourceTree = "<group>"; };
+		96B3A406196D104C0071F8FD /* StudentsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsCollectionViewCell.m; sourceTree = "<group>"; };
+		96B3A408196D27CA0071F8FD /* TraitQuestionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraitQuestionsView.xib; sourceTree = "<group>"; };
 		B300BA23196640790063E27D /* CharacterLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B300BA26196640790063E27D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B300BA28196640790063E27D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -187,6 +192,9 @@
 				13E01C141968A63500A94277 /* StudentCell.xib */,
 				13E01C161968A67800A94277 /* StudentCell.h */,
 				13E01C171968A67800A94277 /* StudentCell.m */,
+				96B3A405196D104C0071F8FD /* StudentsCollectionViewCell.h */,
+				96B3A406196D104C0071F8FD /* StudentsCollectionViewCell.m */,
+				96B3A408196D27CA0071F8FD /* TraitQuestionsView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -389,6 +397,7 @@
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
 				13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */,
 				96B3A3CF196B8C130071F8FD /* TraitDetailViewController.xib in Resources */,
+				96B3A409196D27CA0071F8FD /* TraitQuestionsView.xib in Resources */,
 				13E01C121968A42000A94277 /* StudentsViewController.xib in Resources */,
 				13E01C1D1968DA4B00A94277 /* MultiPageViewController.xib in Resources */,
 				13E01C151968A63500A94277 /* StudentCell.xib in Resources */,
@@ -452,6 +461,7 @@
 				13E01C0719675C7300A94277 /* TraitViewController.m in Sources */,
 				B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */,
 				13E01BFC1966453500A94277 /* Student.m in Sources */,
+				96B3A407196D104C0071F8FD /* StudentsCollectionViewCell.m in Sources */,
 				13E01C181968A67800A94277 /* StudentCell.m in Sources */,
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,

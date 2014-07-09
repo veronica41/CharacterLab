@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Trait.h"
 
-@interface TraitDetailViewController : UIViewController
+@interface TraitDetailViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic, strong) Trait *trait;
 
 @end

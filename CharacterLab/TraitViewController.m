@@ -8,6 +8,7 @@
 
 #import "TraitViewController.h"
 #import "UIColor+CharacterLab.h"
+#import "TraitDetailViewController.h"
 #import <UIImageView+AFNetworking.h>
 
 @interface TraitViewController ()
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)onActivities:(id)sender;
 
 @end
 
@@ -53,6 +55,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// (Veronica) add this to test my view, feel free to change
+- (IBAction)onActivities:(id)sender {
+    TraitDetailViewController *detailController = [[TraitDetailViewController alloc] init];
+    detailController.trait = self.trait;
+    [self presentViewController:detailController animated:YES completion:nil];
 }
 
 @end
