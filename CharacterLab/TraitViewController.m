@@ -57,6 +57,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - MultiPageViewControllerChild
+
+- (void)pageViewController:(MultiPageViewController *)pageViewController didMoveToNumPagesFromCenter:(CGFloat)numPagesFromCenter {
+    self.view.alpha = 1 - 0.4 * numPagesFromCenter;
+}
+
+#pragma mark - event handlers
+
 // (Veronica) add this to test my view, feel free to change
 - (IBAction)onActivities:(id)sender {
     TraitDetailViewController *detailController = [[TraitDetailViewController alloc] init];

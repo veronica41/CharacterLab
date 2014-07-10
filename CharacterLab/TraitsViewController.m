@@ -80,7 +80,7 @@ CGFloat const kSecondaryPageScale = 0.85;
     return self.traits.count;
 }
 
-- (UIViewController *)pageViewController:(MultiPageViewController *)pageViewController viewControllerAtIndex:(NSInteger)index {
+- (UIViewController<MultiPageViewControllerChild> *)pageViewController:(MultiPageViewController *)pageViewController viewControllerAtIndex:(NSInteger)index {
     TraitViewController *vc = [[TraitViewController alloc] init];
     vc.trait = self.traits[index];
     return vc;

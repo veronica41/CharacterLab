@@ -146,13 +146,14 @@
     CGFloat centerX = self.scrollView.contentOffset.x + width / 2;
     for (id key in self.visibleViewControllersByIndex) {
         int index = [key intValue];
-        UIViewController *vc = [self.visibleViewControllersByIndex objectForKey:key];
+        UIViewController<MultiPageViewControllerChild> *vc = [self.visibleViewControllersByIndex objectForKey:key];
         CGFloat vcCenterX = index * width + width / 2;
         CGFloat distanceFromCenter = ABS(vcCenterX - centerX);
         CGFloat scale = self.secondaryPageScale + (1 - self.secondaryPageScale) * (1 - distanceFromCenter / width);
         CGFloat pageWidth = width - self.distanceBetweenPages;
         CGFloat additionalMargin = (1 - scale) * pageWidth / 2;
         vc.view.frame = CGRectMake(index * width + self.distanceBetweenPages / 2 + additionalMargin, additionalMargin, pageWidth - 2 * additionalMargin, height - 2 * additionalMargin);
+        [vc pageViewController:self didMoveToNumPagesFromCenter:(distanceFromCenter / width)];
     }
 }
 

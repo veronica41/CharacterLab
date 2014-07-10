@@ -10,10 +10,16 @@
 
 @class MultiPageViewController;
 
+@protocol MultiPageViewControllerChild <NSObject>
+
+- (void)pageViewController:(MultiPageViewController *)pageViewController didMoveToNumPagesFromCenter:(CGFloat)numPagesFromCenter;
+
+@end
+
 @protocol MultiPageViewControllerDataSource <NSObject>
 
 - (NSInteger)numberOfPagesInPageViewController:(MultiPageViewController *)pageViewController;
-- (UIViewController *)pageViewController:(MultiPageViewController *)pageViewController viewControllerAtIndex:(NSInteger)index;
+- (UIViewController<MultiPageViewControllerChild> *)pageViewController:(MultiPageViewController *)pageViewController viewControllerAtIndex:(NSInteger)index;
 
 @end
 

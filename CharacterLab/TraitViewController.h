@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Trait.h"
+#import "MultiPageViewController.h"
 
-@interface TraitViewController : UIViewController
+@interface TraitViewController : UIViewController <MultiPageViewControllerChild>
 
 @property (nonatomic, strong) Trait *trait;
 
