@@ -125,15 +125,12 @@
     self.pageControl.currentPage = MIN(MAX(currentPage, 0), self.numPages - 1);
 
     self.visibleViewControllersByIndex = visibleViewControllersByIndex;
+    [self repositionVisibleViewControllers];
 }
 
 - (void)addViewController:(UIViewController *)vc atIndex:(NSInteger)index {
     [self addChildViewController:vc];
     [self.scrollView addSubview:vc.view];
-    CGFloat width = CGRectGetWidth(self.scrollView.frame);
-    CGFloat height = CGRectGetHeight(self.scrollView.frame);
-    // inset the view horizontally to create the proper distance between pages
-    vc.view.frame = CGRectMake(index * width + self.distanceBetweenPages / 2, 0, width - self.distanceBetweenPages, height);
     [vc didMoveToParentViewController:self];
 }
 
@@ -143,19 +140,20 @@
     [vc removeFromParentViewController];
 }
 
-//- (void)repositionVisibleViewControllers {
-//    CGFloat width = CGRectGetWidth(self.scrollView.frame);
-//    CGFloat height = CGRectGetHeight(self.scrollView.frame);
-//    CGFloat centerX = self.scrollView.contentOffset.x + width / 2;
-//    for (id key in self.visibleViewControllersByIndex) {
-//        int index = [key intValue];
-//        UIViewController *vc = [self.visibleViewControllersByIndex objectForKey:key];
-//        CGFloat vcCenterX = index * width + width / 2;
-//        CGFloat distanceFromCenter = ABS(vcCenterX - centerX);
-//        CGFloat scale = 0.7 + 0.2 * (1 - distanceFromCenter / 320);
-//        CGFloat margin = (1 - scale) * width / 2;
-//        vc.view.frame = CGRectMake(index * width + margin, margin, width - 2 * margin, height - 2 * margin);
-//    }
-//}
+- (void)repositionVisibleViewControllers {
+    CGFloat width = CGRectGetWidth(self.scrollView.frame);
+    CGFloat height = CGRectGetHeight(self.scrollView.frame);
+    CGFloat centerX = self.scrollView.contentOffset.x + width / 2;
+    for (id key in self.visibleViewControllersByIndex) {
+        int index = [key intValue];
+        UIViewController *vc = [self.visibleViewControllersByIndex objectForKey:key];
+        CGFloat vcCenterX = index * width + width / 2;
+        CGFloat distanceFromCenter = ABS(vcCenterX - centerX);
+        CGFloat scale = self.secondaryPageScale + (1 - self.secondaryPageScale) * (1 - distanceFromCenter / width);
+        CGFloat pageWidth = width - self.distanceBetweenPages;
+        CGFloat additionalMargin = (1 - scale) * pageWidth / 2;
+        vc.view.frame = CGRectMake(index * width + self.distanceBetweenPages / 2 + additionalMargin, additionalMargin, pageWidth - 2 * additionalMargin, height - 2 * additionalMargin);
+    }
+}
 
 @end

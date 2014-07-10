@@ -12,9 +12,10 @@
 #import "StudentsViewController.h"
 #import "UIColor+CharacterLab.h"
 
-CGFloat const kVerticalMargin = 30;
-CGFloat const kHorizontalMargin = 30;
-CGFloat const kDistanceBetweenPages = 20;
+CGFloat const kVerticalMargin = 40;
+CGFloat const kHorizontalMargin = 35;
+CGFloat const kDistanceBetweenPages = 5;
+CGFloat const kSecondaryPageScale = 0.85;
 
 @interface TraitsViewController ()
 
@@ -50,6 +51,7 @@ CGFloat const kDistanceBetweenPages = 20;
     self.pageController.verticalMargin = kVerticalMargin;
     self.pageController.horizontalMargin = kHorizontalMargin;
     self.pageController.distanceBetweenPages = kDistanceBetweenPages;
+    self.pageController.secondaryPageScale = kSecondaryPageScale;
     self.pageController.backgroundColor = [UIColor aquamarineColor];
     self.pageController.dataSource = self;
 

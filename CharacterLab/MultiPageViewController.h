@@ -22,6 +22,7 @@
 @property (nonatomic, assign) CGFloat verticalMargin;
 @property (nonatomic, assign) CGFloat horizontalMargin;
 @property (nonatomic, assign) CGFloat distanceBetweenPages;
+@property (nonatomic, assign) CGFloat secondaryPageScale;
 @property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, strong) id <MultiPageViewControllerDataSource> dataSource;
 
