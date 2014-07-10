@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-- (IBAction)onActivities:(id)sender;
+- (IBAction)onTap:(id)sender;
 
 @end
 
@@ -65,8 +65,7 @@
 
 #pragma mark - event handlers
 
-// (Veronica) add this to test my view, feel free to change
-- (IBAction)onActivities:(id)sender {
+- (IBAction)onTap:(id)sender {
     TraitDetailViewController *detailController = [[TraitDetailViewController alloc] init];
     detailController.trait = self.trait;
     [self presentViewController:detailController animated:YES completion:nil];

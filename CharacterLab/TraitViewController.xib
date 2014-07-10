@@ -48,9 +48,6 @@
                             <state key="normal" title="Tap to Explore">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <connections>
-                                <action selector="onActivities:" destination="-1" eventType="touchUpInside" id="gN2-eC-cWX"/>
-                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -70,6 +67,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="k5L-Z3-wS9" secondAttribute="trailing" id="Cuf-vv-8cA"/>
                 <constraint firstItem="k5L-Z3-wS9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Nqh-wJ-CWX"/>
@@ -82,6 +80,14 @@
                     <integer key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="2Wv-qa-aMi" appends="YES" id="nrr-56-Bc4"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="2Wv-qa-aMi">
+            <connections>
+                <action selector="onTap:" destination="-1" id="3jm-af-Mtf"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
