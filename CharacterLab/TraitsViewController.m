@@ -88,8 +88,8 @@ CGFloat const kDistanceBetweenPages = 20;
 
 - (IBAction)onStudentsButton:(id)sender {
     StudentsViewController *vc = [[StudentsViewController alloc] init];
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self presentViewController:nvc animated:YES completion:nil];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end
