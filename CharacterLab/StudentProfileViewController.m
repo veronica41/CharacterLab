@@ -8,8 +8,7 @@
 
 #import "StudentProfileViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "Assessment.h"
-#import "Trait.h"
+#import "CLModel.h"
 
 @interface StudentProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -32,12 +31,14 @@
         // Custom initialization
         // TODO PIER make sure these are cached in a global model
         self.traitDescriptions = [NSMutableDictionary dictionary];
-        [[Trait query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            for (Trait *trait in objects) {
+        [[CLModel sharedInstance] getTraitsWitSuccess:^(NSArray *traitList) {
+            for (Trait *trait in traitList) {
                 self.traitDescriptions[trait.objectId] = trait.name;
                 // reload the data once we have the descriptions cached
                 [self.assessmentTable reloadData];
             }
+        } failure:^(NSError *error) {
+            NSLog(@"Failure fetching traits");
         }];
     }
     return self;
@@ -46,15 +47,13 @@
 // If the user is a new user and does not have any assessment, we need to create empty ones
 - (void)fillEmptyAssessment
 {
-    [[Trait query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        for (Trait *trait in objects) {
-            Assessment *ass = [[Assessment alloc] init];
-            ass.student = self.student;
-            ass.trait = trait;
-            ass.score = 0;
-            [ass saveInBackground];
-        }
-    }];
+    for (Trait *trait in self.traitDescriptions) {
+        Assessment *ass = [[Assessment alloc] init];
+        ass.student = self.student;
+        ass.trait = trait;
+        ass.score = 0;
+        [ass saveInBackground];
+    }
 }
 
 - (void)viewDidLoad
@@ -65,18 +64,11 @@
     self.assessmentTable.delegate = self;
     self.assessmentTable.dataSource = self;
 
-    PFQuery *query = [PFQuery queryWithClassName:@"Assessment"];
-    [query whereKey:@"student" equalTo:self.student];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d assessments.", objects.count);
-            self.assessmentScores = objects;
-            [self.assessmentTable reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@", error);
-        }
+    [[CLModel sharedInstance] getAssessmentsForStudent:self.student success:^(NSArray *assessmentList) {
+        self.assessmentScores = assessmentList;
+        [self.assessmentTable reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"Failure retrieving the assessments for %@", self.student);
     }];
 }
 

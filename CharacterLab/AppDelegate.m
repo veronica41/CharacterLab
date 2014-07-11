@@ -24,8 +24,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Initialize the Character Lab model client
-    [CLModel initWithApplicationId:@"uZlzv42bdzha3eHuQq7Hb6cuWYxWeHqXc7U9bfhu"
-                         clientKey:@"o9iiYvoduL1hul44RByxsjTYQa4VHrEvmIX2CwWs"];
+    [CLModel setApplicationId:@"uZlzv42bdzha3eHuQq7Hb6cuWYxWeHqXc7U9bfhu"
+                    clientKey:@"o9iiYvoduL1hul44RByxsjTYQa4VHrEvmIX2CwWs"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 

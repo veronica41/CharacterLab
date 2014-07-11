@@ -8,9 +8,9 @@
 
 #import "TraitsViewController.h"
 #import "TraitViewController.h"
-#import "Trait.h"
 #import "StudentsViewController.h"
 #import "UIColor+CharacterLab.h"
+#import "CLModel.h"
 
 CGFloat const kVerticalMargin = 40;
 CGFloat const kHorizontalMargin = 35;
@@ -61,10 +61,11 @@ CGFloat const kSecondaryPageScale = 0.85;
     self.pageController.view.frame = self.contentView.frame;
     [self.pageController didMoveToParentViewController:self];
 
-    // fetch the traits
-    [[Trait query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.traits = objects;
+    [[CLModel sharedInstance] getTraitsWitSuccess:^(NSArray *traitList) {
+        self.traits = traitList;
         [self.pageController reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"Failure fetching trait list");
     }];
 }
 
