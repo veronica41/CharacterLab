@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *assessmentTable;
 @property (strong, nonatomic) NSMutableDictionary *traitDescriptions;
 
-- (void)reloadData;
+- (IBAction)onBackButton:(UIButton *)sender;
 
 @end
 
@@ -99,4 +99,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onBackButton:(UIButton *)sender {
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
 @end

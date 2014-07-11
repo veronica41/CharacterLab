@@ -74,7 +74,7 @@
 
     StudentProfileViewController *spvc = [[StudentProfileViewController alloc] init];
     spvc.student = self.students[indexPath.row];
-    [self.navigationController pushViewController:spvc animated:YES];
+    [self presentViewController:spvc animated:NO completion:nil];
 }
 
 @end

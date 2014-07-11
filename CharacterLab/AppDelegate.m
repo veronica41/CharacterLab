@@ -7,15 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "Trait.h"
-#import "Question.h"
-#import "Student.h"
-#import "Teacher.h"
-#import "Assessment.h"
+#import "CLModel.h"
 #import "TraitsViewController.h"
 #import "StudentsViewController.h"
 #import "LoginViewController.h"
-#import <Parse/Parse.h>
 
 @interface AppDelegate () <LoginViewControllerDelegate>
 
@@ -28,14 +23,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Trait registerSubclass];
-    [Question registerSubclass];
-    [Student registerSubclass];
-    [Teacher registerSubclass];
-    [Assessment registerSubclass];
-    [Parse setApplicationId:@"uZlzv42bdzha3eHuQq7Hb6cuWYxWeHqXc7U9bfhu"
-                  clientKey:@"o9iiYvoduL1hul44RByxsjTYQa4VHrEvmIX2CwWs"];
-
+    // Initialize the Character Lab model client
+    [CLModel initWithApplicationId:@"uZlzv42bdzha3eHuQq7Hb6cuWYxWeHqXc7U9bfhu"
+                         clientKey:@"o9iiYvoduL1hul44RByxsjTYQa4VHrEvmIX2CwWs"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     self.mainViewController = [[TraitsViewController alloc] init];

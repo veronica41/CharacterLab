@@ -45,6 +45,7 @@
 		B300BA4C196640790063E27D /* CharacterLabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B300BA4B196640790063E27D /* CharacterLabTests.m */; };
 		B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3021B23196A2470006751D3 /* StudentProfileViewController.m */; };
 		B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3021B24196A2470006751D3 /* StudentProfileViewController.xib */; };
+		B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FDB19701E8500101EE4 /* CLModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		B3021B22196A2470006751D3 /* StudentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentProfileViewController.h; sourceTree = "<group>"; };
 		B3021B23196A2470006751D3 /* StudentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentProfileViewController.m; sourceTree = "<group>"; };
 		B3021B24196A2470006751D3 /* StudentProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentProfileViewController.xib; sourceTree = "<group>"; };
+		B3A92FDA19701E8500101EE4 /* CLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLModel.h; sourceTree = "<group>"; };
+		B3A92FDB19701E8500101EE4 /* CLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 				13E01BFE196645AB00A94277 /* Teacher.m */,
 				13E01C001966462700A94277 /* Assessment.h */,
 				13E01C011966462700A94277 /* Assessment.m */,
+				B3A92FDA19701E8500101EE4 /* CLModel.h */,
+				B3A92FDB19701E8500101EE4 /* CLModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,
 				13E01C111968A42000A94277 /* StudentsViewController.m in Sources */,
+				B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */,
 				13E01C33196BF1FF00A94277 /* TouchInterceptingContainerView.m in Sources */,
 				B300BA33196640790063E27D /* main.m in Sources */,
 			);
