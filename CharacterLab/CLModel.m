@@ -68,7 +68,18 @@ static NSArray *sTraitDescriptions = nil;
         if (error) {
             failure(error);
         } else {
-            // The find succeeded.
+            success(objects);
+        }
+    }];
+}
+
+- (void)getStudentsForCurrentTeacherWithSuccess:(void (^)(NSArray *studentList))success
+                                        failure:(void (^)(NSError *error))failure {
+    // TODO(rajeev/pier): filter by logged in teacher
+    [[Student query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            failure(error);
+        } else {
             success(objects);
         }
     }];

@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Dropbox. All rights reserved.
 //
 
+#import "CLModel.h"
+
 #import "StudentsViewController.h"
-#import "Student.h"
 #import "StudentCell.h"
 #import "StudentProfileViewController.h"
 
@@ -42,10 +43,11 @@
     UINib *studentCellNib = [UINib nibWithNibName:@"StudentCell" bundle:nil];
     [self.collectionView registerNib:studentCellNib forCellWithReuseIdentifier:@"StudentCell"];
 
-    // TODO(rajeev): filter by logged in teacher
-    [[Student query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.students = objects;
+    [[CLModel sharedInstance] getStudentsForCurrentTeacherWithSuccess:^(NSArray *studentList) {
+        self.students = studentList;
         [self.collectionView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"Failed to fetch student list");
     }];
 }
 

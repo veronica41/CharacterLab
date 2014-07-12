@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Trait.h"
 #import "MultiPageViewController.h"
+#import "CLModel.h"
 
 @interface TraitViewController : UIViewController <MultiPageViewControllerChild>
 

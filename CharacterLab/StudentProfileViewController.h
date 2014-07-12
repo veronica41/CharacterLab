@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Student.h"
+#import "CLModel.h"
 
 @interface StudentProfileViewController : UIViewController
 

@@ -28,4 +28,8 @@
 - (void)getAssessmentsForStudent:(Student *)student
                          success:(void (^)(NSArray *assessmentList))success
                          failure:(void (^)(NSError *error))failure;
+
+- (void)getStudentsForCurrentTeacherWithSuccess:(void (^)(NSArray *studentList))success
+                                        failure:(void (^)(NSError *error))failure;
+
 @end

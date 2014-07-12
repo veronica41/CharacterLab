@@ -58,4 +58,5 @@
     return blastOffRedColor;
 }
 
+
 @end

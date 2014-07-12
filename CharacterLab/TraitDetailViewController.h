@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Trait.h"
+#import "CLModel.h"
 
 @interface TraitDetailViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 

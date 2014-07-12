@@ -7,8 +7,7 @@
 //
 
 #import "StudentProfileViewController.h"
-#import "UIImageView+AFNetworking.h"
-#import "CLModel.h"
+#import "UIImageView+AFNetworking.h"\
 
 @interface StudentProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
