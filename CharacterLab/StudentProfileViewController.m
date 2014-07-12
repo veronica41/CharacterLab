@@ -6,19 +6,25 @@
 //  Copyright (c) 2014 Dropbox. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
+#import "AssessmentInputViewController.h"
 #import "StudentProfileViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIColor+CharacterLab.h"
+
 
 @interface StudentProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) NSArray *assessmentScores;
-@property (weak, nonatomic) IBOutlet UITableView *assessmentTable;
 @property (strong, nonatomic) NSMutableDictionary *traitDescriptions;
 @property (weak, nonatomic) IBOutlet UILabel *initialsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
+@property (weak, nonatomic) IBOutlet UIView *initialsBackgroundView;
 
 - (IBAction)onBackButton:(UIButton *)sender;
+- (IBAction)onMeasurePress:(UIButton *)sender;
 
 - (NSString *)getInitials:(NSString *)name;
 
@@ -35,8 +41,6 @@
         [[CLModel sharedInstance] getTraitsWitSuccess:^(NSArray *traitList) {
             for (Trait *trait in traitList) {
                 self.traitDescriptions[trait.objectId] = trait.name;
-                // reload the data once we have the descriptions cached
-                [self.assessmentTable reloadData];
             }
         } failure:^(NSError *error) {
             NSLog(@"Failure fetching traits");
@@ -44,43 +48,6 @@
     }
     return self;
 }
-
-// If the user is a new user and does not have any assessment, we need to create empty ones
-- (void)fillEmptyAssessment
-{
-    for (Trait *trait in self.traitDescriptions) {
-        Assessment *ass = [[Assessment alloc] init];
-        ass.student = self.student;
-        ass.trait = trait;
-        ass.score = 0;
-        [ass saveInBackground];
-    }
-}
-
-/*
-- (UIView *)getUserCircleWithFrame:(CGRect)rect color:(UIColor *)color text:(NSString *)text {
-
-    UIView *view = [[UIView alloc] initWithFrame:rect];
-
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path addArcWithCenter:CGPointMake(rect.size.width / 2, rect.size.height / 2)
-                    radius:50.0
-                startAngle:0.0
-                  endAngle:2.0 * M_PI
-                 clockwise:NO];
-    [path fill];
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextFillPath(context);
-
-    // Add it do your label's layer hierarchy
-    UILabel *label = [[UILabel alloc] initWithFrame:rect];
-    label.text = text;
-    label.textAlignment = NSTextAlignmentCenter;
-
-    [label.layer addSublayer:circleLayer];
-    return view;
-}
- */
 
 - (NSString *)getInitials:(NSString *)name {
     NSArray *nameComponents = [self.student.name componentsSeparatedByString: @" "];
@@ -101,15 +68,14 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor CLBackgroundGrayColor];
+    self.initialsBackgroundView.backgroundColor = [UIColor CLBackgroundDarkGrayColor];
 
     self.nameLabel.text = self.student.name;
     self.initialsLabel.text = [self getInitials:self.student.name];
-    self.assessmentTable.delegate = self;
-    self.assessmentTable.dataSource = self;
+    self.initialsLabel.layer.cornerRadius = self.initialsLabel.frame.size.width / 2;
 
     [[CLModel sharedInstance] getAssessmentsForStudent:self.student success:^(NSArray *assessmentList) {
         self.assessmentScores = assessmentList;
-        [self.assessmentTable reloadData];
     } failure:^(NSError *error) {
         NSLog(@"Failure retrieving the assessments for %@", self.student);
     }];
@@ -136,5 +102,10 @@
 
 - (IBAction)onBackButton:(UIButton *)sender {
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)onMeasurePress:(UIButton *)sender {
+    AssessmentInputViewController *avc = [[AssessmentInputViewController alloc] init];
+    [self presentViewController:avc animated:YES completion:nil];
 }
 @end

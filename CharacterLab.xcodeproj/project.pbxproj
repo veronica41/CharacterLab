@@ -46,6 +46,9 @@
 		B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3021B23196A2470006751D3 /* StudentProfileViewController.m */; };
 		B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3021B24196A2470006751D3 /* StudentProfileViewController.xib */; };
 		B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FDB19701E8500101EE4 /* CLModel.m */; };
+		B3A92FDE1971E29500101EE4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A92FDD1971E29500101EE4 /* QuartzCore.framework */; };
+		B3A92FE21971EED200101EE4 /* AssessmentInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FE01971EED200101EE4 /* AssessmentInputViewController.m */; };
+		B3A92FE31971EED200101EE4 /* AssessmentInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A92FE11971EED200101EE4 /* AssessmentInputViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,10 @@
 		B3021B24196A2470006751D3 /* StudentProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentProfileViewController.xib; sourceTree = "<group>"; };
 		B3A92FDA19701E8500101EE4 /* CLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLModel.h; sourceTree = "<group>"; };
 		B3A92FDB19701E8500101EE4 /* CLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLModel.m; sourceTree = "<group>"; };
+		B3A92FDD1971E29500101EE4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B3A92FDF1971EED200101EE4 /* AssessmentInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentInputViewController.h; sourceTree = "<group>"; };
+		B3A92FE01971EED200101EE4 /* AssessmentInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentInputViewController.m; sourceTree = "<group>"; };
+		B3A92FE11971EED200101EE4 /* AssessmentInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssessmentInputViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3A92FDE1971E29500101EE4 /* QuartzCore.framework in Frameworks */,
 				B300BA29196640790063E27D /* CoreGraphics.framework in Frameworks */,
 				B300BA2B196640790063E27D /* UIKit.framework in Frameworks */,
 				B300BA27196640790063E27D /* Foundation.framework in Frameworks */,
@@ -187,6 +195,9 @@
 				13E01C2A196BEEAE00A94277 /* TraitsViewController.h */,
 				13E01C2B196BEEAE00A94277 /* TraitsViewController.m */,
 				13E01C2C196BEEAE00A94277 /* TraitsViewController.xib */,
+				B3A92FDF1971EED200101EE4 /* AssessmentInputViewController.h */,
+				B3A92FE01971EED200101EE4 /* AssessmentInputViewController.m */,
+				B3A92FE11971EED200101EE4 /* AssessmentInputViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -265,6 +276,7 @@
 		B300BA25196640790063E27D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3A92FDD1971E29500101EE4 /* QuartzCore.framework */,
 				B300BA26196640790063E27D /* Foundation.framework */,
 				B300BA28196640790063E27D /* CoreGraphics.framework */,
 				B300BA2A196640790063E27D /* UIKit.framework */,
@@ -400,6 +412,7 @@
 				B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */,
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
+				B3A92FE31971EED200101EE4 /* AssessmentInputViewController.xib in Resources */,
 				13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */,
 				96B3A3CF196B8C130071F8FD /* TraitDetailViewController.xib in Resources */,
 				96B3A409196D27CA0071F8FD /* TraitQuestionsView.xib in Resources */,
@@ -476,6 +489,7 @@
 				B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */,
 				13E01C33196BF1FF00A94277 /* TouchInterceptingContainerView.m in Sources */,
 				B300BA33196640790063E27D /* main.m in Sources */,
+				B3A92FE21971EED200101EE4 /* AssessmentInputViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

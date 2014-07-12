@@ -8,6 +8,8 @@
 
 #import "UIColor+CharacterLab.h"
 
+#define UIColorFromHEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0 green:((float)((hexValue & 0xFF00) >> 8))/255.0 blue:  ((float)(hexValue & 0xFF))/255.0 alpha:1.0]
+
 @implementation UIColor (CharacterLab)
 
 + (UIColor *)pencilYellowColor {
@@ -58,14 +60,28 @@
     return blastOffRedColor;
 }
 
-
 + (UIColor *)CLBackgroundGrayColor {
     static UIColor *CLBackgroundGrayColor = nil;
     if (!CLBackgroundGrayColor) {
-        CLBackgroundGrayColor = [UIColor colorWithRed:34/255.0 green:42/255.0 blue:42/255.0 alpha:1.0];
+        CLBackgroundGrayColor = UIColorFromHEX(0X222A2A);
     }
     return CLBackgroundGrayColor;
 }
 
++ (UIColor *)CLBackgroundDarkGrayColor {
+    static UIColor *CLBackgroundDarkGrayColor = nil;
+    if (!CLBackgroundDarkGrayColor) {
+        CLBackgroundDarkGrayColor = UIColorFromHEX(0X1C2323);
+    }
+    return CLBackgroundDarkGrayColor;
+}
+
++ (UIColor *)CLRedButtonColor {
+    static UIColor *CLRedButtonColor = nil;
+    if (!CLRedButtonColor) {
+        CLRedButtonColor = UIColorFromHEX(0XF15B4D);
+    }
+    return CLRedButtonColor;
+}
 
 @end

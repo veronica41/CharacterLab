@@ -17,5 +17,7 @@
 + (UIColor *)telescopeBlueColor;
 + (UIColor *)blastOffRedColor;
 + (UIColor *)CLBackgroundGrayColor;
++ (UIColor *)CLBackgroundDarkGrayColor;
++ (UIColor *)CLRedButtonColor;
 
 @end
