@@ -9,7 +9,6 @@
 #import "TraitViewController.h"
 #import "UIColor+CharacterLab.h"
 #import "TraitDetailViewController.h"
-#import <UIImageView+AFNetworking.h>
 
 @interface TraitViewController ()
 
@@ -48,7 +47,7 @@
 
     self.titleLabel.text = self.trait.name;
     self.descriptionLabel.text = self.trait.desc;
-    [self.imageView setImageWithURL:[NSURL URLWithString:self.trait.imageUrl]];
+    self.imageView.image = [UIImage imageNamed:self.trait.name];
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TraitViewController">
             <connections>
                 <outlet property="descriptionLabel" destination="nkV-m0-GFX" id="nDj-uI-MG2"/>
-                <outlet property="imageView" destination="dnE-uh-zKh" id="Qgn-vf-mue"/>
+                <outlet property="imageView" destination="ZFR-hP-orB" id="3Yg-1D-SEQ"/>
                 <outlet property="titleLabel" destination="fAV-ni-LIS" id="LVd-s2-qx5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,13 +34,18 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dnE-uh-zKh">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZFR-hP-orB">
                             <rect key="frame" x="85" y="81" width="150" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="150" id="7Ww-EH-GEc"/>
-                                <constraint firstAttribute="height" constant="150" id="Mp7-U5-5Ww"/>
+                                <constraint firstAttribute="height" constant="150" id="3FS-ex-BUg"/>
+                                <constraint firstAttribute="width" constant="150" id="G7n-h4-IgR"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="75"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeN-ZQ-W9q">
                             <rect key="frame" x="111" y="251" width="99" height="30"/>
@@ -51,18 +56,18 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="dnE-uh-zKh" firstAttribute="top" secondItem="nkV-m0-GFX" secondAttribute="bottom" constant="20" id="3ep-Rc-zB2"/>
-                        <constraint firstAttribute="centerX" secondItem="dnE-uh-zKh" secondAttribute="centerX" id="70d-Sg-JK2"/>
                         <constraint firstAttribute="centerX" secondItem="fAV-ni-LIS" secondAttribute="centerX" id="Bcd-s4-hKL"/>
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="top" secondItem="fAV-ni-LIS" secondAttribute="bottom" constant="15" id="E4Q-Xs-rdI"/>
                         <constraint firstItem="fAV-ni-LIS" firstAttribute="leading" secondItem="k5L-Z3-wS9" secondAttribute="leading" constant="20" id="Emf-fe-vX2"/>
                         <constraint firstItem="fAV-ni-LIS" firstAttribute="top" secondItem="k5L-Z3-wS9" secondAttribute="top" id="FsR-xS-GQX"/>
+                        <constraint firstAttribute="centerX" secondItem="ZFR-hP-orB" secondAttribute="centerX" id="Hsn-WW-pQ6"/>
                         <constraint firstAttribute="trailing" secondItem="fAV-ni-LIS" secondAttribute="trailing" constant="20" id="NDR-KJ-1pX"/>
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="trailing" secondItem="fAV-ni-LIS" secondAttribute="trailing" id="TSq-mx-7E3"/>
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="leading" secondItem="fAV-ni-LIS" secondAttribute="leading" id="bAb-cK-cRF"/>
                         <constraint firstAttribute="bottom" secondItem="ZeN-ZQ-W9q" secondAttribute="bottom" id="hAK-pc-Og3"/>
-                        <constraint firstItem="ZeN-ZQ-W9q" firstAttribute="top" secondItem="dnE-uh-zKh" secondAttribute="bottom" constant="20" id="ijc-xC-xnn"/>
                         <constraint firstAttribute="centerX" secondItem="ZeN-ZQ-W9q" secondAttribute="centerX" id="k73-fk-0TZ"/>
+                        <constraint firstItem="ZeN-ZQ-W9q" firstAttribute="top" secondItem="ZFR-hP-orB" secondAttribute="bottom" constant="20" id="uev-6V-Pbq"/>
+                        <constraint firstItem="ZFR-hP-orB" firstAttribute="top" secondItem="nkV-m0-GFX" secondAttribute="bottom" constant="20" id="xMa-0d-8jL"/>
                     </constraints>
                 </view>
             </subviews>
