@@ -16,5 +16,6 @@
 + (UIColor *)greenGrassColor;
 + (UIColor *)telescopeBlueColor;
 + (UIColor *)blastOffRedColor;
++ (UIColor *)CLBackgroundGrayColor;
 
 @end

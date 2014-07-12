@@ -12,7 +12,6 @@
 @interface Student : PFObject <PFSubclassing>
 
 @property (nonatomic, copy) NSString *name;
-// PIER: can we make this a NSURL?
 @property (nonatomic, copy) NSString *photoUrl;
 @property (nonatomic, strong) Teacher *teacher;
 

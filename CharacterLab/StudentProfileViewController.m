@@ -7,17 +7,20 @@
 //
 
 #import "StudentProfileViewController.h"
-#import "UIImageView+AFNetworking.h"\
+#import "UIImageView+AFNetworking.h"
+#import "UIColor+CharacterLab.h"
 
 @interface StudentProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) NSArray *assessmentScores;
 @property (weak, nonatomic) IBOutlet UITableView *assessmentTable;
 @property (strong, nonatomic) NSMutableDictionary *traitDescriptions;
+@property (weak, nonatomic) IBOutlet UILabel *initialsLabel;
 
 - (IBAction)onBackButton:(UIButton *)sender;
+
+- (NSString *)getInitials:(NSString *)name;
 
 @end
 
@@ -28,7 +31,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        // TODO PIER make sure these are cached in a global model
         self.traitDescriptions = [NSMutableDictionary dictionary];
         [[CLModel sharedInstance] getTraitsWitSuccess:^(NSArray *traitList) {
             for (Trait *trait in traitList) {
@@ -55,11 +57,53 @@
     }
 }
 
+/*
+- (UIView *)getUserCircleWithFrame:(CGRect)rect color:(UIColor *)color text:(NSString *)text {
+
+    UIView *view = [[UIView alloc] initWithFrame:rect];
+
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path addArcWithCenter:CGPointMake(rect.size.width / 2, rect.size.height / 2)
+                    radius:50.0
+                startAngle:0.0
+                  endAngle:2.0 * M_PI
+                 clockwise:NO];
+    [path fill];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextFillPath(context);
+
+    // Add it do your label's layer hierarchy
+    UILabel *label = [[UILabel alloc] initWithFrame:rect];
+    label.text = text;
+    label.textAlignment = NSTextAlignmentCenter;
+
+    [label.layer addSublayer:circleLayer];
+    return view;
+}
+ */
+
+- (NSString *)getInitials:(NSString *)name {
+    NSArray *nameComponents = [self.student.name componentsSeparatedByString: @" "];
+    int cnt = [nameComponents count];
+    NSMutableString *ret_val = [@"" mutableCopy];
+
+    if (cnt > 0) {
+        [ret_val appendFormat:@"%c", [nameComponents[0] characterAtIndex:0]];
+        if (cnt > 1) {
+            [ret_val appendFormat:@"%c", [nameComponents[1] characterAtIndex:0]];
+        }
+    }
+    return [ret_val uppercaseString];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.profileImage setImageWithURL:[NSURL URLWithString:self.student.photoUrl]];
+
+    self.view.backgroundColor = [UIColor CLBackgroundGrayColor];
+
     self.nameLabel.text = self.student.name;
+    self.initialsLabel.text = [self getInitials:self.student.name];
     self.assessmentTable.delegate = self;
     self.assessmentTable.dataSource = self;
 

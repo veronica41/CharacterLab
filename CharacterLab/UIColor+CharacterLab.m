@@ -59,4 +59,13 @@
 }
 
 
++ (UIColor *)CLBackgroundGrayColor {
+    static UIColor *CLBackgroundGrayColor = nil;
+    if (!CLBackgroundGrayColor) {
+        CLBackgroundGrayColor = [UIColor colorWithRed:34/255.0 green:42/255.0 blue:42/255.0 alpha:1.0];
+    }
+    return CLBackgroundGrayColor;
+}
+
+
 @end
