@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLModel.h"
 
 @interface AssessmentInputViewController : UIViewController
+
+@property (nonatomic, strong) Student *student;
 
 @end

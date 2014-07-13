@@ -32,4 +32,9 @@
 - (void)getStudentsForCurrentTeacherWithSuccess:(void (^)(NSArray *studentList))success
                                         failure:(void (^)(NSError *error))failure;
 
+- (void)storeAssessmentForStudent:(Student *)student
+                            trait:(Trait *)trait
+                            value:(CLAssessmentScore)score
+                          failure:(void (^)(NSError *error))failure;
+
 @end

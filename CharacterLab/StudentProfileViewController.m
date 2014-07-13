@@ -90,6 +90,8 @@
 
 - (IBAction)onMeasurePress:(UIButton *)sender {
     AssessmentInputViewController *avc = [[AssessmentInputViewController alloc] init];
+    avc.student = self.student;
     [self presentViewController:avc animated:YES completion:nil];
 }
+
 @end

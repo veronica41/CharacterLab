@@ -85,4 +85,16 @@ static NSArray *sTraitDescriptions = nil;
     }];
 }
 
+- (void)storeAssessmentForStudent:(Student *)student
+                            trait:(Trait *)trait
+                            value:(CLAssessmentScore)score
+                          failure:(void (^)(NSError *error))failure {
+
+    Assessment *a = [[Assessment alloc] init];
+    a.student = student;
+    a.trait = trait;
+    a.score = score;
+    [a save]; // saving the assessment is synchronous for now
+}
+
 @end

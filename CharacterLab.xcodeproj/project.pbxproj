@@ -47,6 +47,8 @@
 		B300BA4C196640790063E27D /* CharacterLabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B300BA4B196640790063E27D /* CharacterLabTests.m */; };
 		B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3021B23196A2470006751D3 /* StudentProfileViewController.m */; };
 		B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3021B24196A2470006751D3 /* StudentProfileViewController.xib */; };
+		B34A5EAB1972BBA30053696B /* NewAssessmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */; };
+		B34A5EAC1972BBA30053696B /* NewAssessmentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */; };
 		B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FDB19701E8500101EE4 /* CLModel.m */; };
 		B3A92FDE1971E29500101EE4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A92FDD1971E29500101EE4 /* QuartzCore.framework */; };
 		B3A92FE21971EED200101EE4 /* AssessmentInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FE01971EED200101EE4 /* AssessmentInputViewController.m */; };
@@ -126,6 +128,9 @@
 		B3021B22196A2470006751D3 /* StudentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentProfileViewController.h; sourceTree = "<group>"; };
 		B3021B23196A2470006751D3 /* StudentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentProfileViewController.m; sourceTree = "<group>"; };
 		B3021B24196A2470006751D3 /* StudentProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentProfileViewController.xib; sourceTree = "<group>"; };
+		B34A5EA81972BBA30053696B /* NewAssessmentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAssessmentViewCell.h; sourceTree = "<group>"; };
+		B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAssessmentViewCell.m; sourceTree = "<group>"; };
+		B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewAssessmentViewCell.xib; sourceTree = "<group>"; };
 		B3A92FDA19701E8500101EE4 /* CLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLModel.h; sourceTree = "<group>"; };
 		B3A92FDB19701E8500101EE4 /* CLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLModel.m; sourceTree = "<group>"; };
 		B3A92FDD1971E29500101EE4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -222,6 +227,9 @@
 				1329E265197254B700C839F8 /* StudentsCollectionHeaderView.h */,
 				1329E266197254B700C839F8 /* StudentsCollectionHeaderView.m */,
 				1329E268197254D300C839F8 /* StudentsCollectionHeaderView.xib */,
+				B34A5EA81972BBA30053696B /* NewAssessmentViewCell.h */,
+				B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */,
+				B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 				1329E269197254D300C839F8 /* StudentsCollectionHeaderView.xib in Resources */,
 				B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */,
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
+				B34A5EAC1972BBA30053696B /* NewAssessmentViewCell.xib in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
 				B3A92FE31971EED200101EE4 /* AssessmentInputViewController.xib in Resources */,
 				13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */,
@@ -488,6 +497,7 @@
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
 				1329E267197254B700C839F8 /* StudentsCollectionHeaderView.m in Sources */,
 				13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */,
+				B34A5EAB1972BBA30053696B /* NewAssessmentViewCell.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,
 				13E01C111968A42000A94277 /* StudentsViewController.m in Sources */,
 				B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */,
