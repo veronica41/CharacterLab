@@ -7,12 +7,14 @@
 //
 
 #import "StudentCell.h"
-#import <UIImageView+AFNetworking.h>
+#import "CLColor.h"
+#import "StudentInitialsLabel.h"
 
 @interface StudentCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastMeasuredLabel;
 
 @end
 
@@ -22,9 +24,21 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self setup];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup {
+    self.backgroundColor = UIColorFromHEX(CLColorGray);
 }
 
 - (void)setStudent:(Student *)student {
@@ -33,9 +47,10 @@
 }
 
 - (void)reloadData {
-    self.imageView.image = nil;
-    [self.imageView setImageWithURL:[NSURL URLWithString:self.student.photoUrl]];
+    self.initialsLabel.student = self.student;
     self.nameLabel.text = self.student.name;
+    // TODO(rajeev): implement this
+    self.lastMeasuredLabel.text = @"Today";
 }
 
 @end

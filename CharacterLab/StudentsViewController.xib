@@ -18,8 +18,8 @@
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yTr-SM-qoz">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="nfr-BM-qCJ">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nfr-BM-qCJ">
                         <size key="itemSize" width="320" height="60"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -27,13 +27,31 @@
                     </collectionViewFlowLayout>
                     <cells/>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGV-0C-fAJ">
+                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="5Tq-nW-0KQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="See Character Strengths">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onBackButton:" destination="-1" eventType="touchUpInside" id="33U-Ae-JOY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="yTr-SM-qoz" secondAttribute="trailing" id="1dW-xN-cUH"/>
+                <constraint firstItem="wGV-0C-fAJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fgo-za-29g"/>
+                <constraint firstAttribute="trailing" secondItem="wGV-0C-fAJ" secondAttribute="trailing" id="Mli-Ma-qQ7"/>
                 <constraint firstItem="yTr-SM-qoz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="R3h-Ae-M52"/>
                 <constraint firstItem="yTr-SM-qoz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f4T-Ig-kvb"/>
                 <constraint firstAttribute="bottom" secondItem="yTr-SM-qoz" secondAttribute="bottom" id="mT5-4s-0zj"/>
+                <constraint firstAttribute="bottom" secondItem="wGV-0C-fAJ" secondAttribute="bottom" id="wC6-dD-mqI"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

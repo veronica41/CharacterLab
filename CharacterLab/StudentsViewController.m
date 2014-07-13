@@ -11,10 +11,12 @@
 #import "StudentsViewController.h"
 #import "StudentCell.h"
 #import "StudentProfileViewController.h"
+#import "CLColor.h"
 
 @interface StudentsViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+- (IBAction)onBackButton:(id)sender;
 
 @property (nonatomic, strong) NSArray *students;
 
@@ -38,6 +40,7 @@
     [super viewDidLoad];
 
     // init the collection view
+    self.collectionView.backgroundColor = UIColorFromHEX(CLColorGray);
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     UINib *studentCellNib = [UINib nibWithNibName:@"StudentCell" bundle:nil];
@@ -76,7 +79,13 @@
 
     StudentProfileViewController *spvc = [[StudentProfileViewController alloc] init];
     spvc.student = self.students[indexPath.row];
-    [self presentViewController:spvc animated:NO completion:nil];
+    [self presentViewController:spvc animated:YES completion:nil];
+}
+
+#pragma mark - event handlers
+
+- (IBAction)onBackButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

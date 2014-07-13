@@ -11,6 +11,7 @@
 #import "CLColor.h"
 #import "AssessmentInputViewController.h"
 #import "StudentProfileViewController.h"
+#import "StudentInitialsLabel.h"
 #import "UIImageView+AFNetworking.h"
 
 
@@ -19,14 +20,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) NSArray *assessmentScores;
 @property (strong, nonatomic) NSMutableDictionary *traitDescriptions;
-@property (weak, nonatomic) IBOutlet UILabel *initialsLabel;
+@property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
 @property (weak, nonatomic) IBOutlet UIView *initialsBackgroundView;
 
 - (IBAction)onBackButton:(UIButton *)sender;
 - (IBAction)onMeasurePress:(UIButton *)sender;
-
-- (NSString *)getInitials:(NSString *)name;
 
 @end
 
@@ -49,20 +48,6 @@
     return self;
 }
 
-- (NSString *)getInitials:(NSString *)name {
-    NSArray *nameComponents = [self.student.name componentsSeparatedByString: @" "];
-    int cnt = [nameComponents count];
-    NSMutableString *ret_val = [@"" mutableCopy];
-
-    if (cnt > 0) {
-        [ret_val appendFormat:@"%c", [nameComponents[0] characterAtIndex:0]];
-        if (cnt > 1) {
-            [ret_val appendFormat:@"%c", [nameComponents[1] characterAtIndex:0]];
-        }
-    }
-    return [ret_val uppercaseString];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -71,8 +56,7 @@
     self.initialsBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGray);
 
     self.nameLabel.text = self.student.name;
-    self.initialsLabel.text = [self getInitials:self.student.name];
-    self.initialsLabel.layer.cornerRadius = self.initialsLabel.frame.size.width / 2;
+    self.initialsLabel.student = self.student;
 
     [[CLModel sharedInstance] getAssessmentsForStudent:self.student success:^(NSArray *assessmentList) {
         self.assessmentScores = assessmentList;
