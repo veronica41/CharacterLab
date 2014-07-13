@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *exploreButton;
 - (IBAction)onTap:(id)sender;
 
 @end
@@ -35,6 +36,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.view.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+    self.titleLabel.textColor = UIColorFromHEX(CLColorTextBrown);
+    self.descriptionLabel.textColor = UIColorFromHEX(CLColorSubtextBrown);
+    self.exploreButton.tintColor = UIColorFromHEX(CLColorAquamarine);
 
     // add a drop shadow
     CALayer *layer = self.view.layer;
