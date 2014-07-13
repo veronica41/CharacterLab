@@ -15,6 +15,7 @@
 #import "Student.h"
 #import "Teacher.h"
 #import "Assessment.h"
+#import "Tip.h"
 
 @interface CLModel : NSObject
 
@@ -36,5 +37,9 @@
                             trait:(Trait *)trait
                             value:(CLAssessmentScore)score
                           failure:(void (^)(NSError *error))failure;
+
+- (void)getTipsForTrait:(Trait *)trait
+                success:(void (^)(NSArray *tipsList))success
+                failure:(void(^)(NSError *error))failure;
 
 @end

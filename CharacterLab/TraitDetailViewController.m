@@ -11,6 +11,7 @@
 #import "TraitDetailViewController.h"
 #import "StudentsCollectionViewCell.h"
 #import "CLColor.h"
+#import "CLModel.h"
 
 @interface TraitDetailViewController ()
 
@@ -22,7 +23,7 @@
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
 @property (nonatomic, strong) MPMoviePlayerController *playerController;
-
+@property (nonatomic, strong) NSArray *tips;
 
 @end
 
@@ -58,6 +59,12 @@
     if (self.hideImageViewOnLoad) {
         self.traitImageView.alpha = 0;
     }
+
+    [[CLModel sharedInstance] getTipsForTrait:self.trait success:^(NSArray *tipsList) {
+        self.tips = tipsList;
+    } failure:^(NSError *error) {
+        NSLog(@"Failed to fetch tips, %@", error);
+    }];
 }
 
 - (void)setupVideoPlayer {

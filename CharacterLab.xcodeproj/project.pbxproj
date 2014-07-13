@@ -28,6 +28,7 @@
 		13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C2C196BEEAE00A94277 /* TraitsViewController.xib */; };
 		13E01C33196BF1FF00A94277 /* TouchInterceptingContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C32196BF1FF00A94277 /* TouchInterceptingContainerView.m */; };
 		960937CA197327C200414B21 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960937C9197327C200414B21 /* MediaPlayer.framework */; };
+		960937CD19733BC300414B21 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937CC19733BC300414B21 /* Tip.m */; };
 		96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3C7196B75720071F8FD /* LoginViewController.m */; };
 		96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3C8196B75720071F8FD /* LoginViewController.xib */; };
 		96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */; };
@@ -102,6 +103,8 @@
 		894C1A229C964F13A256BF97 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		960937C71973277500414B21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		960937C9197327C200414B21 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		960937CB19733BC300414B21 /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tip.h; sourceTree = "<group>"; };
+		960937CC19733BC300414B21 /* Tip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tip.m; sourceTree = "<group>"; };
 		96B3A3C6196B75720071F8FD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96B3A3C7196B75720071F8FD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		96B3A3C8196B75720071F8FD /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				13E01BFE196645AB00A94277 /* Teacher.m */,
 				13E01C001966462700A94277 /* Assessment.h */,
 				13E01C011966462700A94277 /* Assessment.m */,
+				960937CB19733BC300414B21 /* Tip.h */,
+				960937CC19733BC300414B21 /* Tip.m */,
 				B3A92FDA19701E8500101EE4 /* CLModel.h */,
 				B3A92FDB19701E8500101EE4 /* CLModel.m */,
 			);
@@ -499,6 +504,7 @@
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
 				1329E267197254B700C839F8 /* StudentsCollectionHeaderView.m in Sources */,
+				960937CD19733BC300414B21 /* Tip.m in Sources */,
 				13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */,
 				B34A5EAB1972BBA30053696B /* NewAssessmentViewCell.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,

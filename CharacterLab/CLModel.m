@@ -29,6 +29,7 @@ static NSArray *sTraitDescriptions = nil;
     [Student registerSubclass];
     [Teacher registerSubclass];
     [Assessment registerSubclass];
+    [Tip registerSubclass];
     [Parse setApplicationId:applicationId clientKey:clientKey];
 
     // Pre-cache a few things at app startup to minimize latency when opening view controllers
@@ -95,6 +96,20 @@ static NSArray *sTraitDescriptions = nil;
     a.trait = trait;
     a.score = score;
     [a save]; // saving the assessment is synchronous for now
+}
+
+- (void)getTipsForTrait:(Trait *)trait
+                success:(void (^)(NSArray *tipsList))success
+                failure:(void(^)(NSError *error))failure {
+    PFQuery *query = [PFQuery queryWithClassName:@"Tip"];
+    [query whereKey:@"trait" equalTo:trait];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            failure(error);
+        } else {
+            success(objects);
+        }
+    }];
 }
 
 @end
