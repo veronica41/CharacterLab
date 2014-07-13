@@ -67,7 +67,8 @@
 - (IBAction)onTap:(id)sender {
     TraitDetailViewController *detailController = [[TraitDetailViewController alloc] init];
     detailController.trait = self.trait;
-    [self presentViewController:detailController animated:YES completion:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailController];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 @end

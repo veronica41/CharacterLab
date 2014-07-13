@@ -20,6 +20,7 @@ typedef enum : NSUInteger {
     CLColorBlastOffRed     = 0XF2754D,
     CLColorGray            = 0X222A2A,
     CLColorDarkGray        = 0X1C2323,
+    CLColorDarkYellow      = 0XF5F2E0
 } CLColorEnum;
 
 #endif

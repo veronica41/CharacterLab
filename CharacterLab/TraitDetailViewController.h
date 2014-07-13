@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CLModel.h"
 
-@interface TraitDetailViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TraitDetailViewController : UIViewController
 
 @property (nonatomic, strong) Trait *trait;
 

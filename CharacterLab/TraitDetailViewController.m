@@ -8,17 +8,17 @@
 
 #import "TraitDetailViewController.h"
 #import "StudentsCollectionViewCell.h"
-
-static NSString *kStudentsCellIdentifier = @"StudentsCellIdentifier";
-static NSString *kActivitiesCellIDentifier = @"ActivitiesCellIdentifier";
+#import "CLColor.h"
 
 @interface TraitDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UICollectionView *activitiesCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionView *topStudentsCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionView *bottomStudentsCollectionView;
-@property (nonatomic, strong) NSArray *topStudents;
-@property (nonatomic, strong) NSArray *bottomStudents;
+@property (weak, nonatomic) IBOutlet UIImageView *traitImageView;
+@property (weak, nonatomic) IBOutlet UILabel *traitDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
+@property (weak, nonatomic) IBOutlet UIView *movieView;
+@property (weak, nonatomic) IBOutlet UILabel *buildLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *buildTraitViewHeight;
+
 
 @end
 
@@ -37,74 +37,23 @@ static NSString *kActivitiesCellIDentifier = @"ActivitiesCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    /*
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [flowLayout setMinimumInteritemSpacing:16.0f];
-    [flowLayout setMinimumLineSpacing:16.0f];
-    [flowLayout setItemSize:CGSizeMake(84, 84)];
-    */
+    // setup navigation bar
+    self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorGreenGrass);
+    self.navigationController.navigationBar.translucent = YES;
+    UIImageView *backButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.title = self.trait.name;
 
-    [self.activitiesCollectionView registerNib:[UINib nibWithNibName:@"TraitQuestionsView" bundle:nil] forCellWithReuseIdentifier:kActivitiesCellIDentifier];
-    [self.topStudentsCollectionView registerClass:StudentsCollectionViewCell.class forCellWithReuseIdentifier:kStudentsCellIdentifier];
-    [self.bottomStudentsCollectionView registerClass:StudentsCollectionViewCell.class forCellWithReuseIdentifier:kStudentsCellIdentifier];
-    self.topStudentsCollectionView.dataSource = self;
-    self.topStudentsCollectionView.delegate = self;
-    self.bottomStudentsCollectionView.dataSource = self;
-    self.bottomStudentsCollectionView.delegate = self;
-    //[self.topStudentsCollectionView setCollectionViewLayout:flowLayout];
-    //[self.bottomStudentsCollectionView setCollectionViewLayout:flowLayout];
-   
-    
-    // TODO(veronica): get the top/bottom students on this traints
-    [[Student query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.topStudents = objects;
-        [self.topStudentsCollectionView reloadData];
-    }];
-    [[Student query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.bottomStudents = objects;
-        [self.bottomStudentsCollectionView reloadData];
-    }];
-    
+    self.traitImageView.image = [UIImage imageNamed:self.trait.name];
+    self.traitDescriptionLabel.text = self.trait.desc;
+    self.aboutLabel.text = [NSString stringWithFormat:@"ABOUT %@", self.trait.name.uppercaseString];
+    self.buildLabel.text = [NSString stringWithFormat:@"BUILD %@", self.trait.name.uppercaseString];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (collectionView == self.activitiesCollectionView) {
-        return 2;
-    } else if (collectionView == self.topStudentsCollectionView) {
-        return self.topStudents.count;
-    } else if (collectionView == self.bottomStudentsCollectionView) {
-        return self.bottomStudents.count;
-    }
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (collectionView == self.activitiesCollectionView) {
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kActivitiesCellIDentifier forIndexPath:indexPath];
-        return cell;
-    } else if (collectionView == self.topStudentsCollectionView) {
-        StudentsCollectionViewCell *cell = (StudentsCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kStudentsCellIdentifier forIndexPath:indexPath];
-        cell.student = [self.topStudents objectAtIndex:indexPath.row];
-        return cell;
-    } else if (collectionView == self.bottomStudentsCollectionView) {
-        StudentsCollectionViewCell *cell = (StudentsCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kStudentsCellIdentifier forIndexPath:indexPath];
-        cell.student = [self.bottomStudents objectAtIndex:indexPath.row];
-        return cell;
-    }
-    return nil;
 }
 
 @end
