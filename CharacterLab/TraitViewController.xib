@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TraitViewController">
             <connections>
                 <outlet property="descriptionLabel" destination="nkV-m0-GFX" id="nDj-uI-MG2"/>
-                <outlet property="exploreButton" destination="ZeN-ZQ-W9q" id="JpP-RQ-MTR"/>
+                <outlet property="exploreLabel" destination="Sbb-7r-Gbb" id="nR1-Az-8kA"/>
                 <outlet property="imageView" destination="ZFR-hP-orB" id="3Yg-1D-SEQ"/>
                 <outlet property="titleLabel" destination="fAV-ni-LIS" id="LVd-s2-qx5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5L-Z3-wS9">
-                    <rect key="frame" x="0.0" y="141" width="320" height="287"/>
+                    <rect key="frame" x="0.0" y="143" width="320" height="283"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAV-ni-LIS">
@@ -36,39 +36,38 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZFR-hP-orB">
-                            <rect key="frame" x="85" y="89" width="150" height="150"/>
+                            <rect key="frame" x="81" y="89" width="158" height="158"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="150" id="3FS-ex-BUg"/>
-                                <constraint firstAttribute="width" constant="150" id="G7n-h4-IgR"/>
+                                <constraint firstAttribute="height" constant="158" id="3FS-ex-BUg"/>
+                                <constraint firstAttribute="width" constant="158" id="G7n-h4-IgR"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="75"/>
+                                    <integer key="value" value="79"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeN-ZQ-W9q">
-                            <rect key="frame" x="117" y="259" width="87" height="28"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Explore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbb-7r-Gbb">
+                            <rect key="frame" x="117" y="267" width="87" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="Tap to Explore">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="centerX" secondItem="Sbb-7r-Gbb" secondAttribute="centerX" id="5RB-GQ-Gbu"/>
                         <constraint firstAttribute="centerX" secondItem="fAV-ni-LIS" secondAttribute="centerX" id="Bcd-s4-hKL"/>
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="top" secondItem="fAV-ni-LIS" secondAttribute="bottom" constant="15" id="E4Q-Xs-rdI"/>
                         <constraint firstItem="fAV-ni-LIS" firstAttribute="leading" secondItem="k5L-Z3-wS9" secondAttribute="leading" constant="20" id="Emf-fe-vX2"/>
                         <constraint firstItem="fAV-ni-LIS" firstAttribute="top" secondItem="k5L-Z3-wS9" secondAttribute="top" id="FsR-xS-GQX"/>
+                        <constraint firstItem="Sbb-7r-Gbb" firstAttribute="top" secondItem="ZFR-hP-orB" secondAttribute="bottom" constant="20" id="HPE-tr-BPM"/>
                         <constraint firstAttribute="centerX" secondItem="ZFR-hP-orB" secondAttribute="centerX" id="Hsn-WW-pQ6"/>
                         <constraint firstAttribute="trailing" secondItem="fAV-ni-LIS" secondAttribute="trailing" constant="20" id="NDR-KJ-1pX"/>
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="trailing" secondItem="fAV-ni-LIS" secondAttribute="trailing" id="TSq-mx-7E3"/>
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="leading" secondItem="fAV-ni-LIS" secondAttribute="leading" id="bAb-cK-cRF"/>
-                        <constraint firstAttribute="bottom" secondItem="ZeN-ZQ-W9q" secondAttribute="bottom" id="hAK-pc-Og3"/>
-                        <constraint firstAttribute="centerX" secondItem="ZeN-ZQ-W9q" secondAttribute="centerX" id="k73-fk-0TZ"/>
-                        <constraint firstItem="ZeN-ZQ-W9q" firstAttribute="top" secondItem="ZFR-hP-orB" secondAttribute="bottom" constant="20" id="uev-6V-Pbq"/>
+                        <constraint firstAttribute="bottom" secondItem="Sbb-7r-Gbb" secondAttribute="bottom" id="qRm-tH-Xsj"/>
                         <constraint firstItem="ZFR-hP-orB" firstAttribute="top" secondItem="nkV-m0-GFX" secondAttribute="bottom" constant="20" id="xMa-0d-8jL"/>
                     </constraints>
                 </view>
