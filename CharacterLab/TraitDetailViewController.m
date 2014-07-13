@@ -14,7 +14,6 @@
 
 @interface TraitDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *traitImageView;
 @property (weak, nonatomic) IBOutlet UILabel *traitDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
 @property (weak, nonatomic) IBOutlet UIView *movieView;
@@ -55,6 +54,10 @@
     self.traitDescriptionLabel.text = self.trait.desc;
     self.aboutLabel.text = [NSString stringWithFormat:@"ABOUT %@", self.trait.name.uppercaseString];
     self.buildLabel.text = [NSString stringWithFormat:@"BUILD %@", self.trait.name.uppercaseString];
+
+    if (self.hideImageViewOnLoad) {
+        self.traitImageView.alpha = 0;
+    }
 }
 
 - (void)setupVideoPlayer {

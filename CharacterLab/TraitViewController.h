@@ -10,7 +10,7 @@
 #import "MultiPageViewController.h"
 #import "CLModel.h"
 
-@interface TraitViewController : UIViewController <MultiPageViewControllerChild>
+@interface TraitViewController : UIViewController <MultiPageViewControllerChild, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic, strong) Trait *trait;
 

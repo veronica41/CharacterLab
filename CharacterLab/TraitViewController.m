@@ -10,6 +10,8 @@
 #import "TraitViewController.h"
 #import "TraitDetailViewController.h"
 
+CGFloat const kTransitionDuration = 0.5;
+
 @interface TraitViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -17,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *exploreLabel;
 - (IBAction)onTap:(id)sender;
+
+@property (nonatomic, assign) BOOL presentingVC;
 
 @end
 
@@ -74,7 +78,89 @@
     TraitDetailViewController *detailController = [[TraitDetailViewController alloc] init];
     detailController.trait = self.trait;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailController];
+    navController.modalPresentationStyle = UIModalPresentationCustom;
+    navController.transitioningDelegate = self;
     [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    self.presentingVC = true;
+    return self;
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.presentingVC = false;
+    return self;
+}
+
+- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator {
+    return nil;
+}
+
+- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator {
+    return nil;
+}
+
+// This is used for percent driven interactive transitions, as well as for container controllers that have companion animations that might need to
+// synchronize with the main animation.
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
+    return kTransitionDuration;
+}
+
+// This method can only  be a nop if the transition is interactive and not a percentDriven interactive transition.
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+    UIView *containerView = [transitionContext containerView];
+    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+
+    UIImageView *fromImageView;
+    CGRect toFrame;
+    CGFloat toCornerRadius;
+    TraitDetailViewController *detailViewController;
+    if (self.presentingVC) {
+        detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
+        fromImageView = self.imageView;
+        detailViewController.hideImageViewOnLoad = YES;
+        toFrame = CGRectMake(0, 64, 320, 224);
+        toCornerRadius = 0;
+
+        [containerView addSubview:toViewController.view];
+        toViewController.view.alpha = 0;
+    } else {
+        detailViewController = (TraitDetailViewController *)((UINavigationController *)fromViewController).topViewController;
+        fromImageView = detailViewController.traitImageView;
+        self.imageView.alpha = 0;
+        toFrame = [self.imageView convertRect:self.imageView.bounds toView:containerView];
+        toCornerRadius = self.imageView.layer.cornerRadius;
+    }
+
+    CGRect fromImageViewFrame = [fromImageView convertRect:fromImageView.bounds toView:containerView];
+    UIImageView *animatingImageView = [[UIImageView alloc] initWithFrame:fromImageViewFrame];
+    animatingImageView.clipsToBounds = fromImageView.clipsToBounds;
+    animatingImageView.contentMode = fromImageView.contentMode;
+    animatingImageView.image = fromImageView.image;
+    animatingImageView.layer.cornerRadius = fromImageView.layer.cornerRadius;
+    [containerView addSubview:animatingImageView];
+    fromImageView.alpha = 0;
+
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
+    animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.fromValue = @(animatingImageView.layer.cornerRadius);
+    animation.toValue = @(toCornerRadius);
+    animation.duration = kTransitionDuration;
+    animatingImageView.layer.cornerRadius = toCornerRadius;
+    [animatingImageView.layer addAnimation:animation forKey:@"cornerRadius"];
+
+    [UIView animateWithDuration:kTransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        animatingImageView.frame = toFrame;
+        fromViewController.view.alpha = 0;
+        toViewController.view.alpha = 1;
+    } completion:^(BOOL finished) {
+        self.imageView.alpha = 1;
+        detailViewController.traitImageView.alpha = 1;
+        [animatingImageView removeFromSuperview];
+        [transitionContext completeTransition:YES];
+    }];
 }
 
 @end
