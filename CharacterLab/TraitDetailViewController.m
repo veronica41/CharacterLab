@@ -38,10 +38,9 @@
     [super viewDidLoad];
 
     // setup navigation bar
-    self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorGreenGrass);
-    self.navigationController.navigationBar.translucent = YES;
-    UIImageView *backButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationController.navigationBar.barTintColor = UIColorFromHEX(CLColorBackgroundBeige);
+    self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorTextBrown);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackButton:)];
     self.navigationItem.title = self.trait.name;
 
     self.traitImageView.image = [UIImage imageNamed:self.trait.name];
@@ -54,6 +53,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onBackButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

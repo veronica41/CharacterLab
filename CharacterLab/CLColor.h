@@ -13,14 +13,21 @@
 
 typedef enum : NSUInteger {
     CLColorPencilYellow    = 0XFFDD00,
-    CLColorAquamarine      = 0X00CCCC,
+    CLColorAquamarine      = 0X18B8B8,
     CLColorPurpleMountains = 0X5E58A2,
-    CLColorGreenGrass      = 0XB2D4CE,
+    CLColorGreenGrass      = 0X99B858,
     CLColorTelescopeBlue   = 0X168ECD,
     CLColorBlastOffRed     = 0XF2754D,
     CLColorGray            = 0X222A2A,
-    CLColorDarkGray        = 0X1C2323,
-    CLColorDarkYellow      = 0XF5F2E0
+    CLColorDarkGray        = 0X1F2626,
+    CLColorHighlightGrey   = 0X3D4747,
+    CLColorBackgroundGrey  = 0X2D3838,
+    CLColorShadowGrey      = 0X252E2E,
+    CLColorBackgroundBeige = 0XF5F2E0,
+    CLColorShadowBeige     = 0XE8E5D3,
+    CLColorSubtextBrown    = 0X8F8E8B,
+    CLColorTextBrown       = 0X68665D,
+    CLColorNoNoRed         = 0XF25B4D
 } CLColorEnum;
 
 #endif
