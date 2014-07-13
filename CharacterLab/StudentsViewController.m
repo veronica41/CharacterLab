@@ -11,6 +11,7 @@
 #import "StudentsViewController.h"
 #import "StudentCell.h"
 #import "StudentProfileViewController.h"
+#import "StudentsCollectionHeaderView.h"
 #import "CLColor.h"
 
 @interface StudentsViewController ()
@@ -45,6 +46,7 @@
     self.collectionView.delegate = self;
     UINib *studentCellNib = [UINib nibWithNibName:@"StudentCell" bundle:nil];
     [self.collectionView registerNib:studentCellNib forCellWithReuseIdentifier:@"StudentCell"];
+    [self.collectionView registerClass:[StudentsCollectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
 
     [[CLModel sharedInstance] getStudentsForCurrentTeacherWithSuccess:^(NSArray *studentList) {
         self.students = studentList;
@@ -70,6 +72,10 @@
     StudentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StudentCell" forIndexPath:indexPath];
     cell.student = self.students[indexPath.row];
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewDelegate

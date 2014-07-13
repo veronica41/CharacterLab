@@ -39,6 +39,12 @@
 
 - (void)setup {
     self.backgroundColor = UIColorFromHEX(CLColorGray);
+
+    // add a shadow to the top
+    self.layer.shadowOffset = CGSizeMake(0, -1);
+    self.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.layer.shadowRadius = 0.5;
+    self.layer.shadowOpacity = 0.3;
 }
 
 - (void)setStudent:(Student *)student {

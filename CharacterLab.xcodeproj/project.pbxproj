@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		06014F2D8E304145A0F814DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C386EB60CDD4C31A58A2C13 /* libPods.a */; };
 		1329E26419724DA000C839F8 /* StudentInitialsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1329E26319724DA000C839F8 /* StudentInitialsLabel.m */; };
+		1329E267197254B700C839F8 /* StudentsCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1329E266197254B700C839F8 /* StudentsCollectionHeaderView.m */; };
+		1329E269197254D300C839F8 /* StudentsCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1329E268197254D300C839F8 /* StudentsCollectionHeaderView.xib */; };
 		13E01BF6196642A100A94277 /* Trait.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01BF5196642A100A94277 /* Trait.m */; };
 		13E01BF91966447A00A94277 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01BF81966447A00A94277 /* Question.m */; };
 		13E01BFC1966453500A94277 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01BFB1966453500A94277 /* Student.m */; };
@@ -64,6 +66,9 @@
 /* Begin PBXFileReference section */
 		1329E26219724DA000C839F8 /* StudentInitialsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentInitialsLabel.h; sourceTree = "<group>"; };
 		1329E26319724DA000C839F8 /* StudentInitialsLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentInitialsLabel.m; sourceTree = "<group>"; };
+		1329E265197254B700C839F8 /* StudentsCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsCollectionHeaderView.h; sourceTree = "<group>"; };
+		1329E266197254B700C839F8 /* StudentsCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsCollectionHeaderView.m; sourceTree = "<group>"; };
+		1329E268197254D300C839F8 /* StudentsCollectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentsCollectionHeaderView.xib; sourceTree = "<group>"; };
 		13E01BF4196642A100A94277 /* Trait.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trait.h; sourceTree = "<group>"; };
 		13E01BF5196642A100A94277 /* Trait.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trait.m; sourceTree = "<group>"; };
 		13E01BF71966447A00A94277 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
@@ -214,6 +219,9 @@
 				96B3A408196D27CA0071F8FD /* TraitQuestionsView.xib */,
 				1329E26219724DA000C839F8 /* StudentInitialsLabel.h */,
 				1329E26319724DA000C839F8 /* StudentInitialsLabel.m */,
+				1329E265197254B700C839F8 /* StudentsCollectionHeaderView.h */,
+				1329E266197254B700C839F8 /* StudentsCollectionHeaderView.m */,
+				1329E268197254D300C839F8 /* StudentsCollectionHeaderView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -403,6 +411,7 @@
 			files = (
 				96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */,
 				13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */,
+				1329E269197254D300C839F8 /* StudentsCollectionHeaderView.xib in Resources */,
 				B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */,
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
@@ -477,6 +486,7 @@
 				13E01C181968A67800A94277 /* StudentCell.m in Sources */,
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
+				1329E267197254B700C839F8 /* StudentsCollectionHeaderView.m in Sources */,
 				13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,
 				13E01C111968A42000A94277 /* StudentsViewController.m in Sources */,

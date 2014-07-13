@@ -26,6 +26,9 @@
     // Initialize the Character Lab model client
     [CLModel setApplicationId:@"uZlzv42bdzha3eHuQq7Hb6cuWYxWeHqXc7U9bfhu"
                     clientKey:@"o9iiYvoduL1hul44RByxsjTYQa4VHrEvmIX2CwWs"];
+
+    // set light status bar style
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
