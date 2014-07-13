@@ -27,6 +27,7 @@
 		13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C2B196BEEAE00A94277 /* TraitsViewController.m */; };
 		13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E01C2C196BEEAE00A94277 /* TraitsViewController.xib */; };
 		13E01C33196BF1FF00A94277 /* TouchInterceptingContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E01C32196BF1FF00A94277 /* TouchInterceptingContainerView.m */; };
+		960937CA197327C200414B21 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960937C9197327C200414B21 /* MediaPlayer.framework */; };
 		96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3C7196B75720071F8FD /* LoginViewController.m */; };
 		96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3C8196B75720071F8FD /* LoginViewController.xib */; };
 		96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */; };
@@ -99,6 +100,8 @@
 		13E01C32196BF1FF00A94277 /* TouchInterceptingContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchInterceptingContainerView.m; sourceTree = "<group>"; };
 		6C386EB60CDD4C31A58A2C13 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		894C1A229C964F13A256BF97 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		960937C71973277500414B21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		960937C9197327C200414B21 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		96B3A3C6196B75720071F8FD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96B3A3C7196B75720071F8FD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		96B3A3C8196B75720071F8FD /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				960937CA197327C200414B21 /* MediaPlayer.framework in Frameworks */,
 				B3A92FDE1971E29500101EE4 /* QuartzCore.framework in Frameworks */,
 				B300BA29196640790063E27D /* CoreGraphics.framework in Frameworks */,
 				B300BA2B196640790063E27D /* UIKit.framework in Frameworks */,
@@ -258,11 +262,13 @@
 				B3A92FE519720CD600101EE4 /* CLColor.h */,
 			);
 			name = Utilities;
+			path = CharacterLab;
 			sourceTree = "<group>";
 		};
 		B300BA1A196640790063E27D = {
 			isa = PBXGroup;
 			children = (
+				96B3A3D0196B8FB40071F8FD /* Utilities */,
 				B300BA2C196640790063E27D /* CharacterLab */,
 				B300BA45196640790063E27D /* CharacterLabTests */,
 				B300BA25196640790063E27D /* Frameworks */,
@@ -283,6 +289,8 @@
 		B300BA25196640790063E27D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				960937C9197327C200414B21 /* MediaPlayer.framework */,
+				960937C71973277500414B21 /* AVFoundation.framework */,
 				B3A92FDD1971E29500101EE4 /* QuartzCore.framework */,
 				B300BA26196640790063E27D /* Foundation.framework */,
 				B300BA28196640790063E27D /* CoreGraphics.framework */,
@@ -296,7 +304,6 @@
 		B300BA2C196640790063E27D /* CharacterLab */ = {
 			isa = PBXGroup;
 			children = (
-				96B3A3D0196B8FB40071F8FD /* Utilities */,
 				13E01C131968A46B00A94277 /* Views */,
 				13E01C0319675C5800A94277 /* View Controllers */,
 				13E01BF31966429000A94277 /* Models */,

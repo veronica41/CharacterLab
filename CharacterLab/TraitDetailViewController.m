@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Dropbox. All rights reserved.
 //
 
+#import <MediaPlayer/MediaPlayer.h>
+#import "YTVimeoExtractor.h"
 #import "TraitDetailViewController.h"
 #import "StudentsCollectionViewCell.h"
 #import "CLColor.h"
@@ -18,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *buildTraitViewHeight;
+
+@property (nonatomic, strong) YTVimeoExtractor *extrator;
+@property (nonatomic, strong) MPMoviePlayerController *playerController;
 
 
 @end
@@ -41,12 +46,29 @@
     self.navigationController.navigationBar.barTintColor = UIColorFromHEX(CLColorBackgroundBeige);
     self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorTextBrown);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackButton:)];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromHEX(CLColorTextBrown), NSFontAttributeName: [UIFont fontWithName:@"Helvetica Neue" size:20.0]};
     self.navigationItem.title = self.trait.name;
+
+    [self setupVideoPlayer];
 
     self.traitImageView.image = [UIImage imageNamed:self.trait.name];
     self.traitDescriptionLabel.text = self.trait.desc;
     self.aboutLabel.text = [NSString stringWithFormat:@"ABOUT %@", self.trait.name.uppercaseString];
     self.buildLabel.text = [NSString stringWithFormat:@"BUILD %@", self.trait.name.uppercaseString];
+}
+
+- (void)setupVideoPlayer {
+    [YTVimeoExtractor fetchVideoURLFromURL:self.trait.videoUrl quality:YTVimeoVideoQualityLow completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+        if (error) {
+            // TODO: (veronica) show video cannot be load
+        } else {
+            self.playerController = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
+            self.playerController.shouldAutoplay = NO;
+            [self.playerController prepareToPlay];
+            self.playerController.view.frame = self.movieView.bounds;
+            [self.movieView addSubview:self.playerController.view];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

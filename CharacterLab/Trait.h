@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, copy) NSString *videoUrl;
 
 + (NSDictionary*)getConfig:(CLTraitType)traitType;
 

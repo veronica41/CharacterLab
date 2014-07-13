@@ -27,12 +27,14 @@ PODS:
   - MBProgressHUD (0.8)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
+  - YTVimeoExtractor (0.0.6)
 
 DEPENDENCIES:
   - AFNetworking
   - DateTools
   - MBProgressHUD
   - Parse
+  - YTVimeoExtractor
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
@@ -41,5 +43,6 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 56214af8e0ef16e751eb2804250326b709e571b8
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
+  YTVimeoExtractor: 01d40cdfbd3259bb80aeb1e07c17f3e9e3ccc333
 
 COCOAPODS: 0.33.1
