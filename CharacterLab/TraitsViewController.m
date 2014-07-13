@@ -9,7 +9,7 @@
 #import "TraitsViewController.h"
 #import "TraitViewController.h"
 #import "StudentsViewController.h"
-#import "UIColor+CharacterLab.h"
+#import "CLColor.h"
 #import "CLModel.h"
 
 CGFloat const kVerticalMargin = 40;
@@ -44,7 +44,7 @@ CGFloat const kSecondaryPageScale = 0.85;
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor aquamarineColor];
+    self.view.backgroundColor = UIColorFromHEX(CLColorAquamarine);
 
     // init the page controller
     self.pageController = [[MultiPageViewController alloc] init];
@@ -52,7 +52,7 @@ CGFloat const kSecondaryPageScale = 0.85;
     self.pageController.horizontalMargin = kHorizontalMargin;
     self.pageController.distanceBetweenPages = kDistanceBetweenPages;
     self.pageController.secondaryPageScale = kSecondaryPageScale;
-    self.pageController.backgroundColor = [UIColor aquamarineColor];
+    self.pageController.backgroundColor = UIColorFromHEX(CLColorAquamarine);
     self.pageController.dataSource = self;
 
     // add it to the view

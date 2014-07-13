@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Dropbox. All rights reserved.
 //
 
+#import "CLColor.h"
 #import "TraitViewController.h"
-#import "UIColor+CharacterLab.h"
 #import "TraitDetailViewController.h"
 
 @interface TraitViewController ()

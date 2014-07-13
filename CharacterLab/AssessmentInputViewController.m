@@ -7,14 +7,15 @@
 //
 
 #import "AssessmentInputViewController.h"
-#import "UIColor+CharacterLab.h"
+#import "CLColor.h"
 
 @interface AssessmentInputViewController ()
 
-- (IBAction)onCancel:(UIButton *)sender;
-- (IBAction)onDone:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
+- (IBAction)onCancel:(UIButton *)sender;
+- (IBAction)onDone:(UIButton *)sender;
 
 @end
 
@@ -32,9 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor CLBackgroundGrayColor];
-    self.doneButton.backgroundColor =  [UIColor CLRedButtonColor];
-    self.cancelButton.backgroundColor = [UIColor CLRedButtonColor];
+    self.view.backgroundColor = UIColorFromHEX(CLColorGray);
+    self.doneButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
+    self.cancelButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
 }
 
 - (void)didReceiveMemoryWarning

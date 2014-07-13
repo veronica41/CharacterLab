@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Dropbox. All rights reserved.
 //
 
+#import "CLColor.h"
 #import "LoginViewController.h"
-#import "UIColor+CharacterLab.h"
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
@@ -45,8 +45,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor aquamarineColor];
-    self.loginButton.backgroundColor = [UIColor pencilYellowColor];
+    self.view.backgroundColor = UIColorFromHEX(CLColorAquamarine);
+    self.loginButton.backgroundColor = UIColorFromHEX(CLColorPencilYellow);
+
     self.loginButton.layer.cornerRadius = 4.0;
 
     self.userNameField.delegate = self;

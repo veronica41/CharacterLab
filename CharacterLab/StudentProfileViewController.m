@@ -8,10 +8,10 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "CLColor.h"
 #import "AssessmentInputViewController.h"
 #import "StudentProfileViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "UIColor+CharacterLab.h"
 
 
 @interface StudentProfileViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -67,8 +67,8 @@
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor CLBackgroundGrayColor];
-    self.initialsBackgroundView.backgroundColor = [UIColor CLBackgroundDarkGrayColor];
+    self.view.backgroundColor = UIColorFromHEX(CLColorGray);
+    self.initialsBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGray);
 
     self.nameLabel.text = self.student.name;
     self.initialsLabel.text = [self getInitials:self.student.name];
