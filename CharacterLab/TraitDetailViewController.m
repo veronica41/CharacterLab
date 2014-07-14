@@ -9,9 +9,11 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "YTVimeoExtractor.h"
 #import "TraitDetailViewController.h"
-#import "StudentsCollectionViewCell.h"
+#import "TipCell.h"
 #import "CLColor.h"
 #import "CLModel.h"
+
+static NSString *kTipCellIdentifier = @"TipCell";
 
 @interface TraitDetailViewController ()
 
@@ -19,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *buildTraitViewHeight;
+@property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
 @property (nonatomic, strong) MPMoviePlayerController *playerController;
@@ -60,8 +62,15 @@
         self.traitImageView.alpha = 0;
     }
 
+    // setup tips collection view
+    self.tipsCollectionView.dataSource = self;
+    self.tipsCollectionView.delegate = self;
+    UINib *tipCellNib = [UINib nibWithNibName:kTipCellIdentifier bundle:nil];
+    [self.tipsCollectionView registerNib:tipCellNib forCellWithReuseIdentifier:kTipCellIdentifier];
+
     [[CLModel sharedInstance] getTipsForTrait:self.trait success:^(NSArray *tipsList) {
         self.tips = tipsList;
+        [self.tipsCollectionView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"Failed to fetch tips, %@", error);
     }];
@@ -86,6 +95,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.tips.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
+    Tip *tip = self.tips[indexPath.row];
+    cell.summaryLabel.text = tip.summary;
+    cell.descLabel.text = tip.desc;
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.row+1, self.tips.count];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+/*
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+}
+*/
+
+# pragma mark - event handlers
 
 - (void)onBackButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

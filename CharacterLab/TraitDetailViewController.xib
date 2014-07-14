@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,8 +8,8 @@
             <connections>
                 <outlet property="aboutLabel" destination="FKj-Hb-vUr" id="pIu-w8-Bm3"/>
                 <outlet property="buildLabel" destination="IiP-Av-ddJ" id="k35-RX-Zyd"/>
-                <outlet property="buildTraitViewHeight" destination="etl-Lt-QHX" id="duD-da-R3R"/>
                 <outlet property="movieView" destination="gF1-gQ-03T" id="0RR-5s-mSm"/>
+                <outlet property="tipsCollectionView" destination="etl-Lt-QHX" id="Vy6-rw-iro"/>
                 <outlet property="traitDescriptionLabel" destination="Pj6-w1-BPU" id="jID-84-Blo"/>
                 <outlet property="traitImageView" destination="Vhc-vn-vYZ" id="CXV-fv-rxV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="NZ5-7E-75I"/>
@@ -92,11 +92,11 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="154" id="OPf-bj-riP"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gt9-gY-F1M">
-                                        <size key="itemSize" width="50" height="50"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="gt9-gY-F1M">
+                                        <size key="itemSize" width="280" height="154"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                     <cells/>
                                 </collectionView>
