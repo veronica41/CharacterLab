@@ -58,7 +58,6 @@
 
     self.nameLabel.text = self.student.name;
     self.initialsLabel.student = self.student;
-    self.initialsLabel.backgroundColor = [self.student getColorForIcon];
     self.lastMeasurementTime.text = self.student.lastAssessmentTS.timeAgoSinceNow;
 
     [[CLModel sharedInstance] getAssessmentsForStudent:self.student success:^(NSArray *assessmentList) {

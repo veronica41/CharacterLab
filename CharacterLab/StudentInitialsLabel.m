@@ -38,6 +38,7 @@
 
 - (void)reloadData {
     self.text = [self.student initials];
+    self.backgroundColor = [self.student getColorForIcon];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "StudentCell.h"
 #import "CLColor.h"
 #import "StudentInitialsLabel.h"
+#import <DateTools.h>
 
 @interface StudentCell ()
 
@@ -55,9 +56,7 @@
 - (void)reloadData {
     self.initialsLabel.student = self.student;
     self.nameLabel.text = self.student.name;
-    self.initialsLabel.backgroundColor = [self.student getColorForIcon];
-    // TODO(rajeev): implement this
-    self.lastMeasuredLabel.text = @"Today";
+    self.lastMeasuredLabel.text = self.student.lastAssessmentTS.timeAgoSinceNow;;
 }
 
 @end
