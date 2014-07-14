@@ -50,6 +50,7 @@
 		B300BA4C196640790063E27D /* CharacterLabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B300BA4B196640790063E27D /* CharacterLabTests.m */; };
 		B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3021B23196A2470006751D3 /* StudentProfileViewController.m */; };
 		B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3021B24196A2470006751D3 /* StudentProfileViewController.xib */; };
+		B30CD42119740F90006EB3C1 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD42019740F90006EB3C1 /* Measurement.m */; };
 		B34A5EAB1972BBA30053696B /* NewAssessmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */; };
 		B34A5EAC1972BBA30053696B /* NewAssessmentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */; };
 		B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FDB19701E8500101EE4 /* CLModel.m */; };
@@ -137,6 +138,8 @@
 		B3021B22196A2470006751D3 /* StudentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentProfileViewController.h; sourceTree = "<group>"; };
 		B3021B23196A2470006751D3 /* StudentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentProfileViewController.m; sourceTree = "<group>"; };
 		B3021B24196A2470006751D3 /* StudentProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentProfileViewController.xib; sourceTree = "<group>"; };
+		B30CD41F19740F90006EB3C1 /* Measurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Measurement.h; sourceTree = "<group>"; };
+		B30CD42019740F90006EB3C1 /* Measurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Measurement.m; sourceTree = "<group>"; };
 		B34A5EA81972BBA30053696B /* NewAssessmentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAssessmentViewCell.h; sourceTree = "<group>"; };
 		B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAssessmentViewCell.m; sourceTree = "<group>"; };
 		B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewAssessmentViewCell.xib; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				960937CC19733BC300414B21 /* Tip.m */,
 				B3A92FDA19701E8500101EE4 /* CLModel.h */,
 				B3A92FDB19701E8500101EE4 /* CLModel.m */,
+				B30CD41F19740F90006EB3C1 /* Measurement.h */,
+				B30CD42019740F90006EB3C1 /* Measurement.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
 				1329E267197254B700C839F8 /* StudentsCollectionHeaderView.m in Sources */,
 				960937CD19733BC300414B21 /* Tip.m in Sources */,
+				B30CD42119740F90006EB3C1 /* Measurement.m in Sources */,
 				13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */,
 				B34A5EAB1972BBA30053696B /* NewAssessmentViewCell.m in Sources */,
 				13E01C021966462700A94277 /* Assessment.m in Sources */,

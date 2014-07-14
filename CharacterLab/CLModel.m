@@ -30,6 +30,7 @@ static NSArray *sTraitDescriptions = nil;
     [Teacher registerSubclass];
     [Assessment registerSubclass];
     [Tip registerSubclass];
+    [Measurement registerSubclass];
     [Parse setApplicationId:applicationId clientKey:clientKey];
 
     // Pre-cache a few things at app startup to minimize latency when opening view controllers
@@ -92,15 +93,32 @@ static NSArray *sTraitDescriptions = nil;
 }
 
 - (void)storeAssessmentForStudent:(Student *)student
+                      measurement:(Measurement *)measurement
                             trait:(Trait *)trait
                             value:(NSInteger)score
                           failure:(void (^)(NSError *error))failure {
 
     Assessment *a = [[Assessment alloc] init];
     a.student = student;
+    a.measurement = measurement;
     a.trait = trait;
     a.score = score;
     [a save]; // saving the assessment is synchronous for now
+}
+
+- (Measurement *)storeMeasurementForStudent:(Student *)student
+                       description:(NSString *)description
+                           failure:(void (^)(NSError *error))failure {
+    Measurement *m = [[Measurement alloc] init];
+    m.description = description;
+    [m save]; // saving the measurement is synchronous for now
+    return m;
+}
+
+- (void)updateLastMeasurementTSForStudent:(Student *)student
+                                  failure:(void (^)(NSError *error))failure {
+    student.lastAssessmentTS = [NSDate date];
+    [student save]; // this operation is synchronous for now
 }
 
 - (void)getTipsForTrait:(Trait *)trait
