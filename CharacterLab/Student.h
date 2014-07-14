@@ -15,14 +15,11 @@
 typedef enum : NSUInteger {
     CLStudentColor_Red    = 1,
     CLStudentColor_Blue   = 2,
-    CLStudentColor_Green  = 3,
-    CLStudentColor_Gray   = 4,
-    CLStudentColor_Cyan   = 5,
-    CLStudentColor_Yellow = 6,
-    CLStudentColor_Brown  = 7,
-    CLStudentColor_Purple = 8,
-    CLStudentColor_Orange = 9,
-    CLStudentColor_MAX    = 10,
+    CLStudentColor_Gray   = 3,
+    CLStudentColor_Brown  = 4,
+    CLStudentColor_Purple = 5,
+    CLStudentColor_Orange = 6,
+    CLStudentColor_MAX    = 7,
 } CLStudentColor;
 
 @property (nonatomic, copy) NSString *name;

@@ -41,14 +41,8 @@
             return [UIColor redColor];
         case CLStudentColor_Blue:
             return [UIColor blueColor];
-        case CLStudentColor_Green:
-            return [UIColor greenColor];
         case CLStudentColor_Gray:
             return [UIColor grayColor];
-        case CLStudentColor_Cyan:
-            return [UIColor cyanColor];
-        case CLStudentColor_Yellow:
-            return [UIColor yellowColor];
         case CLStudentColor_Brown:
             return [UIColor brownColor];
         case CLStudentColor_Purple:

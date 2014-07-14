@@ -8,12 +8,13 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "NSDate+DateTools.h"
+#import "UIImageView+AFNetworking.h"
+
 #import "CLColor.h"
 #import "AssessmentInputViewController.h"
 #import "StudentProfileViewController.h"
 #import "StudentInitialsLabel.h"
-#import "UIImageView+AFNetworking.h"
-
 
 @interface StudentProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -58,6 +59,7 @@
     self.nameLabel.text = self.student.name;
     self.initialsLabel.student = self.student;
     self.initialsLabel.backgroundColor = [self.student getColorForIcon];
+    self.lastMeasurementTime.text = self.student.lastAssessmentTS.timeAgoSinceNow;
 
     [[CLModel sharedInstance] getAssessmentsForStudent:self.student success:^(NSArray *assessmentList) {
         self.assessmentScores = assessmentList;
