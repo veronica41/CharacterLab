@@ -153,7 +153,7 @@
         CGFloat pageWidth = width - self.distanceBetweenPages;
         CGFloat additionalMargin = (1 - scale) * pageWidth / 2;
         vc.view.frame = CGRectMake(index * width + self.distanceBetweenPages / 2 + additionalMargin, additionalMargin, pageWidth - 2 * additionalMargin, height - 2 * additionalMargin);
-        [vc pageViewController:self didMoveToNumPagesFromCenter:(distanceFromCenter / width)];
+        [vc pageViewController:self didMoveToNumPagesFromCenter:(distanceFromCenter / width) scaledBy:scale];
     }
 }
 

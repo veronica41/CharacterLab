@@ -18,6 +18,8 @@ CGFloat const kTransitionDuration = 0.5;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *exploreLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
 - (IBAction)onTap:(id)sender;
 
 @property (nonatomic, assign) BOOL presentingVC;
@@ -68,8 +70,17 @@ CGFloat const kTransitionDuration = 0.5;
 
 #pragma mark - MultiPageViewControllerChild
 
-- (void)pageViewController:(MultiPageViewController *)pageViewController didMoveToNumPagesFromCenter:(CGFloat)numPagesFromCenter {
+- (void)pageViewController:(MultiPageViewController *)pageViewController didMoveToNumPagesFromCenter:(CGFloat)numPagesFromCenter scaledBy:(CGFloat)scale {
+    // fade out based on how far we are from the center
     self.view.alpha = 1 - 0.4 * numPagesFromCenter;
+
+    // scale the views by the same amount the view controller was scaled
+    self.titleLabel.font = [UIFont systemFontOfSize:30 * scale];
+    self.descriptionLabel.font = [UIFont systemFontOfSize:15 * scale];
+    self.exploreLabel.font = [UIFont systemFontOfSize:13 * scale];
+    self.imageWidth.constant = 158 * scale;
+    self.imageHeight.constant = 158 * scale;
+    self.imageView.layer.cornerRadius = 79 * scale;
 }
 
 #pragma mark - event handlers
