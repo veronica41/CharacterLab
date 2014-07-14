@@ -12,8 +12,11 @@
 #import "TipCell.h"
 #import "CLColor.h"
 #import "CLModel.h"
+#import "CollectionLayoutAlignTop.h"
 
 static NSString *kTipCellIdentifier = @"TipCell";
+static CGFloat kTipCellDefaultWidth = 280.0;
+static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
 
 @interface TraitDetailViewController ()
 
@@ -22,10 +25,13 @@ static NSString *kTipCellIdentifier = @"TipCell";
 @property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsCollectionViewHeight;
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
 @property (nonatomic, strong) MPMoviePlayerController *playerController;
+
 @property (nonatomic, strong) NSArray *tips;
+@property (nonatomic) NSIndexPath *expandedIndexPath;
 
 @end
 
@@ -36,7 +42,6 @@ static NSString *kTipCellIdentifier = @"TipCell";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -48,7 +53,7 @@ static NSString *kTipCellIdentifier = @"TipCell";
     self.navigationController.navigationBar.barTintColor = UIColorFromHEX(CLColorBackgroundBeige);
     self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorTextBrown);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackButton:)];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromHEX(CLColorTextBrown), NSFontAttributeName: [UIFont fontWithName:@"Helvetica Neue" size:20.0]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromHEX(CLColorTextBrown), NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Medium" size:20.0]};
     self.navigationItem.title = self.trait.name;
 
     [self setupVideoPlayer];
@@ -63,11 +68,12 @@ static NSString *kTipCellIdentifier = @"TipCell";
     }
 
     // setup tips collection view
+    self.expandedIndexPath = nil;
     self.tipsCollectionView.dataSource = self;
     self.tipsCollectionView.delegate = self;
     UINib *tipCellNib = [UINib nibWithNibName:kTipCellIdentifier bundle:nil];
     [self.tipsCollectionView registerNib:tipCellNib forCellWithReuseIdentifier:kTipCellIdentifier];
-
+   
     [[CLModel sharedInstance] getTipsForTrait:self.trait success:^(NSArray *tipsList) {
         self.tips = tipsList;
         [self.tipsCollectionView reloadData];
@@ -104,19 +110,67 @@ static NSString *kTipCellIdentifier = @"TipCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
-    Tip *tip = self.tips[indexPath.row];
+    [self collectionView:collectionView configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+// helper method
+- (void)collectionView:(UICollectionView *)collectionView configureCell:(TipCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.row+1, (unsigned long)self.tips.count];
-    return cell;
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
 
 #pragma mark - UICollectionViewDelegate
 
-/*
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSIndexPath *prevExpanded = self.expandedIndexPath;
+
+    if (!prevExpanded) {
+        // expand collectionView
+        self.expandedIndexPath = indexPath;
+        TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
+        [self collectionView:collectionView configureCell:cell atIndexPath:indexPath];
+        [cell setNeedsLayout];
+        CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        if (size.height > kTipsCollectionViewDefaultHeight) {
+            [UIView animateWithDuration: 0
+                                  delay: 0
+                                options: 0
+                             animations:^{
+                                 self.tipsCollectionViewHeight.constant = size.height;
+                                 [self.tipsCollectionView setNeedsLayout];
+                             } completion:^(BOOL finished){
+                                 [collectionView performBatchUpdates:nil completion:nil];
+                             }];
+        }
+    } else if (prevExpanded && prevExpanded.row == indexPath.item) {
+        // shrink collectionView
+        self.expandedIndexPath = nil;
+        [UIView animateWithDuration: 0
+                              delay: 0
+                            options: 0
+                         animations:^{
+                             [collectionView performBatchUpdates:nil completion:nil];
+                         } completion:^(BOOL finished){
+                             self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
+                         }];
+    } else {
+        // shrink previous selected cell, expand current selected cell
+        self.expandedIndexPath = indexPath;
+        [collectionView performBatchUpdates:nil completion:nil];
+    }
 }
-*/
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height;
+    if (self.expandedIndexPath && indexPath.item == self.expandedIndexPath.item) {
+        height = MAX(kTipsCollectionViewDefaultHeight, self.tipsCollectionView.contentSize.height);
+        return  CGSizeMake(kTipCellDefaultWidth, height);
+    }
+    return CGSizeMake(kTipCellDefaultWidth, kTipsCollectionViewDefaultHeight);
+}
 
 # pragma mark - event handlers
 
