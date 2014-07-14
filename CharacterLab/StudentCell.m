@@ -55,6 +55,7 @@
 - (void)reloadData {
     self.initialsLabel.student = self.student;
     self.nameLabel.text = self.student.name;
+    self.initialsLabel.backgroundColor = [self.student getColorForIcon];
     // TODO(rajeev): implement this
     self.lastMeasuredLabel.text = @"Today";
 }

@@ -57,6 +57,7 @@
 
     self.nameLabel.text = self.student.name;
     self.initialsLabel.student = self.student;
+    self.initialsLabel.backgroundColor = [self.student getColorForIcon];
 
     [[CLModel sharedInstance] getAssessmentsForStudent:self.student success:^(NSArray *assessmentList) {
         self.assessmentScores = assessmentList;
