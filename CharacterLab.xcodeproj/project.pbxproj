@@ -31,6 +31,7 @@
 		960937CD19733BC300414B21 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937CC19733BC300414B21 /* Tip.m */; };
 		960937D019735CB100414B21 /* TipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937CF19735CB100414B21 /* TipCell.m */; };
 		960937D219735CC400414B21 /* TipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 960937D119735CC400414B21 /* TipCell.xib */; };
+		960937D51973AADC00414B21 /* CollectionLayoutAlignTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937D41973AADC00414B21 /* CollectionLayoutAlignTop.m */; };
 		96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3C7196B75720071F8FD /* LoginViewController.m */; };
 		96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3C8196B75720071F8FD /* LoginViewController.xib */; };
 		96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */; };
@@ -110,6 +111,8 @@
 		960937CE19735CB100414B21 /* TipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipCell.h; sourceTree = "<group>"; };
 		960937CF19735CB100414B21 /* TipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipCell.m; sourceTree = "<group>"; };
 		960937D119735CC400414B21 /* TipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCell.xib; sourceTree = "<group>"; };
+		960937D31973AADC00414B21 /* CollectionLayoutAlignTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionLayoutAlignTop.h; sourceTree = "<group>"; };
+		960937D41973AADC00414B21 /* CollectionLayoutAlignTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionLayoutAlignTop.m; sourceTree = "<group>"; };
 		96B3A3C6196B75720071F8FD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96B3A3C7196B75720071F8FD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		96B3A3C8196B75720071F8FD /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -273,6 +276,8 @@
 				13E01C30196BF13E00A94277 /* Views */,
 				13E01C2F196BF12F00A94277 /* View Controllers */,
 				B3A92FE519720CD600101EE4 /* CLColor.h */,
+				960937D31973AADC00414B21 /* CollectionLayoutAlignTop.h */,
+				960937D41973AADC00414B21 /* CollectionLayoutAlignTop.m */,
 			);
 			name = Utilities;
 			path = CharacterLab;
@@ -521,6 +526,7 @@
 				B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */,
 				13E01C33196BF1FF00A94277 /* TouchInterceptingContainerView.m in Sources */,
 				B300BA33196640790063E27D /* main.m in Sources */,
+				960937D51973AADC00414B21 /* CollectionLayoutAlignTop.m in Sources */,
 				960937D019735CB100414B21 /* TipCell.m in Sources */,
 				B3A92FE21971EED200101EE4 /* AssessmentInputViewController.m in Sources */,
 			);
