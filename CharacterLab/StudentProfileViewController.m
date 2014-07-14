@@ -18,12 +18,14 @@
 
 @interface StudentProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *mainWrapperView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) NSArray *assessmentScores;
 @property (strong, nonatomic) NSMutableDictionary *traitDescriptions;
 @property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
 @property (weak, nonatomic) IBOutlet UIView *initialsBackgroundView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 - (IBAction)onBackButton:(UIButton *)sender;
 - (IBAction)onMeasurePress:(UIButton *)sender;
@@ -54,11 +56,13 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = UIColorFromHEX(CLColorGray);
+    self.mainWrapperView.backgroundColor = UIColorFromHEX(CLColorGray);
     self.initialsBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGray);
 
     self.nameLabel.text = self.student.name;
     self.initialsLabel.student = self.student;
     self.lastMeasurementTime.text = self.student.lastAssessmentTS.timeAgoSinceNow;
+    self.deleteButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
 
     [[CLModel sharedInstance] getAssessmentsForStudent:self.student success:^(NSArray *assessmentList) {
         self.assessmentScores = assessmentList;
