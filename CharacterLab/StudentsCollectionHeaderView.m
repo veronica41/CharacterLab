@@ -7,6 +7,7 @@
 //
 
 #import "StudentsCollectionHeaderView.h"
+#import "CLColor.h"
 
 @implementation StudentsCollectionHeaderView
 
@@ -30,7 +31,9 @@
 - (void)setup {
     UINib *nib = [UINib nibWithNibName:@"StudentsCollectionHeaderView" bundle:nil];
     NSArray *objects = [nib instantiateWithOwner:self options:nil];
-    [self addSubview:objects[0]];
+    UIView *view = objects[0];
+    view.backgroundColor = UIColorFromHEX(CLColorDarkGray);
+    [self addSubview:view];
 }
 
 @end

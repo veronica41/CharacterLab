@@ -41,7 +41,7 @@
     [super viewDidLoad];
 
     // init the collection view
-    self.collectionView.backgroundColor = UIColorFromHEX(CLColorGray);
+    self.collectionView.backgroundColor = UIColorFromHEX(CLColorBackgroundGrey);
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     UINib *studentCellNib = [UINib nibWithNibName:@"StudentCell" bundle:nil];
