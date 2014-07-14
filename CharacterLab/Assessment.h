@@ -8,11 +8,13 @@
 
 #import <Parse/Parse.h>
 #import "Student.h"
+#import "Measurement.h"
 #import "Trait.h"
 
 @interface Assessment : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) Student *student;
+@property (nonatomic, strong) Measurement *measurement;
 @property (nonatomic, strong) Trait *trait;
 @property (nonatomic, assign) NSInteger score; // 1 to 10
 

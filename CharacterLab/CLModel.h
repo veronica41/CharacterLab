@@ -14,6 +14,7 @@
 #import "Question.h"
 #import "Student.h"
 #import "Teacher.h"
+#import "Measurement.h"
 #import "Assessment.h"
 #import "Tip.h"
 
@@ -36,9 +37,17 @@
                                         failure:(void (^)(NSError *error))failure;
 
 - (void)storeAssessmentForStudent:(Student *)student
+                      measurement:(Measurement *)measurement
                             trait:(Trait *)trait
                             value:(NSInteger)score
                           failure:(void (^)(NSError *error))failure;
+
+- (Measurement *)storeMeasurementForStudent:(Student *)student
+                       description:(NSString *)description
+                           failure:(void (^)(NSError *error))failure;
+
+- (void)updateLastMeasurementTSForStudent:(Student *)student
+                                  failure:(void (^)(NSError *error))failure;
 
 - (void)getTipsForTrait:(Trait *)trait
                 success:(void (^)(NSArray *tipsList))success

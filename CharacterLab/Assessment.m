@@ -16,6 +16,7 @@
 }
 
 @dynamic student;
+@dynamic measurement;
 @dynamic trait;
 @dynamic score;
 

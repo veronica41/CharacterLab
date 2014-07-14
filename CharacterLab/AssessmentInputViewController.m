@@ -12,18 +12,21 @@
 #import "NewAssessmentViewCell.h"
 #import "CLColor.h"
 
-@interface AssessmentInputViewController () <UITableViewDataSource, UITableViewDelegate, NewAssessmentViewCellDelegate>
+@interface AssessmentInputViewController () <UITableViewDataSource, UITableViewDelegate, NewAssessmentViewCellDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *assessmentValues;
+@property (weak, nonatomic) IBOutlet UITextField *descriptionText;
 
 @property (nonatomic, strong) NSMutableArray *traitObjects;
 
 - (IBAction)onCancel:(UIButton *)sender;
 - (IBAction)onDone:(UIButton *)sender;
+- (IBAction)onDescriptionEditBegin:(UITextField *)sender;
+- (IBAction)onDescriptionEditEnd:(UITextField *)sender;
 
 @end
 
@@ -63,6 +66,7 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewAssessmentViewCell"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.descriptionText.delegate = self;
 
     self.view.backgroundColor = UIColorFromHEX(CLColorGray);
     self.doneButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
@@ -93,18 +97,39 @@
 
 - (IBAction)onDone:(UIButton *)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    CLModel *CLClient = [CLModel sharedInstance];
+
+    // 1) create a measurement, 2) store the trait scores and 3) update the student timestamp
+    // This is a bit slow and all synchronous to avoid having to deal with async refresh of the student detail view for now
+    Measurement *measurement = [CLClient storeMeasurementForStudent:self.student description:self.descriptionText.text failure:nil];
     for (int traitID = 0 ; traitID < NUM_TRAITS ; traitID++) {
         // Create a new record for each trait in the assessment
-        CLModel *cli = [CLModel sharedInstance];
-        [cli storeAssessmentForStudent:self.student
-                                 trait:self.traitObjects[traitID]
+        [CLClient storeAssessmentForStudent:self.student
+                                measurement:measurement
+                                      trait:self.traitObjects[traitID]
                                  value:[self.assessmentValues[traitID] integerValue]
                                failure:^(NSError *error) {
                                    NSLog(@"Failed to record an assessment");
                                }];
     }
+    [CLClient updateLastMeasurementTSForStudent:self.student failure:nil];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)onDescriptionEditBegin:(UITextField *)sender {
+    if ([sender.text isEqualToString:@"add description"]) {
+        sender.text = @"";
+    }
+}
+
+- (IBAction)onDescriptionEditEnd:(UITextField *)sender {
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 - (void)updateAssessmentForTrait:(NSInteger)traitType value:(NSInteger)value {
