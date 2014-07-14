@@ -29,8 +29,12 @@
 
 - (Trait *)getTraitForIndex:(NSInteger)traitIndex;
 
-- (void)getAssessmentsForStudent:(Student *)student
-                         success:(void (^)(NSArray *assessmentList))success
+- (void)getAssessmentsForMeasurement:(Measurement *)measurement
+                             success:(void (^)(NSArray *assessmentList))success
+                             failure:(void (^)(NSError *error))failure;
+
+- (void)getMeasurementsForStudent:(Student *)student
+                         success:(void (^)(NSArray *measurementsList))success
                          failure:(void (^)(NSError *error))failure;
 
 - (void)getStudentsForCurrentTeacherWithSuccess:(void (^)(NSArray *studentList))success

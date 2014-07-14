@@ -67,10 +67,13 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.descriptionText.delegate = self;
+    [self.descriptionText becomeFirstResponder];
 
     self.view.backgroundColor = UIColorFromHEX(CLColorGray);
     self.doneButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
     self.cancelButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
+    self.doneButton.layer.cornerRadius = 5;
+    self.cancelButton.layer.cornerRadius = 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -17,5 +17,6 @@
 
 @dynamic description;
 @dynamic createdAt;
+@dynamic student;
 
 @end
