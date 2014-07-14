@@ -18,6 +18,7 @@
 @dynamic name;
 @dynamic photoUrl;
 @dynamic teacher;
+@dynamic lastAssessmentTS;
 
 - (NSString *)initials {
     NSArray *nameComponents = [self.name componentsSeparatedByString: @" "];

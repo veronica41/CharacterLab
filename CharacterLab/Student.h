@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *photoUrl;
 @property (nonatomic, strong) Teacher *teacher;
+@property (nonatomic, strong) NSDate *lastAssessmentTS;
 
 - (NSString *)initials;
 
