@@ -12,7 +12,7 @@
 
 @protocol MultiPageViewControllerChild <NSObject>
 
-- (void)pageViewController:(MultiPageViewController *)pageViewController didMoveToNumPagesFromCenter:(CGFloat)numPagesFromCenter;
+- (void)pageViewController:(MultiPageViewController *)pageViewController didMoveToNumPagesFromCenter:(CGFloat)numPagesFromCenter scaledBy:(CGFloat)scale;
 
 @end
 

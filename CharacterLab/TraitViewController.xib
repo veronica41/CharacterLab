@@ -8,7 +8,9 @@
             <connections>
                 <outlet property="descriptionLabel" destination="nkV-m0-GFX" id="nDj-uI-MG2"/>
                 <outlet property="exploreLabel" destination="Sbb-7r-Gbb" id="nR1-Az-8kA"/>
+                <outlet property="imageHeight" destination="3FS-ex-BUg" id="vUQ-cv-cbL"/>
                 <outlet property="imageView" destination="ZFR-hP-orB" id="3Yg-1D-SEQ"/>
+                <outlet property="imageWidth" destination="G7n-h4-IgR" id="Fcv-rH-osc"/>
                 <outlet property="titleLabel" destination="fAV-ni-LIS" id="LVd-s2-qx5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
