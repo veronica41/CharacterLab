@@ -26,6 +26,8 @@
 - (void)getTraitsWitSuccess:(void (^)(NSArray *traitList))success
                     failure:(void (^)(NSError *error))failure;
 
+- (Trait *)getTraitForIndex:(NSInteger)traitIndex;
+
 - (void)getAssessmentsForStudent:(Student *)student
                          success:(void (^)(NSArray *assessmentList))success
                          failure:(void (^)(NSError *error))failure;
@@ -35,7 +37,7 @@
 
 - (void)storeAssessmentForStudent:(Student *)student
                             trait:(Trait *)trait
-                            value:(CLAssessmentScore)score
+                            value:(NSInteger)score
                           failure:(void (^)(NSError *error))failure;
 
 - (void)getTipsForTrait:(Trait *)trait

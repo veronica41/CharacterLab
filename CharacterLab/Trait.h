@@ -8,17 +8,7 @@
 
 #import <Parse/Parse.h>
 
-// PIER: we should get these from Parse but I did not want to spend too much time for the input view so I am just hardcoding them here
-typedef enum : NSUInteger {
-    CLTraitCuriosity          = 0,
-    CLTraitGratitude          = 1,
-    CLTraitGrit               = 2,
-    CLTraitOptimism           = 3,
-    CLTraitSelfControl        = 4,
-    CLTraitSocialIntelligence = 5,
-    CLTraitZest               = 6,
-    CLTraitMAX                = 7,
-} CLTraitType;
+#define NUM_TRAITS 7
 
 @interface Trait : PFObject <PFSubclassing>
 
@@ -26,7 +16,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, copy) NSString *imageUrl;
 @property (nonatomic, copy) NSString *videoUrl;
-
-+ (NSDictionary*)getConfig:(CLTraitType)traitType;
+@property (nonatomic, assign) NSInteger order;
 
 @end

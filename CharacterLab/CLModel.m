@@ -60,6 +60,11 @@ static NSArray *sTraitDescriptions = nil;
     }];
 }
 
+- (Trait *)getTraitForIndex:(NSInteger)traitIndex {
+    // should be prepopulated
+    return sTraitDescriptions[traitIndex];
+}
+
 - (void)getAssessmentsForStudent:(Student *)student
                          success:(void (^)(NSArray *assessmentList))success
                          failure:(void (^)(NSError *error))failure {
@@ -88,7 +93,7 @@ static NSArray *sTraitDescriptions = nil;
 
 - (void)storeAssessmentForStudent:(Student *)student
                             trait:(Trait *)trait
-                            value:(CLAssessmentScore)score
+                            value:(NSInteger)score
                           failure:(void (^)(NSError *error))failure {
 
     Assessment *a = [[Assessment alloc] init];

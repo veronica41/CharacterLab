@@ -107,7 +107,7 @@ static NSString *kTipCellIdentifier = @"TipCell";
     Tip *tip = self.tips[indexPath.row];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.row+1, self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.row+1, (unsigned long)self.tips.count];
     return cell;
 }
 

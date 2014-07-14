@@ -18,33 +18,7 @@
 @dynamic name;
 @dynamic desc;
 @dynamic imageUrl;
-
-+ (NSDictionary*)getConfig:(CLTraitType)traitType {
-    switch (traitType) {
-        case CLTraitCuriosity:
-            return @{@"icon": @"curiosityCircle",
-                     @"name": @"Curiosity"};
-        case CLTraitGratitude:
-            return @{@"icon": @"gratitudeCircle",
-                     @"name": @"Gratitude"};
-        case CLTraitGrit:
-            return @{@"icon": @"gritCircle",
-                     @"name": @"Grit"};
-        case CLTraitOptimism:
-            return @{@"icon": @"optimismCircle",
-                     @"name": @"Optimism"};
-        case CLTraitSelfControl:
-            return @{@"icon": @"selfcontrolCircle",
-                     @"name": @"Self-Control"};
-        case CLTraitSocialIntelligence:
-            return @{@"icon": @"socialintelligenceCircle",
-                     @"name": @"Social Intelligence"};
-        case CLTraitZest:
-            return @{@"icon": @"zestCircle",
-                     @"name": @"Zest"};
-        default:
-            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"invalid category" userInfo:nil];
-    }
-}
+@dynamic videoUrl;
+@dynamic order;
 
 @end

@@ -34,7 +34,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.assessmentValues = [NSMutableArray array];
-        for (int traitID = 0 ; traitID < CLTraitMAX ; traitID++) {
+        for (int traitID = 0 ; traitID < NUM_TRAITS ; traitID++) {
             self.assessmentValues[traitID] = @(6); // default mid-way
         }
     }
@@ -48,16 +48,12 @@
     self.nameLabel.text = self.student.name;
     // Need to store the objects corresponding to traits for later
     [[CLModel sharedInstance] getTraitsWitSuccess:^(NSArray *traitList) {
-        self.traitObjects = [[NSMutableArray alloc] initWithCapacity:CLTraitMAX - 1];
-        for (int traitID = 0 ; traitID < CLTraitMAX ; traitID++) {
-            // find the object that corresponding to a given trait by matching the description. Typos are going to be bad :/
-            NSDictionary *conf = [Trait getConfig:traitID];
-            for (Trait *traitObject in traitList) {
-                if ([traitObject.name isEqualToString:conf[@"name"]]) {
-                    self.traitObjects[traitID] = traitObject;
-                    break;
-                }
-            }
+        self.traitObjects = [[NSMutableArray alloc] initWithCapacity:NUM_TRAITS];
+        for (int x = 0 ; x < NUM_TRAITS ; x++) {
+            self.traitObjects[x] = @"";
+        }
+        for (Trait *traitObject in traitList) {
+            self.traitObjects[traitObject.order - 1] = traitObject;
         }
     } failure:^(NSError *error) {
         @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Cannot proceed. Failed to fetch traits" userInfo:nil];
@@ -74,12 +70,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return CLTraitMAX;
+    return NUM_TRAITS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewAssessmentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewAssessmentViewCell"];
-    cell.traitType = (CLTraitType)indexPath.row;
+    cell.traitType = indexPath.row;
     cell.backgroundColor = UIColorFromHEX(CLColorGray);
     cell.delegate = self;
     return cell;
@@ -97,7 +93,7 @@
 
 - (IBAction)onDone:(UIButton *)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    for (int traitID = 0 ; traitID < CLTraitMAX ; traitID++) {
+    for (int traitID = 0 ; traitID < NUM_TRAITS ; traitID++) {
         // Create a new record for each trait in the assessment
         CLModel *cli = [CLModel sharedInstance];
         [cli storeAssessmentForStudent:self.student
@@ -111,7 +107,7 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)updateAssessmentForTrait:(CLTraitType)traitType value:(NSInteger)value {
+- (void)updateAssessmentForTrait:(NSInteger)traitType value:(NSInteger)value {
     self.assessmentValues[traitType] = @(value);
 }
 

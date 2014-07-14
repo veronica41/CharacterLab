@@ -32,15 +32,16 @@
     // Configure the view for the selected state
 }
 
-- (void)setTraitType:(CLTraitType)traitType {
-    NSDictionary *conf = [Trait getConfig:traitType];
+- (void)setTraitType:(NSInteger)traitType {
+    Trait *trait = [[CLModel sharedInstance] getTraitForIndex:traitType];
     _traitType = traitType;
-    self.iconImage.image = [UIImage imageNamed:conf[@"icon"]];
-    self.descriptionLabel.text = conf[@"name"];
+    self.iconImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Circle", [trait.name lowercaseString]]];
+    self.descriptionLabel.text = trait.name;
 }
 
 - (IBAction)onSliderUpdate:(UISlider *)sender {
-    int val = (int)sender.value;
+    int val = lroundf(sender.value);
+    [sender setValue:val animated:YES];
     self.assessmentValue = val;
     self.assessmentLabel.text = [NSString stringWithFormat:@"%d", val];
     [self.delegate updateAssessmentForTrait:self.traitType value:val];
