@@ -125,24 +125,21 @@ CGFloat const kTransitionDuration = 0.5;
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
     UIImageView *fromImageView;
-    CGRect toFrame;
-    CGFloat toCornerRadius;
+    UIImageView *toImageView;
     TraitDetailViewController *detailViewController;
     if (self.presentingVC) {
-        detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
-        fromImageView = self.imageView;
-        detailViewController.hideImageViewOnLoad = YES;
-        toFrame = CGRectMake(0, 64, 320, 224);
-        toCornerRadius = 0;
-
         [containerView addSubview:toViewController.view];
         toViewController.view.alpha = 0;
+
+        detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
+        fromImageView = self.imageView;
+        // reference detailViewController.view to trigger viewDidLoad so that we can get a reference to detailViewController.traitImageView
+        UIView *temp = detailViewController.view;
+        toImageView = detailViewController.traitImageView;
     } else {
         detailViewController = (TraitDetailViewController *)((UINavigationController *)fromViewController).topViewController;
         fromImageView = detailViewController.traitImageView;
-        self.imageView.alpha = 0;
-        toFrame = [self.imageView convertRect:self.imageView.bounds toView:containerView];
-        toCornerRadius = self.imageView.layer.cornerRadius;
+        toImageView = self.imageView;
     }
 
     CGRect fromImageViewFrame = [fromImageView convertRect:fromImageView.bounds toView:containerView];
@@ -153,22 +150,28 @@ CGFloat const kTransitionDuration = 0.5;
     animatingImageView.layer.cornerRadius = fromImageView.layer.cornerRadius;
     [containerView addSubview:animatingImageView];
     fromImageView.alpha = 0;
+    toImageView.alpha = 0;
 
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
     animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.fromValue = @(animatingImageView.layer.cornerRadius);
-    animation.toValue = @(toCornerRadius);
+    animation.toValue = @(toImageView.layer.cornerRadius);
     animation.duration = kTransitionDuration;
-    animatingImageView.layer.cornerRadius = toCornerRadius;
+    animatingImageView.layer.cornerRadius = toImageView.layer.cornerRadius;
     [animatingImageView.layer addAnimation:animation forKey:@"cornerRadius"];
 
     [UIView animateWithDuration:kTransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        animatingImageView.frame = toFrame;
+        // TODO(rajeev): this is hax, figure out why the rect isn't right
+        if (self.presentingVC) {
+            animatingImageView.frame = CGRectMake(0, 64, 320, 224);
+        } else {
+            animatingImageView.frame = [toImageView convertRect:toImageView.bounds toView:containerView];
+        }
         fromViewController.view.alpha = 0;
         toViewController.view.alpha = 1;
     } completion:^(BOOL finished) {
-        self.imageView.alpha = 1;
-        detailViewController.traitImageView.alpha = 1;
+        fromImageView.alpha = 1;
+        toImageView.alpha = 1;
         [animatingImageView removeFromSuperview];
         [transitionContext completeTransition:YES];
     }];

@@ -64,10 +64,6 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
     self.traitDescriptionLabel.text = self.trait.desc;
     self.aboutLabel.text = [NSString stringWithFormat:@"ABOUT %@", self.trait.name.uppercaseString];
     self.buildLabel.text = [NSString stringWithFormat:@"BUILD %@", self.trait.name.uppercaseString];
-
-    if (self.hideImageViewOnLoad) {
-        self.traitImageView.alpha = 0;
-    }
 }
 
 - (void)setupVideoPlayer {
