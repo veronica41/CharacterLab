@@ -21,11 +21,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="1081"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sRU-3C-dE5">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sRU-3C-dE5">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="1081"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LfP-5D-VLp">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LfP-5D-VLp">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="1081"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -141,21 +141,9 @@
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="LfP-5D-VLp" firstAttribute="leading" secondItem="sRU-3C-dE5" secondAttribute="leading" id="8xi-rH-802"/>
-                        <constraint firstAttribute="trailing" secondItem="LfP-5D-VLp" secondAttribute="trailing" id="QAC-wj-3EN"/>
-                        <constraint firstItem="LfP-5D-VLp" firstAttribute="top" secondItem="sRU-3C-dE5" secondAttribute="top" id="osi-OW-yAJ"/>
-                        <constraint firstAttribute="bottom" secondItem="LfP-5D-VLp" secondAttribute="bottom" id="xHF-uC-YFH"/>
-                    </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstItem="sRU-3C-dE5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0ke-yy-WHM"/>
-                <constraint firstAttribute="bottom" secondItem="sRU-3C-dE5" secondAttribute="bottom" id="8a9-Fq-GM9"/>
-                <constraint firstItem="sRU-3C-dE5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Dby-gF-6cq"/>
-                <constraint firstAttribute="trailing" secondItem="sRU-3C-dE5" secondAttribute="trailing" id="hE2-1E-ZGJ"/>
-            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
