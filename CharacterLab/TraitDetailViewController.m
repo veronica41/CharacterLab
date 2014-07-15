@@ -26,6 +26,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsCollectionViewHeight;
+@property (weak, nonatomic) IBOutlet UIView *traitStatsContainerView;
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
 @property (nonatomic, strong) MPMoviePlayerController *playerController;
@@ -57,6 +58,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
     self.navigationItem.title = self.trait.name;
 
     [self setupVideoPlayer];
+    [self setupTipsCollectionView];
 
     self.traitImageView.image = [UIImage imageNamed:self.trait.name];
     self.traitDescriptionLabel.text = self.trait.desc;
@@ -66,20 +68,6 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
     if (self.hideImageViewOnLoad) {
         self.traitImageView.alpha = 0;
     }
-
-    // setup tips collection view
-    self.expandedIndexPath = nil;
-    self.tipsCollectionView.dataSource = self;
-    self.tipsCollectionView.delegate = self;
-    UINib *tipCellNib = [UINib nibWithNibName:kTipCellIdentifier bundle:nil];
-    [self.tipsCollectionView registerNib:tipCellNib forCellWithReuseIdentifier:kTipCellIdentifier];
-   
-    [[CLModel sharedInstance] getTipsForTrait:self.trait success:^(NSArray *tipsList) {
-        self.tips = tipsList;
-        [self.tipsCollectionView reloadData];
-    } failure:^(NSError *error) {
-        NSLog(@"Failed to fetch tips, %@", error);
-    }];
 }
 
 - (void)setupVideoPlayer {
@@ -93,6 +81,23 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
             self.playerController.view.frame = self.movieView.bounds;
             [self.movieView addSubview:self.playerController.view];
         }
+    }];
+}
+
+- (void)setupTipsCollectionView {
+    self.expandedIndexPath = nil;
+    self.tipsCollectionView.dataSource = self;
+    self.tipsCollectionView.delegate = self;
+    UINib *tipCellNib = [UINib nibWithNibName:kTipCellIdentifier bundle:nil];
+    [self.tipsCollectionView registerNib:tipCellNib forCellWithReuseIdentifier:kTipCellIdentifier];
+    
+    [[CLModel sharedInstance] getTipsForTrait:self.trait success:^(NSArray *tipsList) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.tips = tipsList;
+            [self.tipsCollectionView reloadData];
+        });
+    } failure:^(NSError *error) {
+        NSLog(@"Failed to fetch tips, %@", error);
     }];
 }
 
@@ -133,7 +138,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
         TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
         [self collectionView:collectionView configureCell:cell atIndexPath:indexPath];
         [cell layoutIfNeeded];
-        CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         if (size.height > kTipsCollectionViewDefaultHeight) {
             [UIView animateWithDuration: 0
                                   delay: 0
