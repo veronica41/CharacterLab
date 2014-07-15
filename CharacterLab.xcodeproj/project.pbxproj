@@ -220,6 +220,7 @@
 		13E01C0319675C5800A94277 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B30CD42D19749E0D006EB3C1 /* MeasurementViewCell.h */,
 				13E01C0419675C7300A94277 /* TraitViewController.h */,
 				13E01C0519675C7300A94277 /* TraitViewController.m */,
 				13E01C0619675C7300A94277 /* TraitViewController.xib */,
@@ -262,7 +263,6 @@
 				960937CE19735CB100414B21 /* TipCell.h */,
 				960937CF19735CB100414B21 /* TipCell.m */,
 				960937D119735CC400414B21 /* TipCell.xib */,
-				B30CD42D19749E0D006EB3C1 /* MeasurementViewCell.h */,
 				B30CD42E19749E0D006EB3C1 /* MeasurementViewCell.m */,
 				B30CD42F19749E0D006EB3C1 /* MeasurementViewCell.xib */,
 				B30CD43719756FD9006EB3C1 /* ImprovementSuggestionViewCell.h */,

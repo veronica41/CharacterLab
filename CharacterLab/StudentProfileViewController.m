@@ -24,7 +24,7 @@ static NSString *kMeasurementViewCell = @"MeasurementViewCell";
 static NSString *kImprovementTraitCell = @"ImprovementTraitViewCell";
 static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCell";
 
-@interface StudentProfileViewController () <UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface StudentProfileViewController () <UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, ImprovementSuggestionViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mainWrapperView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -134,6 +134,19 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     self.improvementsCollection.contentSize = CGSizeMake(320 * 4, 100);
 }
 
+#pragma mark - ImprovementSuggestionViewCellDelegate
+
+- (void)updateSelectedSuggestionItem:(int)itemSelected {
+    // scroll to the cell
+    NSIndexPath *idx = [NSIndexPath indexPathForItem:itemSelected inSection:0];
+    [self.improvementsCollection scrollToItemAtIndexPath:idx
+                               atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                       animated:YES];
+
+    // call delegate method
+    [self collectionView:self.improvementsCollection cellForItemAtIndexPath:idx];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -157,6 +170,9 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
         cell.traitLabel3.text = trait.name;
         cell.traitImage3.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Circle", [trait.name lowercaseString]]];
         cell.pageNumLabel.text = [NSString stringWithFormat:@"1/%ld", 1 + (unsigned long)self.traitsToImprove.count];
+
+        cell.delegate = self;
+        [cell setup];
 
         return cell;
     }
