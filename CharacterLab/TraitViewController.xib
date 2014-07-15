@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5L-Z3-wS9">
-                    <rect key="frame" x="0.0" y="143" width="320" height="283"/>
+                    <rect key="frame" x="0.0" y="129" width="320" height="310"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAV-ni-LIS">
@@ -38,20 +38,20 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZFR-hP-orB">
-                            <rect key="frame" x="81" y="89" width="158" height="158"/>
+                            <rect key="frame" x="70" y="89" width="180" height="180"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="158" id="3FS-ex-BUg"/>
-                                <constraint firstAttribute="width" constant="158" id="G7n-h4-IgR"/>
+                                <constraint firstAttribute="height" constant="180" id="3FS-ex-BUg"/>
+                                <constraint firstAttribute="width" constant="180" id="G7n-h4-IgR"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="79"/>
+                                    <integer key="value" value="90"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Explore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbb-7r-Gbb">
-                            <rect key="frame" x="117" y="267" width="87" height="16"/>
+                            <rect key="frame" x="117" y="294" width="87" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -64,7 +64,7 @@
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="top" secondItem="fAV-ni-LIS" secondAttribute="bottom" constant="15" id="E4Q-Xs-rdI"/>
                         <constraint firstItem="fAV-ni-LIS" firstAttribute="leading" secondItem="k5L-Z3-wS9" secondAttribute="leading" constant="20" id="Emf-fe-vX2"/>
                         <constraint firstItem="fAV-ni-LIS" firstAttribute="top" secondItem="k5L-Z3-wS9" secondAttribute="top" id="FsR-xS-GQX"/>
-                        <constraint firstItem="Sbb-7r-Gbb" firstAttribute="top" secondItem="ZFR-hP-orB" secondAttribute="bottom" constant="20" id="HPE-tr-BPM"/>
+                        <constraint firstItem="Sbb-7r-Gbb" firstAttribute="top" secondItem="ZFR-hP-orB" secondAttribute="bottom" constant="25" id="HPE-tr-BPM"/>
                         <constraint firstAttribute="centerX" secondItem="ZFR-hP-orB" secondAttribute="centerX" id="Hsn-WW-pQ6"/>
                         <constraint firstAttribute="trailing" secondItem="fAV-ni-LIS" secondAttribute="trailing" constant="20" id="NDR-KJ-1pX"/>
                         <constraint firstItem="nkV-m0-GFX" firstAttribute="trailing" secondItem="fAV-ni-LIS" secondAttribute="trailing" id="TSq-mx-7E3"/>

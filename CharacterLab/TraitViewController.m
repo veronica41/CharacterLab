@@ -78,9 +78,9 @@ CGFloat const kTransitionDuration = 0.5;
     self.titleLabel.font = [UIFont systemFontOfSize:30 * scale];
     self.descriptionLabel.font = [UIFont systemFontOfSize:15 * scale];
     self.exploreLabel.font = [UIFont systemFontOfSize:13 * scale];
-    self.imageWidth.constant = 158 * scale;
-    self.imageHeight.constant = 158 * scale;
-    self.imageView.layer.cornerRadius = 79 * scale;
+    self.imageWidth.constant = 180 * scale;
+    self.imageHeight.constant = 180 * scale;
+    self.imageView.layer.cornerRadius = 90 * scale;
 }
 
 #pragma mark - event handlers

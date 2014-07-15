@@ -12,7 +12,8 @@
 #import "CLColor.h"
 #import "CLModel.h"
 
-CGFloat const kVerticalMargin = 40;
+CGFloat const kTopMargin = 70;
+CGFloat const kBottomMargin = 40;
 CGFloat const kHorizontalMargin = 35;
 CGFloat const kDistanceBetweenPages = 5;
 CGFloat const kSecondaryPageScale = 0.85;
@@ -48,7 +49,8 @@ CGFloat const kSecondaryPageScale = 0.85;
 
     // init the page controller
     self.pageController = [[MultiPageViewController alloc] init];
-    self.pageController.verticalMargin = kVerticalMargin;
+    self.pageController.topMargin = kTopMargin;
+    self.pageController.bottomMargin = kBottomMargin;
     self.pageController.horizontalMargin = kHorizontalMargin;
     self.pageController.distanceBetweenPages = kDistanceBetweenPages;
     self.pageController.secondaryPageScale = kSecondaryPageScale;
