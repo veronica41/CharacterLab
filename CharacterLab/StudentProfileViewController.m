@@ -141,24 +141,33 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"PIER fetching item %d", indexPath.item);
     if (indexPath.item == 0)
     {
         // first collection shows the suggestions
         ImprovementSuggestionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImprovementSuggestionViewCell forIndexPath:indexPath];
-        cell.trait1 = [self.traitsToImprove objectAtIndex:0];
-        cell.trait2 = [self.traitsToImprove objectAtIndex:1];
-        cell.trait3 = [self.traitsToImprove objectAtIndex:2];
+        Trait *trait = [self.traitsToImprove objectAtIndex:0];
+        cell.traitLabel1.text = trait.name;
+        cell.traitImage1.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Circle", [trait.name lowercaseString]]];
+
+        trait = [self.traitsToImprove objectAtIndex:1];
+        cell.traitLabel2.text = trait.name;
+        cell.traitImage2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Circle", [trait.name lowercaseString]]];
+
+        trait = [self.traitsToImprove objectAtIndex:2];
+        cell.traitLabel3.text = trait.name;
+        cell.traitImage3.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Circle", [trait.name lowercaseString]]];
         cell.pageNumLabel.text = [NSString stringWithFormat:@"1/%ld", 1 + (unsigned long)self.traitsToImprove.count];
+
         return cell;
     }
     else
     {
         Trait *trait = [self.traitsToImprove objectAtIndex:indexPath.item - 1];
         ImprovementTraitViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImprovementTraitCell forIndexPath:indexPath];
-        cell.suggestion1 = [NSString stringWithFormat:@"%@ suggestion 1", trait.name];
-        cell.suggestion2 = [NSString stringWithFormat:@"%@ suggestion 2", trait.name];
-        cell.suggestion3 = [NSString stringWithFormat:@"%@ suggestion 3", trait.name];
+        cell.titleLabel.text = [NSString stringWithFormat:@"Improve %@", trait.name];
+        cell.suggestion1Label.text = [NSString stringWithFormat:@"\u2022 %@ suggestion 1", trait.name];
+        cell.suggestion2Label.text = [NSString stringWithFormat:@"\u2022 %@ suggestion 2", trait.name];
+        cell.suggestion3Label.text = [NSString stringWithFormat:@"\u2022 %@ suggestion 3", trait.name];
         cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
         return cell;
     }

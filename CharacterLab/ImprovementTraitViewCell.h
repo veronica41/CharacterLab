@@ -10,9 +10,10 @@
 
 @interface ImprovementTraitViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) NSString *suggestion1;
-@property (nonatomic, strong) NSString *suggestion2;
-@property (nonatomic, strong) NSString *suggestion3;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *suggestion1Label;
+@property (weak, nonatomic) IBOutlet UILabel *suggestion2Label;
+@property (weak, nonatomic) IBOutlet UILabel *suggestion3Label;
 @property (weak, nonatomic) IBOutlet UILabel *pageNumLabel;
 
 @end
