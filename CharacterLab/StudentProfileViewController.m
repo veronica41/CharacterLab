@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UITableView *measurementTable;
 @property (nonatomic, strong) NSArray *measurementList;
+@property (nonatomic, strong) Measurement *lastMeasurement;
 
 - (IBAction)onBackButton:(UIButton *)sender;
 - (IBAction)onMeasurePress:(UIButton *)sender;
@@ -44,7 +45,8 @@
     if (self) {
         // Custom initialization
         self.traitDescriptions = [NSMutableDictionary dictionary];
-        [[CLModel sharedInstance] getTraitsWitSuccess:^(NSArray *traitList) {
+        CLModel *client = [CLModel sharedInstance];
+        [client getTraitsWitSuccess:^(NSArray *traitList) {
             for (Trait *trait in traitList) {
                 self.traitDescriptions[trait.objectId] = trait.name;
             }
@@ -89,6 +91,15 @@
     } failure:^(NSError *error) {
         NSLog(@"Failure retrieving the measurements for %@", self.student);
     }];
+    if (self.student.lastMeasurementID) {
+        // store the last measurement object
+        [client getLatestMeasurementForStudent:self.student success:^(Measurement *measurement) {
+            self.lastMeasurement = measurement;
+            NSLog(@"PIER fetched latest measurement %@", self.lastMeasurement);
+        } failure:^(NSError *error) {
+            NSLog(@"Error fetching last measurement: %@", error);
+        }];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

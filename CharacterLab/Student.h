@@ -9,6 +9,8 @@
 #import <Parse/Parse.h>
 #import "Teacher.h"
 
+@class Measurement;
+
 @interface Student : PFObject <PFSubclassing>
 
 // These colors are used to associate an icon color with a student and are stored in the DB in Parse
@@ -27,6 +29,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) Teacher *teacher;
 @property (nonatomic, strong) NSDate *lastAssessmentTS;
 @property (nonatomic, assign) NSInteger iconColor;
+@property (nonatomic, copy) NSString *lastMeasurementID;
 
 - (NSString *)initials;
 - (UIColor *)getColorForIcon;

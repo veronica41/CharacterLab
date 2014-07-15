@@ -130,9 +130,26 @@ static NSArray *sTraitDescriptions = nil;
     return m;
 }
 
-- (void)updateLastMeasurementTSForStudent:(Student *)student
-                                  failure:(void (^)(NSError *error))failure {
+- (void)getLatestMeasurementForStudent:(Student *)student
+                                        success:(void (^)(Measurement *measurement))success
+                                        failure:(void (^)(NSError *error))failure {
+    PFQuery *query = [PFQuery queryWithClassName:@"Measurement"];
+    [query getObjectInBackgroundWithId:student.lastMeasurementID block:^(PFObject *object, NSError *error) {
+        if (error) {
+            failure(error);
+        }
+        else {
+            success((Measurement *)object);
+        }
+    }];
+}
+
+
+- (void)updateStudent:(Student *)student
+          measurement:(Measurement *)measurement
+              failure:(void (^)(NSError *error))failure {
     student.lastAssessmentTS = [NSDate date];
+    student.lastMeasurementID = measurement.objectId;
     [student save]; // this operation is synchronous for now
 }
 

@@ -50,11 +50,16 @@
                                       title:(NSString *)title
                                     failure:(void (^)(NSError *error))failure;
 
-- (void)updateLastMeasurementTSForStudent:(Student *)student
-                                  failure:(void (^)(NSError *error))failure;
+- (void)updateStudent:(Student *)student
+          measurement:(Measurement *)measurement
+              failure:(void (^)(NSError *error))failure;
 
 - (void)getTipsForTrait:(Trait *)trait
                 success:(void (^)(NSArray *tipsList))success
                 failure:(void(^)(NSError *error))failure;
+
+- (void)getLatestMeasurementForStudent:(Student *)student
+                               success:(void (^)(Measurement *measurement))success
+                               failure:(void (^)(NSError *error))failure;
 
 @end
