@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <CorePlot-CocoaTouch.h>
 
 #import "NSDate+DateTools.h"
 #import "UIImageView+AFNetworking.h"
@@ -69,6 +70,8 @@
 
     self.measurementTable.delegate = self;
     self.measurementTable.dataSource = self;
+    self.measurementTable.backgroundColor = [UIColor clearColor];
+    self.measurementTable.opaque = NO;
     UINib *cellNib = [UINib nibWithNibName:@"MeasurementViewCell" bundle:nil];
     [self.measurementTable registerNib:cellNib forCellReuseIdentifier:@"measurementCell"];
 
