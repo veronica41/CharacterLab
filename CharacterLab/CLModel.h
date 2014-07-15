@@ -47,8 +47,8 @@
                           failure:(void (^)(NSError *error))failure;
 
 - (Measurement *)storeMeasurementForStudent:(Student *)student
-                       description:(NSString *)description
-                           failure:(void (^)(NSError *error))failure;
+                                      title:(NSString *)title
+                                    failure:(void (^)(NSError *error))failure;
 
 - (void)updateLastMeasurementTSForStudent:(Student *)student
                                   failure:(void (^)(NSError *error))failure;

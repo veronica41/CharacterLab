@@ -58,8 +58,7 @@
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = UIColorFromHEX(CLColorGray);
-    self.mainWrapperView.backgroundColor = UIColorFromHEX(CLColorGray);
+    self.mainWrapperView.backgroundColor = [UIColor darkGrayColor];
     self.initialsBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGray);
 
     self.nameLabel.text = self.student.name;
@@ -70,13 +69,13 @@
 
     self.measurementTable.delegate = self;
     self.measurementTable.dataSource = self;
-    UINib *cellNib = [UINib nibWithNibName:@"measurementCell" bundle:nil];
+    UINib *cellNib = [UINib nibWithNibName:@"MeasurementViewCell" bundle:nil];
     [self.measurementTable registerNib:cellNib forCellReuseIdentifier:@"measurementCell"];
 
     CLModel *client = [CLModel sharedInstance];
     [client getMeasurementsForStudent:self.student success:^(NSArray *measurementList) {
         self.measurementList = measurementList;
-
+        [self.measurementTable reloadData];
         if (self.measurementList.count > 0) {
             [client getAssessmentsForMeasurement:[self.measurementList objectAtIndex:0] success:^(NSArray *assessmentList) {
                 self.LatestAssessmentScores = assessmentList;
@@ -105,7 +104,7 @@
 
     MeasurementViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"measurementCell" forIndexPath:indexPath];
     Measurement *measurement = [self.measurementList objectAtIndex:indexPath.row];
-    cell.descriptionLabel.text = measurement.description;
+    cell.titleLabel.text = [NSString stringWithString:measurement.title];
     cell.dateLabel.text = [dateFormatter stringFromDate:measurement.createdAt];
     if (indexPath.row % 2 == 0) {
         cell.backgroundColor = UIColorFromHEX(CLColorDarkGray);

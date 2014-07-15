@@ -121,10 +121,10 @@ static NSArray *sTraitDescriptions = nil;
 }
 
 - (Measurement *)storeMeasurementForStudent:(Student *)student
-                       description:(NSString *)description
-                           failure:(void (^)(NSError *error))failure {
+                                      title:(NSString *)title
+                                    failure:(void (^)(NSError *error))failure {
     Measurement *m = [[Measurement alloc] init];
-    m.description = description;
+    m.title = title;
     m.student = student;
     [m save]; // saving the measurement is synchronous for now
     return m;

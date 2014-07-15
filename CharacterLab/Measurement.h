@@ -11,7 +11,7 @@
 
 @interface Measurement : PFObject <PFSubclassing>
 
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) Student *student;
 

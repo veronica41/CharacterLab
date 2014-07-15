@@ -104,7 +104,7 @@
 
     // 1) create a measurement, 2) store the trait scores and 3) update the student timestamp
     // This is a bit slow and all synchronous to avoid having to deal with async refresh of the student detail view for now
-    Measurement *measurement = [CLClient storeMeasurementForStudent:self.student description:self.descriptionText.text failure:nil];
+    Measurement *measurement = [CLClient storeMeasurementForStudent:self.student title:self.descriptionText.text failure:nil];
     for (int traitID = 0 ; traitID < NUM_TRAITS ; traitID++) {
         // Create a new record for each trait in the assessment
         [CLClient storeAssessmentForStudent:self.student

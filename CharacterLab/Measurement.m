@@ -15,7 +15,7 @@
     return @"Measurement";
 }
 
-@dynamic description;
+@dynamic title;
 @dynamic createdAt;
 @dynamic student;
 
