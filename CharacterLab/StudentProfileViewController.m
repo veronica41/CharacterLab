@@ -131,6 +131,7 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 
     UINib *improvementSuggestionCellNib = [UINib nibWithNibName:kImprovementTraitCell bundle:nil];
     [self.improvementsCollection registerNib:improvementSuggestionCellNib forCellWithReuseIdentifier:kImprovementTraitCell];
+    self.improvementsCollection.contentSize = CGSizeMake(320 * 4, 100);
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -140,7 +141,8 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.item == 1)
+    NSLog(@"PIER fetching item %d", indexPath.item);
+    if (indexPath.item == 0)
     {
         // first collection shows the suggestions
         ImprovementSuggestionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImprovementSuggestionViewCell forIndexPath:indexPath];
@@ -152,7 +154,7 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     }
     else
     {
-        Trait *trait = [self.traitsToImprove objectAtIndex:indexPath.item - 2];
+        Trait *trait = [self.traitsToImprove objectAtIndex:indexPath.item - 1];
         ImprovementTraitViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImprovementTraitCell forIndexPath:indexPath];
         cell.suggestion1 = [NSString stringWithFormat:@"%@ suggestion 1", trait.name];
         cell.suggestion2 = [NSString stringWithFormat:@"%@ suggestion 2", trait.name];
@@ -161,7 +163,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
         return cell;
     }
 }
-
 
 #pragma mark - UITableViewDataSource
 
