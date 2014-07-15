@@ -16,6 +16,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIView *loginViewBox;
+@property (weak, nonatomic) IBOutlet UIView *passwordLine;
+
+@property (weak, nonatomic) IBOutlet UIView *userNameLine;
+
+
+- (IBAction)onTap:(UITapGestureRecognizer *)sender;
 
 - (IBAction)onLogin:(id)sender;
 
@@ -46,33 +53,65 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromHEX(CLColorAquamarine);
-    self.loginButton.backgroundColor = UIColorFromHEX(CLColorPencilYellow);
+   // self.loginButton.backgroundColor = UIColorFromHEX(CLColorPencilYellow);
+    self.loginViewBox.layer.cornerRadius = 4;
 
     self.loginButton.layer.cornerRadius = 4.0;
 
     self.userNameField.delegate = self;
     self.passwordField.delegate = self;
+//    self.userNameField.textColor = UIColorFromHEX(CLColorPencilYellow);
+//    self.passwordField.textColor = UIColorFromHEX(CLColorPencilYellow);
+    
+    self.userNameLine.alpha = .75;
+    self.passwordLine.alpha = .75;
 
-    [self.userNameField becomeFirstResponder];
+  //  [self.userNameField becomeFirstResponder];
+    
+    
 }
+
 
 - (void)keyboardWasShown:(NSNotification*)aNotification {
     NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+//    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    self.scrollView.contentInset = contentInsets;
-    self.scrollView.scrollIndicatorInsets = contentInsets;
-
-    CGRect aRect = self.view.frame;
-    aRect.size.height -= kbSize.height;
-    [self.scrollView scrollRectToVisible:self.loginButton.frame animated:YES];
+//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+//    self.scrollView.contentInset = contentInsets;
+//    self.scrollView.scrollIndicatorInsets = contentInsets;
+//
+//    CGRect aRect = self.view.frame;
+//    aRect.size.height -= kbSize.height;
+//    [self.scrollView scrollRectToVisible:self.loginButton.frame animated:YES];
+    
+    
+    
+    NSTimeInterval animationDuration =
+    [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    self.loginButton.center = CGPointMake(self.loginButton.center.x, self.loginButton.center.y - 60);
+    
+    CGRect frame = self.view.frame;
+    frame.origin.y -= 60;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    self.view.frame = frame;
+    [UIView commitAnimations];
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    NSTimeInterval animationDuration =
+    [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect frame = self.view.frame;
+    frame.origin.y += 60;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    self.view.frame = frame;
+    [UIView commitAnimations];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -89,6 +128,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
 }
 
 - (IBAction)onLogin:(id)sender {

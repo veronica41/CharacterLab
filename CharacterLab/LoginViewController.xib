@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,8 +8,10 @@
             <connections>
                 <outlet property="loginButton" destination="2g9-Yv-Vbe" id="IeQ-bO-pzA"/>
                 <outlet property="passwordField" destination="TE7-r5-Ynh" id="Jar-8H-1Bl"/>
+                <outlet property="passwordLine" destination="70e-Og-Y6b" id="s7Q-r4-tJO"/>
                 <outlet property="scrollView" destination="zjX-pw-Cpa" id="Efc-YX-6JN"/>
                 <outlet property="userNameField" destination="Q9u-FN-9TI" id="HcA-6H-pvd"/>
+                <outlet property="userNameLine" destination="70z-HY-jxd" id="xwJ-qz-Qi8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,65 +24,61 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Zzj-tp-nqd">
-                            <rect key="frame" x="60" y="78" width="200" height="158"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Zzj-tp-nqd">
+                            <rect key="frame" x="85" y="80" width="150" height="118"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="158" id="HD1-Ah-yJl"/>
-                                <constraint firstAttribute="width" constant="200" id="acz-DA-bGM"/>
-                            </constraints>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9u-FN-9TI">
-                            <rect key="frame" x="74" y="294" width="172" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="172" id="T9f-Xa-8FS"/>
-                                <constraint firstAttribute="width" constant="172" id="tpd-3W-fcu"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                        </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TE7-r5-Ynh">
-                            <rect key="frame" x="74" y="354" width="172" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="172" id="HaF-8B-6e0"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="172" id="JGI-UH-cvW"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                        </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-Yv-Vbe">
-                            <rect key="frame" x="90" y="422" width="140" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2g9-Yv-Vbe">
+                            <rect key="frame" x="90" y="413" width="140" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="140" id="rL3-oU-dAF"/>
                                 <constraint firstAttribute="height" constant="30" id="tMg-dR-Iip"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                             <state key="normal" title="Login">
-                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" red="1" green="0.95271791910000003" blue="0.30056485500000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" red="1" green="0.95271791910000003" blue="0.30056485500000002" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="onLogin:" destination="-1" eventType="touchUpInside" id="Kqr-LZ-XZh"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9u-FN-9TI">
+                            <rect key="frame" x="34" y="252" width="253" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TE7-r5-Ynh">
+                            <rect key="frame" x="34" y="301" width="253" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="172" id="HaF-8B-6e0"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="172" id="JGI-UH-cvW"/>
+                                <constraint firstAttribute="height" constant="30" id="gMY-Vg-nBY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                        </textField>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="70z-HY-jxd">
+                            <rect key="frame" x="32" y="279" width="256" height="2"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="70e-Og-Y6b">
+                            <rect key="frame" x="31" y="327" width="256" height="2"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="2g9-Yv-Vbe" firstAttribute="top" secondItem="TE7-r5-Ynh" secondAttribute="bottom" constant="38" id="1ra-x0-hGf"/>
-                        <constraint firstItem="Zzj-tp-nqd" firstAttribute="leading" secondItem="zjX-pw-Cpa" secondAttribute="leading" constant="60" id="7e2-tO-Nyh"/>
-                        <constraint firstItem="TE7-r5-Ynh" firstAttribute="top" secondItem="Q9u-FN-9TI" secondAttribute="bottom" constant="30" id="JXB-Qk-NVV"/>
-                        <constraint firstItem="2g9-Yv-Vbe" firstAttribute="centerX" secondItem="TE7-r5-Ynh" secondAttribute="centerX" id="Jdi-k6-tL1"/>
-                        <constraint firstItem="Zzj-tp-nqd" firstAttribute="top" secondItem="zjX-pw-Cpa" secondAttribute="top" constant="78" id="VYY-4p-NHp"/>
-                        <constraint firstItem="2g9-Yv-Vbe" firstAttribute="centerX" secondItem="Zzj-tp-nqd" secondAttribute="centerX" id="YlK-7x-xSS"/>
-                        <constraint firstItem="Q9u-FN-9TI" firstAttribute="top" secondItem="Zzj-tp-nqd" secondAttribute="bottom" constant="58" id="Zu9-CN-qUy"/>
-                        <constraint firstAttribute="bottom" secondItem="2g9-Yv-Vbe" secondAttribute="bottom" constant="116" id="oUr-so-D2h"/>
-                        <constraint firstItem="2g9-Yv-Vbe" firstAttribute="centerX" secondItem="Q9u-FN-9TI" secondAttribute="centerX" id="uzo-Pd-UfB"/>
-                        <constraint firstAttribute="trailing" secondItem="Zzj-tp-nqd" secondAttribute="trailing" constant="60" id="yLw-aO-WwN"/>
-                    </constraints>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="psZ-XI-awh" appends="YES" id="eM4-Z8-xtK"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -94,6 +92,11 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
+        <tapGestureRecognizer id="psZ-XI-awh">
+            <connections>
+                <action selector="onTap:" destination="-1" id="Rbp-uV-ozI"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="logo" width="300" height="239"/>
