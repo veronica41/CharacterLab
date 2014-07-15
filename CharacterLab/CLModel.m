@@ -66,10 +66,24 @@ static NSArray *sTraitDescriptions = nil;
     return sTraitDescriptions[traitIndex];
 }
 
-- (void)getAssessmentsForStudent:(Student *)student
-                         success:(void (^)(NSArray *assessmentList))success
-                         failure:(void (^)(NSError *error))failure {
+- (void)getAssessmentsForMeasurement:(Measurement *)measurement
+                             success:(void (^)(NSArray *assessmentList))success
+                             failure:(void (^)(NSError *error))failure {
     PFQuery *query = [PFQuery queryWithClassName:@"Assessment"];
+    [query whereKey:@"measurement" equalTo:measurement];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            failure(error);
+        } else {
+            success(objects);
+        }
+    }];
+}
+
+- (void)getMeasurementsForStudent:(Student *)student
+                          success:(void (^)(NSArray *measurementsList))success
+                          failure:(void (^)(NSError *error))failure {
+    PFQuery *query = [PFQuery queryWithClassName:@"Measurement"];
     [query whereKey:@"student" equalTo:student];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
@@ -107,10 +121,11 @@ static NSArray *sTraitDescriptions = nil;
 }
 
 - (Measurement *)storeMeasurementForStudent:(Student *)student
-                       description:(NSString *)description
-                           failure:(void (^)(NSError *error))failure {
+                                      title:(NSString *)title
+                                    failure:(void (^)(NSError *error))failure {
     Measurement *m = [[Measurement alloc] init];
-    m.description = description;
+    m.title = title;
+    m.student = student;
     [m save]; // saving the measurement is synchronous for now
     return m;
 }

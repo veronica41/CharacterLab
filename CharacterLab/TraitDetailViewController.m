@@ -119,7 +119,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item+1, (unsigned long)self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -132,7 +132,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
         self.expandedIndexPath = indexPath;
         TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
         [self collectionView:collectionView configureCell:cell atIndexPath:indexPath];
-        [cell setNeedsLayout];
+        [cell layoutIfNeeded];
         CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         if (size.height > kTipsCollectionViewDefaultHeight) {
             [UIView animateWithDuration: 0
@@ -155,6 +155,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
                              [collectionView performBatchUpdates:nil completion:nil];
                          } completion:^(BOOL finished){
                              self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
+                             [self.tipsCollectionView setNeedsLayout];
                          }];
     } else {
         // shrink previous selected cell, expand current selected cell
@@ -166,7 +167,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height;
     if (self.expandedIndexPath && indexPath.item == self.expandedIndexPath.item) {
-        height = MAX(kTipsCollectionViewDefaultHeight, self.tipsCollectionView.contentSize.height);
+        height = MAX(kTipsCollectionViewDefaultHeight, self.tipsCollectionViewHeight.constant);
         return  CGSizeMake(kTipCellDefaultWidth, height);
     }
     return CGSizeMake(kTipCellDefaultWidth, kTipsCollectionViewDefaultHeight);
