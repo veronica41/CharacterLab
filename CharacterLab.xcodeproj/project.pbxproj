@@ -53,6 +53,10 @@
 		B30CD42119740F90006EB3C1 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD42019740F90006EB3C1 /* Measurement.m */; };
 		B30CD43019749E0D006EB3C1 /* MeasurementViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD42E19749E0D006EB3C1 /* MeasurementViewCell.m */; };
 		B30CD43119749E0D006EB3C1 /* MeasurementViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CD42F19749E0D006EB3C1 /* MeasurementViewCell.xib */; };
+		B30CD43A19756FD9006EB3C1 /* ImprovementSuggestionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD43819756FD9006EB3C1 /* ImprovementSuggestionViewCell.m */; };
+		B30CD43B19756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CD43919756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib */; };
+		B30CD43F197571A2006EB3C1 /* ImprovementTraitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD43D197571A2006EB3C1 /* ImprovementTraitViewCell.m */; };
+		B30CD440197571A2006EB3C1 /* ImprovementTraitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CD43E197571A2006EB3C1 /* ImprovementTraitViewCell.xib */; };
 		B34A5EAB1972BBA30053696B /* NewAssessmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */; };
 		B34A5EAC1972BBA30053696B /* NewAssessmentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */; };
 		B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FDB19701E8500101EE4 /* CLModel.m */; };
@@ -145,6 +149,12 @@
 		B30CD42D19749E0D006EB3C1 /* MeasurementViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementViewCell.h; sourceTree = "<group>"; };
 		B30CD42E19749E0D006EB3C1 /* MeasurementViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementViewCell.m; sourceTree = "<group>"; };
 		B30CD42F19749E0D006EB3C1 /* MeasurementViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurementViewCell.xib; sourceTree = "<group>"; };
+		B30CD43719756FD9006EB3C1 /* ImprovementSuggestionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImprovementSuggestionViewCell.h; sourceTree = "<group>"; };
+		B30CD43819756FD9006EB3C1 /* ImprovementSuggestionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImprovementSuggestionViewCell.m; sourceTree = "<group>"; };
+		B30CD43919756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImprovementSuggestionViewCell.xib; sourceTree = "<group>"; };
+		B30CD43C197571A2006EB3C1 /* ImprovementTraitViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImprovementTraitViewCell.h; sourceTree = "<group>"; };
+		B30CD43D197571A2006EB3C1 /* ImprovementTraitViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImprovementTraitViewCell.m; sourceTree = "<group>"; };
+		B30CD43E197571A2006EB3C1 /* ImprovementTraitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImprovementTraitViewCell.xib; sourceTree = "<group>"; };
 		B34A5EA81972BBA30053696B /* NewAssessmentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAssessmentViewCell.h; sourceTree = "<group>"; };
 		B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAssessmentViewCell.m; sourceTree = "<group>"; };
 		B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewAssessmentViewCell.xib; sourceTree = "<group>"; };
@@ -255,6 +265,12 @@
 				B30CD42D19749E0D006EB3C1 /* MeasurementViewCell.h */,
 				B30CD42E19749E0D006EB3C1 /* MeasurementViewCell.m */,
 				B30CD42F19749E0D006EB3C1 /* MeasurementViewCell.xib */,
+				B30CD43719756FD9006EB3C1 /* ImprovementSuggestionViewCell.h */,
+				B30CD43819756FD9006EB3C1 /* ImprovementSuggestionViewCell.m */,
+				B30CD43919756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib */,
+				B30CD43C197571A2006EB3C1 /* ImprovementTraitViewCell.h */,
+				B30CD43D197571A2006EB3C1 /* ImprovementTraitViewCell.m */,
+				B30CD43E197571A2006EB3C1 /* ImprovementTraitViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -448,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */,
+				B30CD43B19756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib in Resources */,
 				13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */,
 				1329E269197254D300C839F8 /* StudentsCollectionHeaderView.xib in Resources */,
 				B30CD43119749E0D006EB3C1 /* MeasurementViewCell.xib in Resources */,
@@ -461,6 +478,7 @@
 				96B3A3CF196B8C130071F8FD /* TraitDetailViewController.xib in Resources */,
 				13E01C121968A42000A94277 /* StudentsViewController.xib in Resources */,
 				13E01C1D1968DA4B00A94277 /* MultiPageViewController.xib in Resources */,
+				B30CD440197571A2006EB3C1 /* ImprovementTraitViewCell.xib in Resources */,
 				13E01C151968A63500A94277 /* StudentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +545,8 @@
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
 				1329E267197254B700C839F8 /* StudentsCollectionHeaderView.m in Sources */,
+				B30CD43F197571A2006EB3C1 /* ImprovementTraitViewCell.m in Sources */,
+				B30CD43A19756FD9006EB3C1 /* ImprovementSuggestionViewCell.m in Sources */,
 				960937CD19733BC300414B21 /* Tip.m in Sources */,
 				B30CD42119740F90006EB3C1 /* Measurement.m in Sources */,
 				13E01C2D196BEEAE00A94277 /* TraitsViewController.m in Sources */,

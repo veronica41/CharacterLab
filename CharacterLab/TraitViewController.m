@@ -134,7 +134,6 @@ CGFloat const kTransitionDuration = 0.5;
         detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
         fromImageView = self.imageView;
         // reference detailViewController.view to trigger viewDidLoad so that we can get a reference to detailViewController.traitImageView
-        UIView *temp = detailViewController.view;
         toImageView = detailViewController.traitImageView;
     } else {
         detailViewController = (TraitDetailViewController *)((UINavigationController *)fromViewController).topViewController;

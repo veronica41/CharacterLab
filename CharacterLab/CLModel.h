@@ -62,4 +62,9 @@
                                success:(void (^)(Measurement *measurement))success
                                failure:(void (^)(NSError *error))failure;
 
+- (void)getLowestScoringTraitsForAssessment:(NSArray *)assessmentList
+                                      limit:(NSInteger)limit
+                                    success:(void (^)(NSArray *traitList))success
+                                    failure:(void (^)(NSError *error))failure;
+
 @end
