@@ -10,7 +10,7 @@
 #import "TraitViewController.h"
 #import "TraitDetailViewController.h"
 
-CGFloat const kTransitionDuration = 0.5;
+CGFloat const kTransitionDuration = 5;
 CGFloat const kMaxAnimatingImageRadius = 200;
 
 @interface TraitViewController ()
@@ -124,29 +124,81 @@ CGFloat const kMaxAnimatingImageRadius = 200;
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
+    NSData *tempArchiveView = [NSKeyedArchiver archivedDataWithRootObject:self.view];
+    CGRect viewFrame = [self.view convertRect:self.view.bounds toView:containerView];
+
+    UIView *animatingBackgroundView = [NSKeyedUnarchiver unarchiveObjectWithData:tempArchiveView];
+    [animatingBackgroundView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    animatingBackgroundView.layer.cornerRadius = self.view.layer.cornerRadius;
+    [containerView addSubview:animatingBackgroundView];
+
+    UIView *viewWithOnlyTextSubviews = [NSKeyedUnarchiver unarchiveObjectWithData:tempArchiveView];
+    UIView *subview = viewWithOnlyTextSubviews.subviews[0];
+    for (UIView *view in subview.subviews) {
+        if([view isKindOfClass:[UIImageView class]]){
+            view.alpha = 0;
+            break;
+        }
+    }
+    viewWithOnlyTextSubviews.backgroundColor = [UIColor clearColor];
+    viewWithOnlyTextSubviews.frame = viewFrame;
+    [containerView addSubview:viewWithOnlyTextSubviews];
+
     // init from/to properties based on whether we're presenting or dismissing
+    TraitDetailViewController *detailViewController;
+    CGRect fromBackgroundFrame;
+    CGRect toBackgroundFrame;
+    CGFloat fromTextSubviewsAlpha;
+    CGFloat toTextSubviewsAlpha;
+    CGFloat fromTitleBarAlpha;
+    CGFloat toTitleBarAlpha;
     UIImageView *fromImageView;
     CGFloat fromRadius;
     UIImageView *toImageView;
     CGFloat toRadius;
     if (self.presentingVC) {
-        [containerView addSubview:toViewController.view];
-        toViewController.view.alpha = 0;
+        detailViewController = (TraitDetailViewController *)toViewController;
+        [containerView addSubview:detailViewController.view];
 
-        TraitDetailViewController *detailViewController = (TraitDetailViewController *)toViewController;
+        fromBackgroundFrame = viewFrame;
+        toBackgroundFrame = detailViewController.scrollView.frame;
+
+        fromTextSubviewsAlpha = 1;
+        toTextSubviewsAlpha = 0;
+
+        fromTitleBarAlpha = 0;
+        toTitleBarAlpha = 1;
+
         fromImageView = self.imageView;
         fromRadius = self.imageView.layer.cornerRadius;
-        // reference detailViewController.view to trigger viewDidLoad so that we can get a reference to detailViewController.traitImageView
-        detailViewController.view;
         toImageView = detailViewController.traitImageView;
         toRadius = kMaxAnimatingImageRadius;
     } else {
-        TraitDetailViewController *detailViewController = (TraitDetailViewController *)fromViewController;
+        // re-add for layering position
+        detailViewController = (TraitDetailViewController *)fromViewController;
+        [containerView addSubview:detailViewController.view];
+
+        fromBackgroundFrame = detailViewController.scrollView.frame;
+        toBackgroundFrame = viewFrame;
+
+        fromTextSubviewsAlpha = 0;
+        toTextSubviewsAlpha = 1;
+
+        fromTitleBarAlpha = 1;
+        toTitleBarAlpha = 0;
+
         fromImageView = detailViewController.traitImageView;
         fromRadius = kMaxAnimatingImageRadius;
         toImageView = self.imageView;
         toRadius = self.imageView.layer.cornerRadius;
     }
+
+    animatingBackgroundView.frame = fromBackgroundFrame;
+    viewWithOnlyTextSubviews.alpha = fromTextSubviewsAlpha;
+    detailViewController.titleBar.alpha = fromTitleBarAlpha;
+    detailViewController.view.backgroundColor = [UIColor clearColor];
+    detailViewController.titleBar.backgroundColor = [UIColor clearColor];
+    detailViewController.contentView.backgroundColor = [UIColor clearColor];
 
     // get the frames of fromImageView and toImageView in containerView's bounds
     CGRect fromImageViewFrame = [fromImageView convertRect:fromImageView.bounds toView:containerView];
@@ -192,12 +244,20 @@ CGFloat const kMaxAnimatingImageRadius = 200;
 
     // animate the actual views
     [UIView animateWithDuration:kTransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        animatingBackgroundView.frame = toBackgroundFrame;
+        viewWithOnlyTextSubviews.alpha = toTextSubviewsAlpha;
+        detailViewController.titleBar.alpha = toTitleBarAlpha;
         animatingImageView.frame = toFrame;
         fromViewController.view.alpha = 0;
         toViewController.view.alpha = 1;
     } completion:^(BOOL finished) {
         fromImageView.alpha = 1;
         toImageView.alpha = 1;
+        detailViewController.view.backgroundColor = [UIColor blackColor];
+        detailViewController.titleBar.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+        detailViewController.contentView.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+        [animatingBackgroundView removeFromSuperview];
+        [viewWithOnlyTextSubviews removeFromSuperview];
         [animatingImageView removeFromSuperview];
         [transitionContext completeTransition:YES];
     }];
