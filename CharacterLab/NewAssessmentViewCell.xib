@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -13,25 +13,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="curiosityCircle" translatesAutoresizingMaskIntoConstraints="NO" id="IkF-ru-oeq" userLabel="iconImage">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="curiosityCircle" translatesAutoresizingMaskIntoConstraints="NO" id="IkF-ru-oeq" userLabel="iconImage">
                         <rect key="frame" x="9" y="3" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="2ie-Rk-u4W"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Curiosity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUI-4h-OcG" userLabel="descriptionLabel">
-                        <rect key="frame" x="57" y="12" width="68" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="Curiosity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUI-4h-OcG" userLabel="descriptionLabel">
+                        <rect key="frame" x="57" y="12" width="130" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="LGb-hk-6Nd"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="asJ-uq-LA5" userLabel="slider">
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="asJ-uq-LA5" userLabel="slider">
                         <rect key="frame" x="193" y="8" width="99" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="95" id="VY0-Fp-khb"/>
+                        </constraints>
                         <connections>
                             <action selector="onSliderUpdate:" destination="KGk-i7-Jjw" eventType="valueChanged" id="ZJC-Ki-3u9"/>
                         </connections>
                     </slider>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzU-lD-T78" userLabel="assessmentLabel">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzU-lD-T78" userLabel="assessmentLabel">
                         <rect key="frame" x="294" y="13" width="21" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -39,6 +48,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="lUI-4h-OcG" firstAttribute="leading" secondItem="IkF-ru-oeq" secondAttribute="trailing" constant="8" id="FXB-Z7-xgU"/>
+                    <constraint firstAttribute="bottom" secondItem="lUI-4h-OcG" secondAttribute="bottom" constant="12" id="JRc-iF-LAU"/>
+                    <constraint firstItem="jzU-lD-T78" firstAttribute="leading" secondItem="asJ-uq-LA5" secondAttribute="trailing" constant="4" id="P9u-M2-bRb"/>
+                    <constraint firstAttribute="trailing" secondItem="jzU-lD-T78" secondAttribute="trailing" constant="5" id="Ph1-7N-fMh"/>
+                    <constraint firstItem="lUI-4h-OcG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="WWS-ad-A3g"/>
+                    <constraint firstAttribute="bottom" secondItem="IkF-ru-oeq" secondAttribute="bottom" constant="2" id="ey8-Qe-1Ds"/>
+                    <constraint firstItem="asJ-uq-LA5" firstAttribute="leading" secondItem="lUI-4h-OcG" secondAttribute="trailing" constant="8" id="jSC-R2-dux"/>
+                    <constraint firstItem="jzU-lD-T78" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="muC-Cv-kft"/>
+                    <constraint firstItem="IkF-ru-oeq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="nHp-7m-eSk"/>
+                    <constraint firstAttribute="bottom" secondItem="jzU-lD-T78" secondAttribute="bottom" constant="11" id="nUj-Cu-c9K"/>
+                    <constraint firstItem="IkF-ru-oeq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="of2-ig-NSm"/>
+                    <constraint firstItem="asJ-uq-LA5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="sdt-eI-oGj"/>
+                    <constraint firstAttribute="bottom" secondItem="asJ-uq-LA5" secondAttribute="bottom" constant="7" id="vKO-IK-LOB"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="assessmentLabel" destination="jzU-lD-T78" id="dYg-pq-MSK"/>
