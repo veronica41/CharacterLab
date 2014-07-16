@@ -25,7 +25,8 @@
 
 @interface MultiPageViewController : UIViewController <UIScrollViewDelegate>
 
-@property (nonatomic, assign) CGFloat verticalMargin;
+@property (nonatomic, assign) CGFloat topMargin;
+@property (nonatomic, assign) CGFloat bottomMargin;
 @property (nonatomic, assign) CGFloat horizontalMargin;
 @property (nonatomic, assign) CGFloat distanceBetweenPages;
 @property (nonatomic, assign) CGFloat secondaryPageScale;

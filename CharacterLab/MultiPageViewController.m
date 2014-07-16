@@ -48,8 +48,8 @@
     self.scrollView.backgroundColor = self.backgroundColor;
     self.scrollView.delegate = self;
 
-    self.scrollViewTopMargin.constant = self.verticalMargin;
-    self.scrollViewBottomMargin.constant = self.verticalMargin;
+    self.scrollViewTopMargin.constant = self.topMargin;
+    self.scrollViewBottomMargin.constant = self.bottomMargin;
 
     // subtract half the distance between pages from each side since each child view controller will be horizontally inset by that distance
     self.scrollViewLeftMargin.constant = self.horizontalMargin - self.distanceBetweenPages / 2;

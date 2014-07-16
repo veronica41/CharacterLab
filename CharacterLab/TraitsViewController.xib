@@ -16,15 +16,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-Cm-avP">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-3f-hFW">
-                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-3f-hFW">
+                    <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="iyM-ti-cZY"/>
+                        <constraint firstAttribute="height" constant="70" id="iyM-ti-cZY"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <state key="normal" title="Manage Your Students">
@@ -41,7 +41,7 @@
                 <constraint firstItem="aA9-Cm-avP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HBa-7c-4TN"/>
                 <constraint firstAttribute="trailing" secondItem="YRO-3f-hFW" secondAttribute="trailing" id="JkU-6y-npD"/>
                 <constraint firstItem="YRO-3f-hFW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QHX-vx-ZNi"/>
-                <constraint firstItem="YRO-3f-hFW" firstAttribute="top" secondItem="aA9-Cm-avP" secondAttribute="bottom" id="VBe-bd-Gha"/>
+                <constraint firstItem="YRO-3f-hFW" firstAttribute="top" secondItem="aA9-Cm-avP" secondAttribute="bottom" constant="20" id="VBe-bd-Gha"/>
                 <constraint firstAttribute="trailing" secondItem="aA9-Cm-avP" secondAttribute="trailing" id="Xm3-X9-yi3"/>
                 <constraint firstAttribute="bottom" secondItem="YRO-3f-hFW" secondAttribute="bottom" id="m0y-CJ-9P3"/>
                 <constraint firstItem="aA9-Cm-avP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mvO-gv-NzH"/>

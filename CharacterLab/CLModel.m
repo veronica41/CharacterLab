@@ -66,11 +66,32 @@ static NSArray *sTraitDescriptions = nil;
     return sTraitDescriptions[traitIndex];
 }
 
+
+- (void)getLowestScoringTraitsForAssessment:(NSArray *)assessmentList
+                                      limit:(NSInteger)limit
+                                    success:(void (^)(NSArray *traitList))success
+                                    failure:(void (^)(NSError *error))failure {
+    NSMutableArray *traitsToImprove = [NSMutableArray array];
+    for (int i = 0 ; i < limit ; i++) {
+        Assessment *assessment = [assessmentList objectAtIndex:i];
+        [traitsToImprove addObject:assessment.trait];
+    }
+    [Trait fetchAllIfNeededInBackground:traitsToImprove block:^(NSArray *objects, NSError *error) {
+        if (error) {
+            failure(error);
+        }
+        else {
+            success(objects);
+        }
+    }];
+}
+
 - (void)getAssessmentsForMeasurement:(Measurement *)measurement
                              success:(void (^)(NSArray *assessmentList))success
                              failure:(void (^)(NSError *error))failure {
     PFQuery *query = [PFQuery queryWithClassName:@"Assessment"];
     [query whereKey:@"measurement" equalTo:measurement];
+    [query orderByAscending:@"score"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
@@ -130,9 +151,25 @@ static NSArray *sTraitDescriptions = nil;
     return m;
 }
 
-- (void)updateLastMeasurementTSForStudent:(Student *)student
-                                  failure:(void (^)(NSError *error))failure {
+- (void)getLatestMeasurementForStudent:(Student *)student
+                                        success:(void (^)(Measurement *measurement))success
+                                        failure:(void (^)(NSError *error))failure {
+    PFQuery *query = [PFQuery queryWithClassName:@"Measurement"];
+    [query getObjectInBackgroundWithId:student.lastMeasurementID block:^(PFObject *object, NSError *error) {
+        if (error) {
+            failure(error);
+        }
+        else {
+            success((Measurement *)object);
+        }
+    }];
+}
+
+- (void)updateStudent:(Student *)student
+          measurement:(Measurement *)measurement
+              failure:(void (^)(NSError *error))failure {
     student.lastAssessmentTS = [NSDate date];
+    student.lastMeasurementID = measurement.objectId;
     [student save]; // this operation is synchronous for now
 }
 

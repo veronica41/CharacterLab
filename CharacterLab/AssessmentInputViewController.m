@@ -115,7 +115,7 @@
                                    NSLog(@"Failed to record an assessment");
                                }];
     }
-    [CLClient updateLastMeasurementTSForStudent:self.student failure:nil];
+    [CLClient updateStudent:self.student measurement:measurement failure:nil];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }

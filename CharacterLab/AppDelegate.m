@@ -11,6 +11,7 @@
 #import "TraitsViewController.h"
 #import "StudentsViewController.h"
 #import "LoginViewController.h"
+#import "CLColor.h"
 
 @interface AppDelegate () <LoginViewControllerDelegate>
 
@@ -41,7 +42,7 @@
         self.window.rootViewController = self.mainViewController;
     }
 
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = UIColorFromHEX(CLColorDarkGray);
     [self.window makeKeyAndVisible];
     return YES;
 }

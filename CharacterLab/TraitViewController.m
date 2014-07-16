@@ -11,6 +11,7 @@
 #import "TraitDetailViewController.h"
 
 CGFloat const kTransitionDuration = 0.5;
+CGFloat const kMaxAnimatingImageRadius = 200;
 
 @interface TraitViewController ()
 
@@ -75,12 +76,21 @@ CGFloat const kTransitionDuration = 0.5;
     self.view.alpha = 1 - 0.4 * numPagesFromCenter;
 
     // scale the views by the same amount the view controller was scaled
+<<<<<<< HEAD
     self.titleLabel.font = [UIFont fontWithName:@"Avenir" size:30 * scale];
     self.descriptionLabel.font = [UIFont fontWithName:@"Avenir" size:13 * scale];
     self.exploreLabel.font = [UIFont fontWithName:@"Avenir" size:13 * scale];
     self.imageWidth.constant = 158 * scale;
     self.imageHeight.constant = 158 * scale;
     self.imageView.layer.cornerRadius = 79 * scale;
+=======
+    self.titleLabel.font = [UIFont systemFontOfSize:30 * scale];
+    self.descriptionLabel.font = [UIFont systemFontOfSize:15 * scale];
+    self.exploreLabel.font = [UIFont systemFontOfSize:13 * scale];
+    self.imageWidth.constant = 180 * scale;
+    self.imageHeight.constant = 180 * scale;
+    self.imageView.layer.cornerRadius = 90 * scale;
+>>>>>>> 9cbf89457744cb137f83a326050c3a5b0be93c31
 }
 
 #pragma mark - event handlers
@@ -124,51 +134,80 @@ CGFloat const kTransitionDuration = 0.5;
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
+    // init from/to properties based on whether we're presenting or dismissing
     UIImageView *fromImageView;
-    CGRect toFrame;
-    CGFloat toCornerRadius;
-    TraitDetailViewController *detailViewController;
+    CGFloat fromRadius;
+    UIImageView *toImageView;
+    CGFloat toRadius;
     if (self.presentingVC) {
-        detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
-        fromImageView = self.imageView;
-        detailViewController.hideImageViewOnLoad = YES;
-        toFrame = CGRectMake(0, 64, 320, 224);
-        toCornerRadius = 0;
-
         [containerView addSubview:toViewController.view];
         toViewController.view.alpha = 0;
+
+        TraitDetailViewController *detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
+        fromImageView = self.imageView;
+        fromRadius = self.imageView.layer.cornerRadius;
+        // reference detailViewController.view to trigger viewDidLoad so that we can get a reference to detailViewController.traitImageView
+        detailViewController.view;
+        toImageView = detailViewController.traitImageView;
+        toRadius = kMaxAnimatingImageRadius;
     } else {
-        detailViewController = (TraitDetailViewController *)((UINavigationController *)fromViewController).topViewController;
+        TraitDetailViewController *detailViewController = (TraitDetailViewController *)((UINavigationController *)fromViewController).topViewController;
         fromImageView = detailViewController.traitImageView;
-        self.imageView.alpha = 0;
-        toFrame = [self.imageView convertRect:self.imageView.bounds toView:containerView];
-        toCornerRadius = self.imageView.layer.cornerRadius;
+        fromRadius = kMaxAnimatingImageRadius;
+        toImageView = self.imageView;
+        toRadius = self.imageView.layer.cornerRadius;
     }
 
+    // get the frames of fromImageView and toImageView in containerView's bounds
     CGRect fromImageViewFrame = [fromImageView convertRect:fromImageView.bounds toView:containerView];
-    UIImageView *animatingImageView = [[UIImageView alloc] initWithFrame:fromImageViewFrame];
-    animatingImageView.clipsToBounds = fromImageView.clipsToBounds;
-    animatingImageView.contentMode = fromImageView.contentMode;
+    CGRect toImageViewFrame;
+    // TODO(rajeev): this is hax, figure out why the rect isn't right
+    if (self.presentingVC) {
+        toImageViewFrame = CGRectMake(0, 64, 320, 224);
+    } else {
+        toImageViewFrame = [toImageView convertRect:toImageView.bounds toView:containerView];
+    }
+
+    // adjust the frames so that they both match the larger frame's x-bounds (so that the circle mask has room to grow horizontally)
+    CGFloat minFrameX = MIN(fromImageViewFrame.origin.x, toImageViewFrame.origin.x);
+    CGFloat maxFrameWidth = MAX(fromImageViewFrame.size.width, toImageViewFrame.size.width);
+    CGRect fromFrame = CGRectMake(minFrameX, fromImageViewFrame.origin.y, maxFrameWidth, fromImageViewFrame.size.height);
+    CGRect toFrame = CGRectMake(minFrameX, toImageViewFrame.origin.y, maxFrameWidth, toImageViewFrame.size.height);
+
+    // init the animating image view
+    UIImageView *animatingImageView = [[UIImageView alloc] initWithFrame:fromFrame];
+    animatingImageView.clipsToBounds = YES;
+    animatingImageView.contentMode = UIViewContentModeScaleAspectFill;
     animatingImageView.image = fromImageView.image;
-    animatingImageView.layer.cornerRadius = fromImageView.layer.cornerRadius;
+
+    // mask a circular region of the image
+    CAShapeLayer *circleMask = [CAShapeLayer layer];
+    circleMask.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(fromFrame.size.width / 2 - fromRadius, fromFrame.size.height / 2 - fromRadius, 2 * fromRadius, 2 * fromRadius) cornerRadius:fromRadius].CGPath;
+    animatingImageView.layer.mask = circleMask;
+
+    // add the animating view directly to the container (on top of both view controllers) and hide the actual images
     [containerView addSubview:animatingImageView];
     fromImageView.alpha = 0;
+    toImageView.alpha = 0;
 
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
-    animation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.fromValue = @(animatingImageView.layer.cornerRadius);
-    animation.toValue = @(toCornerRadius);
-    animation.duration = kTransitionDuration;
-    animatingImageView.layer.cornerRadius = toCornerRadius;
-    [animatingImageView.layer addAnimation:animation forKey:@"cornerRadius"];
+    // animate the circular mask's size
+    UIBezierPath *toPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(toFrame.size.width / 2 - toRadius, toFrame.size.height / 2 - toRadius, 2 * toRadius, 2 * toRadius) cornerRadius:toRadius];
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
+    pathAnimation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pathAnimation.fromValue = (id)circleMask.path;
+    pathAnimation.toValue = (id)toPath.CGPath;
+    pathAnimation.duration = kTransitionDuration;
+    circleMask.path = toPath.CGPath;
+    [animatingImageView.layer.mask addAnimation:pathAnimation forKey:@"path"];
 
+    // animate the actual views
     [UIView animateWithDuration:kTransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         animatingImageView.frame = toFrame;
         fromViewController.view.alpha = 0;
         toViewController.view.alpha = 1;
     } completion:^(BOOL finished) {
-        self.imageView.alpha = 1;
-        detailViewController.traitImageView.alpha = 1;
+        fromImageView.alpha = 1;
+        toImageView.alpha = 1;
         [animatingImageView removeFromSuperview];
         [transitionContext completeTransition:YES];
     }];

@@ -13,6 +13,5 @@
 
 @property (nonatomic, strong) Trait *trait;
 @property (weak, nonatomic) IBOutlet UIImageView *traitImageView;
-@property (nonatomic, assign) BOOL hideImageViewOnLoad;
 
 @end

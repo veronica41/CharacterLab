@@ -27,11 +27,11 @@
                     </collectionViewFlowLayout>
                     <cells/>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGV-0C-fAJ">
-                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGV-0C-fAJ">
+                    <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="5Tq-nW-0KQ"/>
+                        <constraint firstAttribute="height" constant="70" id="5Tq-nW-0KQ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <state key="normal" title="See Character Strengths">

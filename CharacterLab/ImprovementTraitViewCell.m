@@ -1,17 +1,14 @@
 //
-//  TipCell.m
+//  ImprovementTraitViewCell.m
 //  CharacterLab
 //
-//  Created by Veronica Zheng on 7/13/14.
+//  Created by Pierpaolo Baccichet on 7/15/14.
 //  Copyright (c) 2014 Dropbox. All rights reserved.
 //
 
-#import "TipCell.h"
+#import "ImprovementTraitViewCell.h"
 
-@interface TipCell ()
-@end
-
-@implementation TipCell
+@implementation ImprovementTraitViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {

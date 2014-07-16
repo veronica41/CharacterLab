@@ -20,6 +20,7 @@
 @dynamic teacher;
 @dynamic lastAssessmentTS;
 @dynamic iconColor;
+@dynamic lastMeasurementID;
 
 - (NSString *)initials {
     NSArray *nameComponents = [self.name componentsSeparatedByString: @" "];
