@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="loginButton" destination="2g9-Yv-Vbe" id="IeQ-bO-pzA"/>
+                <outlet property="logo" destination="Zzj-tp-nqd" id="YEx-4G-6Wm"/>
                 <outlet property="passwordField" destination="TE7-r5-Ynh" id="Jar-8H-1Bl"/>
                 <outlet property="passwordLine" destination="70e-Og-Y6b" id="s7Q-r4-tJO"/>
                 <outlet property="scrollView" destination="zjX-pw-Cpa" id="Efc-YX-6JN"/>
@@ -45,9 +46,10 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9u-FN-9TI">
-                            <rect key="frame" x="34" y="252" width="253" height="30"/>
+                            <rect key="frame" x="34" y="251" width="253" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.20784315466880798" green="0.20784315466880798" blue="0.20784315466880798" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                         </textField>
@@ -60,18 +62,19 @@
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="172" id="JGI-UH-cvW"/>
                                 <constraint firstAttribute="height" constant="30" id="gMY-Vg-nBY"/>
                             </constraints>
+                            <color key="textColor" red="0.20784315466880798" green="0.20784315466880798" blue="0.20784315466880798" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                         </textField>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="70z-HY-jxd">
                             <rect key="frame" x="32" y="279" width="256" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.075971044599999996" green="0.39996546509999997" blue="0.39534783359999998" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="70e-Og-Y6b">
                             <rect key="frame" x="31" y="327" width="256" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.075971044599999996" green="0.39996546509999997" blue="0.39534783359999998" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                     </subviews>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

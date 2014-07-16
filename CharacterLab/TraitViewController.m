@@ -75,9 +75,9 @@ CGFloat const kTransitionDuration = 0.5;
     self.view.alpha = 1 - 0.4 * numPagesFromCenter;
 
     // scale the views by the same amount the view controller was scaled
-    self.titleLabel.font = [UIFont systemFontOfSize:30 * scale];
-    self.descriptionLabel.font = [UIFont systemFontOfSize:15 * scale];
-    self.exploreLabel.font = [UIFont systemFontOfSize:13 * scale];
+    self.titleLabel.font = [UIFont fontWithName:@"Avenir" size:30 * scale];
+    self.descriptionLabel.font = [UIFont fontWithName:@"Avenir" size:13 * scale];
+    self.exploreLabel.font = [UIFont fontWithName:@"Avenir" size:13 * scale];
     self.imageWidth.constant = 158 * scale;
     self.imageHeight.constant = 158 * scale;
     self.imageView.layer.cornerRadius = 79 * scale;

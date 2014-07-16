@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIView *loginViewBox;
 @property (weak, nonatomic) IBOutlet UIView *passwordLine;
+@property (weak, nonatomic) IBOutlet UIImageView *logo;
 
 @property (weak, nonatomic) IBOutlet UIView *userNameLine;
 
@@ -73,7 +74,7 @@
 
 
 - (void)keyboardWasShown:(NSNotification*)aNotification {
-    NSDictionary* info = [aNotification userInfo];
+//    NSDictionary* info = [aNotification userInfo];
 //    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
 //    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
@@ -84,18 +85,30 @@
 //    aRect.size.height -= kbSize.height;
 //    [self.scrollView scrollRectToVisible:self.loginButton.frame animated:YES];
     
-    
-    
+
+      int verticalShift = 60;
     NSTimeInterval animationDuration =
     [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
-    self.loginButton.center = CGPointMake(self.loginButton.center.x, self.loginButton.center.y - 60);
+
     
-    CGRect frame = self.view.frame;
-    frame.origin.y -= 60;
+//    CGRect frame = self.view.frame;
+//    frame.origin.y -= 60;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:animationDuration];
-    self.view.frame = frame;
+    
+    self.loginButton.center = CGPointMake(self.loginButton.center.x, self.loginButton.center.y - 117);
+    
+    self.userNameLine.center = CGPointMake(self.userNameLine.center.x, self.userNameLine.center.y - verticalShift);
+    self.userNameField.center = CGPointMake(self.userNameField.center.x, self.userNameField.center.y - verticalShift);
+    
+    self.passwordLine.center = CGPointMake(self.passwordLine.center.x, self.passwordLine.center.y - verticalShift);
+    self.passwordField.center = CGPointMake(self.passwordField.center.x, self.passwordField.center.y - verticalShift);
+    
+    self.logo.center = CGPointMake(self.logo.center.x, self.logo.center.y - 35);
+
+    
+//    self.view.frame = frame;
     [UIView commitAnimations];
 }
 
@@ -103,14 +116,24 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
-    
+    int verticalShift = 60;
     NSTimeInterval animationDuration =
     [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect frame = self.view.frame;
-    frame.origin.y += 60;
+//    CGRect frame = self.view.frame;
+//    frame.origin.y += 60;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:animationDuration];
-    self.view.frame = frame;
+//    self.view.frame = frame;
+    self.loginButton.center = CGPointMake(self.loginButton.center.x, self.loginButton.center.y + 117);
+    
+    self.userNameLine.center = CGPointMake(self.userNameLine.center.x, self.userNameLine.center.y + verticalShift);
+    self.userNameField.center = CGPointMake(self.userNameField.center.x, self.userNameField.center.y + verticalShift);
+    
+    self.passwordLine.center = CGPointMake(self.passwordLine.center.x, self.passwordLine.center.y + verticalShift);
+    self.passwordField.center = CGPointMake(self.passwordField.center.x, self.passwordField.center.y + verticalShift);
+    
+    self.logo.center = CGPointMake(self.logo.center.x, self.logo.center.y + 35);
+    
     [UIView commitAnimations];
 }
 
