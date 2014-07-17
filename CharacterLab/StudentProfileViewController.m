@@ -71,6 +71,10 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 
     self.mainWrapperView.backgroundColor = [UIColor darkGrayColor];
     self.initialsBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGray);
+    
+    self.nameLabel.font = [UIFont fontWithName:@"Avenir" size:20];
+    self.initialsLabel.font = [UIFont fontWithName:@"Avenir" size:15];
+    self.lastMeasurementTime.font = [UIFont fontWithName:@"Avenir" size:15];
 
     self.nameLabel.text = self.student.name;
     self.initialsLabel.student = self.student;
