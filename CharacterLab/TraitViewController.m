@@ -77,8 +77,8 @@ CGFloat const kMaxAnimatingImageRadius = 200;
 
     // scale the views by the same amount the view controller was scaled
     self.titleLabel.font = [UIFont fontWithName:@"Avenir" size:30 * scale];
-    self.descriptionLabel.font = [UIFont fontWithName:@"Avenir" size:13 * scale];
-    self.exploreLabel.font = [UIFont fontWithName:@"Avenir" size:13 * scale];
+    self.descriptionLabel.font = [UIFont fontWithName:@"Avenir" size:14 * scale];
+    self.exploreLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:14 * scale];
     self.imageWidth.constant = 180 * scale;
     self.imageHeight.constant = 180 * scale;
     self.imageView.layer.cornerRadius = 90 * scale;
