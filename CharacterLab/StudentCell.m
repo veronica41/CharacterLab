@@ -57,6 +57,7 @@
     self.initialsLabel.student = self.student;
     self.nameLabel.text = self.student.name;
     self.nameLabel.font = [UIFont fontWithName:@"Avenir" size:15];
+    self.lastMeasuredLabel.font = [UIFont fontWithName:@"Avenir" size:15];
     self.lastMeasuredLabel.text = self.student.lastAssessmentTS.timeAgoSinceNow;;
 }
 
