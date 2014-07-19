@@ -28,6 +28,9 @@ PODS:
   - MBProgressHUD (0.8)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
+  - PNChart (0.5):
+    - UICountingLabel (~> 1.0.0)
+  - UICountingLabel (1.0.0)
   - YTVimeoExtractor (0.0.6)
 
 DEPENDENCIES:
@@ -36,6 +39,7 @@ DEPENDENCIES:
   - DateTools
   - MBProgressHUD
   - Parse
+  - PNChart (~> 0.5)
   - YTVimeoExtractor
 
 SPEC CHECKSUMS:
@@ -46,6 +50,8 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 82ad03cb9ce568855057e20a099054cf1e34ef12
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
+  PNChart: 0d0cf4531de3aa7f2b12434a54845d70d9c9cfe3
+  UICountingLabel: 0a0e9e34bf4690dbd127aaec552d19ed938087a9
   YTVimeoExtractor: 01d40cdfbd3259bb80aeb1e07c17f3e9e3ccc333
 
 COCOAPODS: 0.33.1
