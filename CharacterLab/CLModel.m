@@ -120,6 +120,27 @@ static NSArray *sTraitDescriptions = nil;
     }];
 }
 
+- (void)getAssessmentForMeasurement:(Measurement *)measurement
+                              trait:(Trait *)trait
+                            success:(void (^)(Assessment * assessment))success
+                            failure:(void (^)(NSError *error))failure {
+    PFQuery *query = [PFQuery queryWithClassName:@"Assessment"];
+    [query whereKey:@"measurement" equalTo:measurement];
+    [query whereKey:@"trait" equalTo:trait];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            failure(error);
+        } else {
+            if (objects.count == 1) {
+                success(objects[0]);
+            } else {
+                success(nil);
+            }
+        }
+    }];
+}
+
+
 - (void)getMeasurementsForStudent:(Student *)student
                           success:(void (^)(NSArray *measurementsList))success
                           failure:(void (^)(NSError *error))failure {

@@ -17,6 +17,7 @@
 static NSString *kTipCellIdentifier = @"TipCell";
 static CGFloat kTipCellDefaultWidth = 280.0;
 static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
+static NSInteger kDefaultNumOfStudents = 5;
 
 @interface TraitDetailViewController ()
 
@@ -26,13 +27,17 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsCollectionViewHeight;
-@property (weak, nonatomic) IBOutlet UIView *traitStatsContainerView;
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
 @property (nonatomic, strong) MPMoviePlayerController *playerController;
 
 @property (nonatomic, strong) NSArray *tips;
 @property (nonatomic) NSIndexPath *expandedIndexPath;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *topStudentsCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *bottomStudentsCollectionView;
+@property (nonatomic, strong) NSArray *topStudents;
+@property (nonatomic, strong) NSArray *bottomStudents;
 
 @end
 
@@ -59,6 +64,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
 
     [self setupVideoPlayer];
     [self setupTipsCollectionView];
+    [self setupStudentsCollectionView];
 
     self.traitImageView.image = [UIImage imageNamed:self.trait.name];
     self.traitDescriptionLabel.text = self.trait.desc;
@@ -97,6 +103,44 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
     }];
 }
 
+- (void)setupStudentsCollectionView {
+    __block NSMutableArray *assessments = [[NSMutableArray alloc] init];
+    [[CLModel sharedInstance] getStudentsForCurrentTeacherWithSuccess:^(NSArray *studentList) {
+        [studentList enumerateObjectsUsingBlock:^(Student * student, NSUInteger idx, BOOL *stop) {
+            [[CLModel sharedInstance] getLatestMeasurementForStudent:student success:^(Measurement *measurement) {
+
+                if (measurement) {
+                    [[CLModel sharedInstance] getAssessmentForMeasurement:measurement trait:self.trait success:^(Assessment *assessment) {
+                        if (assessment) {
+                            [assessments addObject:assessment];
+                            if (assessments.count == studentList.count) {
+                                NSMutableArray *orderedArray = [NSMutableArray arrayWithArray:assessments];
+                                [orderedArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+                                    NSInteger first = ((Assessment*)a).score;
+                                    NSInteger second = ((Assessment*)b).score;
+                                    return second < first;
+                                }];
+                                NSInteger numOfStudents = MIN(kDefaultNumOfStudents, orderedArray.count);
+                                self.bottomStudents = [orderedArray subarrayWithRange:NSMakeRange(0, numOfStudents)];
+                                self.topStudents = [orderedArray subarrayWithRange:NSMakeRange(orderedArray.count-numOfStudents, numOfStudents)];
+                                [self.topStudentsCollectionView reloadData];
+                                [self.bottomStudentsCollectionView reloadData];
+                            }
+                        }
+                    } failure:^(NSError *error) {
+                        NSLog(@"Error getting assessment: %@", error);
+                    }];
+                }
+
+            } failure:^(NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
+        }];
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -120,7 +164,7 @@ static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item+1, (unsigned long)self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
 
 #pragma mark - UICollectionViewDelegate

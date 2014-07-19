@@ -67,4 +67,9 @@
                                     success:(void (^)(NSArray *traitList))success
                                     failure:(void (^)(NSError *error))failure;
 
+- (void)getAssessmentForMeasurement:(Measurement *)measurement
+                              trait:(Trait *)trait
+                            success:(void (^)(Assessment * assessment))success
+                            failure:(void (^)(NSError *error))failure;
+
 @end
