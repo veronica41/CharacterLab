@@ -17,5 +17,8 @@
 @property (nonatomic, copy) NSString *imageUrl;
 @property (nonatomic, copy) NSString *videoUrl;
 @property (nonatomic, assign) NSInteger order;
+@property (nonatomic, copy) NSString *suggestion1;
+@property (nonatomic, copy) NSString *suggestion2;
+@property (nonatomic, copy) NSString *suggestion3;
 
 @end

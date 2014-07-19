@@ -20,5 +20,8 @@
 @dynamic imageUrl;
 @dynamic videoUrl;
 @dynamic order;
+@dynamic suggestion1;
+@dynamic suggestion2;
+@dynamic suggestion3;
 
 @end
