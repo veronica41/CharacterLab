@@ -35,6 +35,7 @@
 - (void)setTraitType:(NSInteger)traitType {
     Trait *trait = [[CLModel sharedInstance] getTraitForIndex:traitType];
     _traitType = traitType;
+    NSLog(@"PIER setting trait %@ type %d", trait, traitType);
     self.iconImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@Circle", [trait.name lowercaseString]]];
     self.descriptionLabel.text = trait.name;
 }

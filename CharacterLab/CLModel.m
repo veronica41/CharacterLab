@@ -53,9 +53,15 @@ static NSArray *sTraitDescriptions = nil;
             }
         }
         else {
-            sTraitDescriptions = objects;
+            NSMutableArray *orderedArray = [NSMutableArray arrayWithArray:objects];
+            [orderedArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+                NSInteger first = ((Trait*)a).order;
+                NSInteger second = ((Trait*)b).order;
+                return second < first;
+            }];
+            sTraitDescriptions = orderedArray;
             if (success) {
-                success(objects);
+                success(orderedArray);
             }
         }
     }];
@@ -71,12 +77,25 @@ static NSArray *sTraitDescriptions = nil;
                                       limit:(NSInteger)limit
                                     success:(void (^)(NSArray *traitList))success
                                     failure:(void (^)(NSError *error))failure {
-    NSMutableArray *traitsToImprove = [NSMutableArray array];
-    for (int i = 0 ; i < limit ; i++) {
-        Assessment *assessment = [assessmentList objectAtIndex:i];
-        [traitsToImprove addObject:assessment.trait];
+
+    if (!assessmentList) {
+        return;
     }
-    [Trait fetchAllIfNeededInBackground:traitsToImprove block:^(NSArray *objects, NSError *error) {
+
+    NSMutableArray *orderedArray = [NSMutableArray arrayWithArray:assessmentList];
+    [orderedArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+        NSInteger first = ((Assessment*)a).score;
+        NSInteger second = ((Assessment*)b).score;
+        return second < first;
+    }];
+
+    NSMutableArray *traitsToFetch = [NSMutableArray array];
+    for (int i = 0 ; i < MIN(limit, orderedArray.count); i++) {
+        Assessment *tmp = (Assessment *)[orderedArray objectAtIndex:i];
+        [traitsToFetch addObject:tmp.trait];
+    }
+
+    [Trait fetchAllIfNeededInBackground:traitsToFetch block:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
         }
