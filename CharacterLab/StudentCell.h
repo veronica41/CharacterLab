@@ -12,5 +12,6 @@
 @interface StudentCell : UICollectionViewCell
 
 @property (nonatomic, strong) Student *student;
+@property (nonatomic, assign) BOOL useDarkTopBackground;
 
 @end

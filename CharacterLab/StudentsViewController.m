@@ -71,6 +71,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     StudentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StudentCell" forIndexPath:indexPath];
     cell.student = self.students[indexPath.row];
+    // give the first cell a dark top background to match the header view background
+    cell.useDarkTopBackground = (indexPath.row == 0);
     return cell;
 }
 
