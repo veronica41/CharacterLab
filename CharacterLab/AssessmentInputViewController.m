@@ -106,7 +106,6 @@
     // This is a bit slow and all synchronous to avoid having to deal with async refresh of the student detail view for now
     Measurement *measurement = [CLClient storeMeasurementForStudent:self.student title:self.descriptionText.text failure:nil];
     for (int traitID = 0 ; traitID < NUM_TRAITS ; traitID++) {
-        NSLog(@"PIER going to store score %d for trait %@", [self.assessmentValues[traitID] integerValue], self.traitObjects[traitID]);
         // Create a new record for each trait in the assessment
         [CLClient storeAssessmentForStudent:self.student
                                 measurement:measurement
