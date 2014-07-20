@@ -7,7 +7,6 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import <CorePlot-CocoaTouch.h>
 
 #import "NSDate+DateTools.h"
 #import "UIImageView+AFNetworking.h"
@@ -19,6 +18,7 @@
 #import "ImprovementTraitViewCell.h"
 #import "StudentProfileViewController.h"
 #import "StudentInitialsLabel.h"
+#import "BarGraphView.h"
 
 static NSString *kMeasurementViewCell = @"MeasurementViewCell";
 static NSString *kImprovementTraitCell = @"ImprovementTraitViewCell";
@@ -28,17 +28,20 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 
 @property (weak, nonatomic) IBOutlet UIView *mainWrapperView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (nonatomic, strong) NSArray *LatestAssessmentScores;
-@property (strong, nonatomic) NSMutableDictionary *traitDescriptions;
 @property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
 @property (weak, nonatomic) IBOutlet UIView *initialsBackgroundView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UITableView *measurementTable;
-@property (nonatomic, strong) NSArray *measurementList;
-@property (nonatomic, strong) Measurement *lastMeasurement;
 @property (weak, nonatomic) IBOutlet UICollectionView *improvementsCollection;
-@property (strong, nonatomic) NSArray *traitsToImprove;
+
+// Private support variables
+@property (nonatomic, strong) NSArray *traitsToImprove;
+@property (nonatomic, strong) NSArray *measurementList;
+@property (nonatomic, strong) NSArray *latestAssessmentScores;
+@property (nonatomic, strong) NSMutableDictionary *traitDescriptions;
+@property (nonatomic, strong) Measurement *lastMeasurement;
+@property (weak, nonatomic) BarGraphView *barGraphView;
 
 - (IBAction)onBackButton:(UIButton *)sender;
 - (IBAction)onMeasurePress:(UIButton *)sender;
@@ -85,6 +88,10 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     [self setupMeasurementsTable];
     [self setupImprovementsSuggestionsCollectionView];
 
+    // setup barchart - the data points are fetched in the callbacks for the datasource
+    BarGraphView *barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 140, self.view.frame.size.width, 200)];
+    [self.view addSubview:barGraphView];
+
     CLModel *client = [CLModel sharedInstance];
     if (self.student.lastMeasurementID) {
         // store the last measurement object
@@ -93,7 +100,8 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
             // Pull data for traits that need improvement
             if (self.measurementList.count > 0) {
                 [[CLModel sharedInstance] getAssessmentsForMeasurement:[self.measurementList objectAtIndex:0] success:^(NSArray *assessmentList) {
-                    self.LatestAssessmentScores = assessmentList;
+                    self.latestAssessmentScores = assessmentList;
+                    [self updateBarChart];
                     [client getLowestScoringTraitsForAssessment:assessmentList limit:3 success:^(NSArray *traitList) {
                         self.traitsToImprove = traitList;
                         [self.improvementsCollection reloadData];
@@ -122,7 +130,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     } failure:^(NSError *error) {
         NSLog(@"Failure retrieving the measurements for %@", self.student);
     }];
-
 }
 
 - (void)setupImprovementsSuggestionsCollectionView {
@@ -136,6 +143,10 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     UINib *improvementSuggestionCellNib = [UINib nibWithNibName:kImprovementTraitCell bundle:nil];
     [self.improvementsCollection registerNib:improvementSuggestionCellNib forCellWithReuseIdentifier:kImprovementTraitCell];
     self.improvementsCollection.contentSize = CGSizeMake(320 * 4, 100);
+}
+
+- (void)updateBarChart {
+    NSLog(@"PIER scores are %@", self.latestAssessmentScores);
 }
 
 #pragma mark - ImprovementSuggestionViewCellDelegate

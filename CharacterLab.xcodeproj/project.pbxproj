@@ -57,6 +57,8 @@
 		B30CD43B19756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CD43919756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib */; };
 		B30CD43F197571A2006EB3C1 /* ImprovementTraitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD43D197571A2006EB3C1 /* ImprovementTraitViewCell.m */; };
 		B30CD440197571A2006EB3C1 /* ImprovementTraitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CD43E197571A2006EB3C1 /* ImprovementTraitViewCell.xib */; };
+		B32CB6B3197B220C00348FD4 /* BarGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32CB6B2197B220C00348FD4 /* BarGraphView.xib */; };
+		B32CB6B6197B223E00348FD4 /* BarGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = B32CB6B5197B223E00348FD4 /* BarGraphView.m */; };
 		B34A5EAB1972BBA30053696B /* NewAssessmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */; };
 		B34A5EAC1972BBA30053696B /* NewAssessmentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */; };
 		B3A92FDC19701E8500101EE4 /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A92FDB19701E8500101EE4 /* CLModel.m */; };
@@ -155,6 +157,9 @@
 		B30CD43C197571A2006EB3C1 /* ImprovementTraitViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImprovementTraitViewCell.h; sourceTree = "<group>"; };
 		B30CD43D197571A2006EB3C1 /* ImprovementTraitViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImprovementTraitViewCell.m; sourceTree = "<group>"; };
 		B30CD43E197571A2006EB3C1 /* ImprovementTraitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImprovementTraitViewCell.xib; sourceTree = "<group>"; };
+		B32CB6B2197B220C00348FD4 /* BarGraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarGraphView.xib; sourceTree = "<group>"; };
+		B32CB6B4197B223E00348FD4 /* BarGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarGraphView.h; sourceTree = "<group>"; };
+		B32CB6B5197B223E00348FD4 /* BarGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarGraphView.m; sourceTree = "<group>"; };
 		B34A5EA81972BBA30053696B /* NewAssessmentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAssessmentViewCell.h; sourceTree = "<group>"; };
 		B34A5EA91972BBA30053696B /* NewAssessmentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAssessmentViewCell.m; sourceTree = "<group>"; };
 		B34A5EAA1972BBA30053696B /* NewAssessmentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewAssessmentViewCell.xib; sourceTree = "<group>"; };
@@ -271,6 +276,9 @@
 				B30CD43C197571A2006EB3C1 /* ImprovementTraitViewCell.h */,
 				B30CD43D197571A2006EB3C1 /* ImprovementTraitViewCell.m */,
 				B30CD43E197571A2006EB3C1 /* ImprovementTraitViewCell.xib */,
+				B32CB6B2197B220C00348FD4 /* BarGraphView.xib */,
+				B32CB6B4197B223E00348FD4 /* BarGraphView.h */,
+				B32CB6B5197B223E00348FD4 /* BarGraphView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -472,6 +480,7 @@
 				B300BA31196640790063E27D /* InfoPlist.strings in Resources */,
 				960937D219735CC400414B21 /* TipCell.xib in Resources */,
 				B34A5EAC1972BBA30053696B /* NewAssessmentViewCell.xib in Resources */,
+				B32CB6B3197B220C00348FD4 /* BarGraphView.xib in Resources */,
 				B300BA39196640790063E27D /* Images.xcassets in Resources */,
 				B3A92FE31971EED200101EE4 /* AssessmentInputViewController.xib in Resources */,
 				13E01C2E196BEEAE00A94277 /* TraitsViewController.xib in Resources */,
@@ -559,6 +568,7 @@
 				960937D51973AADC00414B21 /* CollectionLayoutAlignTop.m in Sources */,
 				960937D019735CB100414B21 /* TipCell.m in Sources */,
 				B3A92FE21971EED200101EE4 /* AssessmentInputViewController.m in Sources */,
+				B32CB6B6197B223E00348FD4 /* BarGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
