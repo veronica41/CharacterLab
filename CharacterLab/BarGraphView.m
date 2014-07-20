@@ -22,6 +22,14 @@ static NSInteger const kBarStep = 44;
 @property (weak, nonatomic) IBOutlet UIView *socialIntelligenceBarView;
 @property (weak, nonatomic) IBOutlet UIView *zestBarView;
 
+@property (weak, nonatomic) IBOutlet UILabel *curiosityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gratitudeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gritLabel;
+@property (weak, nonatomic) IBOutlet UILabel *optimismLabel;
+@property (weak, nonatomic) IBOutlet UILabel *selfControlLabel;
+@property (weak, nonatomic) IBOutlet UILabel *socialIntelligenceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zestLabel;
+
 @end
 
 @implementation BarGraphView
@@ -86,8 +94,15 @@ static NSInteger const kBarStep = 44;
     [self setFrame:self.selfControlBarView width:0];
     [self setFrame:self.socialIntelligenceBarView width:0];
     [self setFrame:self.zestBarView width:0];
+    self.curiosityLabel.alpha = 0;
+    self.gratitudeLabel.alpha = 0;
+    self.gritLabel.alpha = 0;
+    self.optimismLabel.alpha = 0;
+    self.selfControlLabel.alpha = 0;
+    self.socialIntelligenceLabel.alpha = 0;
+    self.zestLabel.alpha = 0;
 
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:1 delay:0.25 options:UIViewAnimationOptionCurveLinear animations:^{
         [self setFrame:self.curiosityBarView width:curiosity * kBarStep];
         [self setFrame:self.gratitudeBarView width:gratitude * kBarStep];
         [self setFrame:self.gritBarView width:grit * kBarStep];
@@ -95,7 +110,16 @@ static NSInteger const kBarStep = 44;
         [self setFrame:self.selfControlBarView width:selfControl * kBarStep];
         [self setFrame:self.socialIntelligenceBarView width:socialIntelligence * kBarStep];
         [self setFrame:self.zestBarView width:zest * kBarStep];
-    }];
+        
+        // Fade in the labels
+        self.curiosityLabel.alpha = 1;
+        self.gratitudeLabel.alpha = 1;
+        self.gritLabel.alpha = 1;
+        self.optimismLabel.alpha = 1;
+        self.selfControlLabel.alpha = 1;
+        self.socialIntelligenceLabel.alpha = 1;
+        self.zestLabel.alpha = 1;
+    } completion:nil];
 }
 
 

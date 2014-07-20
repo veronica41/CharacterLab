@@ -7,12 +7,19 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BarGraphView">
             <connections>
                 <outlet property="curiosityBarView" destination="FRu-p3-okO" id="I6y-qN-GrW"/>
+                <outlet property="curiosityLabel" destination="PiJ-6v-VTm" id="7ac-E2-rBy"/>
                 <outlet property="gratitudeBarView" destination="QOH-4x-55y" id="Sdk-2z-roR"/>
+                <outlet property="gratitudeLabel" destination="SE2-QD-j7n" id="szu-fG-5L7"/>
                 <outlet property="gritBarView" destination="iPy-0W-8cs" id="asD-0T-6em"/>
+                <outlet property="gritLabel" destination="F4Z-25-4c4" id="uf1-98-Do6"/>
                 <outlet property="optimismBarView" destination="K0t-7u-pTQ" id="B3f-wy-PYv"/>
+                <outlet property="optimismLabel" destination="5Ib-mW-z28" id="fg3-sc-GGs"/>
                 <outlet property="selfControlBarView" destination="SFu-82-Vr4" id="YvH-yO-PyV"/>
+                <outlet property="selfControlLabel" destination="lDH-PY-xL2" id="Yaa-mR-oOZ"/>
                 <outlet property="socialIntelligenceBarView" destination="0P6-Bl-TVB" id="l8V-I9-ltf"/>
+                <outlet property="socialIntelligenceLabel" destination="JIl-mi-22e" id="b12-yC-z4D"/>
                 <outlet property="zestBarView" destination="a9m-F0-iiT" id="xkf-72-qY2"/>
+                <outlet property="zestLabel" destination="dQO-uK-OM6" id="HfI-Ei-V9a"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
