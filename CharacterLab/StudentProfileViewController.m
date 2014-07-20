@@ -151,7 +151,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 }
 
 - (void)updateBarChart {
-    NSLog(@"PIER printing scores!");
     [self.barGraphView drawGraphWithAnimation:YES assessmentList:self.latestAssessmentList];
 }
 
