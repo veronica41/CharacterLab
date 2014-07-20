@@ -89,10 +89,9 @@ CGFloat const kMaxAnimatingImageRadius = 200;
 - (IBAction)onTap:(id)sender {
     TraitDetailViewController *detailController = [[TraitDetailViewController alloc] init];
     detailController.trait = self.trait;
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailController];
-    navController.modalPresentationStyle = UIModalPresentationCustom;
-    navController.transitioningDelegate = self;
-    [self presentViewController:navController animated:YES completion:nil];
+    detailController.modalPresentationStyle = UIModalPresentationCustom;
+    detailController.transitioningDelegate = self;
+    [self presentViewController:detailController animated:YES completion:nil];
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
@@ -134,7 +133,7 @@ CGFloat const kMaxAnimatingImageRadius = 200;
         [containerView addSubview:toViewController.view];
         toViewController.view.alpha = 0;
 
-        TraitDetailViewController *detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
+        TraitDetailViewController *detailViewController = (TraitDetailViewController *)toViewController;
         fromImageView = self.imageView;
         fromRadius = self.imageView.layer.cornerRadius;
         // reference detailViewController.view to trigger viewDidLoad so that we can get a reference to detailViewController.traitImageView
@@ -142,7 +141,7 @@ CGFloat const kMaxAnimatingImageRadius = 200;
         toImageView = detailViewController.traitImageView;
         toRadius = kMaxAnimatingImageRadius;
     } else {
-        TraitDetailViewController *detailViewController = (TraitDetailViewController *)((UINavigationController *)fromViewController).topViewController;
+        TraitDetailViewController *detailViewController = (TraitDetailViewController *)fromViewController;
         fromImageView = detailViewController.traitImageView;
         fromRadius = kMaxAnimatingImageRadius;
         toImageView = self.imageView;

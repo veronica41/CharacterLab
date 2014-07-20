@@ -61,11 +61,11 @@ static NSInteger kDefaultNumOfStudents = 5;
     [super viewDidLoad];
 
     // setup navigation bar
-    self.navigationController.navigationBar.barTintColor = UIColorFromHEX(CLColorBackgroundBeige);
-    self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorTextBrown);
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackButton:)];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromHEX(CLColorTextBrown), NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Medium" size:20.0]};
-    self.navigationItem.title = self.trait.name;
+//    self.navigationController.navigationBar.barTintColor = UIColorFromHEX(CLColorBackgroundBeige);
+//    self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorTextBrown);
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackButton:)];
+//    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromHEX(CLColorTextBrown), NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Medium" size:20.0]};
+//    self.navigationItem.title = self.trait.name;
 
     [self setupVideoPlayer];
     [self setupTipsCollectionView];
