@@ -10,7 +10,9 @@
 #import "TraitViewController.h"
 #import "TraitDetailViewController.h"
 
-CGFloat const kTransitionDuration = 0.5;
+CGFloat const kZoomTransitionDuration = 0.5;
+CGFloat const kSlide1TransitionDuration = 0.3;
+CGFloat const kSlide2TransitionDuration = 0.3;
 CGFloat const kMaxAnimatingImageRadius = 200;
 
 @interface TraitViewController ()
@@ -89,10 +91,9 @@ CGFloat const kMaxAnimatingImageRadius = 200;
 - (IBAction)onTap:(id)sender {
     TraitDetailViewController *detailController = [[TraitDetailViewController alloc] init];
     detailController.trait = self.trait;
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailController];
-    navController.modalPresentationStyle = UIModalPresentationCustom;
-    navController.transitioningDelegate = self;
-    [self presentViewController:navController animated:YES completion:nil];
+    detailController.modalPresentationStyle = UIModalPresentationCustom;
+    detailController.transitioningDelegate = self;
+    [self presentViewController:detailController animated:YES completion:nil];
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
@@ -116,7 +117,7 @@ CGFloat const kMaxAnimatingImageRadius = 200;
 // This is used for percent driven interactive transitions, as well as for container controllers that have companion animations that might need to
 // synchronize with the main animation.
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return kTransitionDuration;
+    return self.presentingVC ? kZoomTransitionDuration + kSlide1TransitionDuration + kSlide2TransitionDuration : kZoomTransitionDuration;
 }
 
 // This method can only  be a nop if the transition is interactive and not a percentDriven interactive transition.
@@ -125,45 +126,99 @@ CGFloat const kMaxAnimatingImageRadius = 200;
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
+    NSData *tempArchiveView = [NSKeyedArchiver archivedDataWithRootObject:self.view];
+    CGRect viewFrame = [self.view convertRect:self.view.bounds toView:containerView];
+
+    UIView *animatingBackgroundView = [NSKeyedUnarchiver unarchiveObjectWithData:tempArchiveView];
+    [animatingBackgroundView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    animatingBackgroundView.layer.cornerRadius = self.view.layer.cornerRadius;
+    [containerView addSubview:animatingBackgroundView];
+
+    UIView *viewWithOnlyTextSubviews = [NSKeyedUnarchiver unarchiveObjectWithData:tempArchiveView];
+    UIView *subview = viewWithOnlyTextSubviews.subviews[0];
+    for (UIView *view in subview.subviews) {
+        if([view isKindOfClass:[UIImageView class]]){
+            view.alpha = 0;
+            break;
+        }
+    }
+    viewWithOnlyTextSubviews.backgroundColor = [UIColor clearColor];
+    viewWithOnlyTextSubviews.frame = viewFrame;
+    [containerView addSubview:viewWithOnlyTextSubviews];
+
     // init from/to properties based on whether we're presenting or dismissing
+    TraitDetailViewController *detailViewController;
+    CGRect fromBackgroundFrame;
+    CGRect toBackgroundFrame;
+    CGFloat fromTextSubviewsAlpha;
+    CGFloat toTextSubviewsAlpha;
+    CGFloat fromTitleBarAlpha;
+    CGFloat toTitleBarAlpha;
     UIImageView *fromImageView;
     CGFloat fromRadius;
     UIImageView *toImageView;
     CGFloat toRadius;
     if (self.presentingVC) {
-        [containerView addSubview:toViewController.view];
-        toViewController.view.alpha = 0;
+        detailViewController = (TraitDetailViewController *)toViewController;
+        [containerView addSubview:detailViewController.view];
 
-        TraitDetailViewController *detailViewController = (TraitDetailViewController *)((UINavigationController *)toViewController).topViewController;
+        detailViewController.traitDescriptionContainerView.transform = CGAffineTransformMakeTranslation(0, 300);
+        detailViewController.aboutLabel.transform = CGAffineTransformMakeTranslation(0, 300);
+        detailViewController.movieView.transform = CGAffineTransformMakeTranslation(0, 300);
+
+        fromBackgroundFrame = viewFrame;
+        toBackgroundFrame = detailViewController.scrollView.frame;
+
+        fromTextSubviewsAlpha = 1;
+        toTextSubviewsAlpha = 0;
+
+        fromTitleBarAlpha = 0;
+        toTitleBarAlpha = 1;
+
         fromImageView = self.imageView;
         fromRadius = self.imageView.layer.cornerRadius;
-        // reference detailViewController.view to trigger viewDidLoad so that we can get a reference to detailViewController.traitImageView
-        detailViewController.view;
         toImageView = detailViewController.traitImageView;
         toRadius = kMaxAnimatingImageRadius;
     } else {
-        TraitDetailViewController *detailViewController = (TraitDetailViewController *)((UINavigationController *)fromViewController).topViewController;
+        // re-add for layering position
+        detailViewController = (TraitDetailViewController *)fromViewController;
+        [containerView addSubview:detailViewController.view];
+
+        fromBackgroundFrame = detailViewController.scrollView.frame;
+        toBackgroundFrame = viewFrame;
+
+        fromTextSubviewsAlpha = 0;
+        toTextSubviewsAlpha = 1;
+
+        fromTitleBarAlpha = 1;
+        toTitleBarAlpha = 0;
+
         fromImageView = detailViewController.traitImageView;
         fromRadius = kMaxAnimatingImageRadius;
         toImageView = self.imageView;
         toRadius = self.imageView.layer.cornerRadius;
     }
 
+    animatingBackgroundView.frame = fromBackgroundFrame;
+    viewWithOnlyTextSubviews.alpha = fromTextSubviewsAlpha;
+    detailViewController.titleBar.alpha = fromTitleBarAlpha;
+    detailViewController.view.backgroundColor = [UIColor clearColor];
+    detailViewController.titleBar.backgroundColor = [UIColor clearColor];
+    detailViewController.titleBarBackgroundHackView.backgroundColor = [UIColor clearColor];
+    detailViewController.contentView.backgroundColor = [UIColor clearColor];
+
     // get the frames of fromImageView and toImageView in containerView's bounds
     CGRect fromImageViewFrame = [fromImageView convertRect:fromImageView.bounds toView:containerView];
     CGRect toImageViewFrame;
     // TODO(rajeev): this is hax, figure out why the rect isn't right
     if (self.presentingVC) {
-        toImageViewFrame = CGRectMake(0, 64, 320, 224);
+        toImageViewFrame = CGRectMake(0, 70, 320, 224);
     } else {
         toImageViewFrame = [toImageView convertRect:toImageView.bounds toView:containerView];
     }
 
-    // adjust the frames so that they both match the larger frame's x-bounds (so that the circle mask has room to grow horizontally)
-    CGFloat minFrameX = MIN(fromImageViewFrame.origin.x, toImageViewFrame.origin.x);
-    CGFloat maxFrameWidth = MAX(fromImageViewFrame.size.width, toImageViewFrame.size.width);
-    CGRect fromFrame = CGRectMake(minFrameX, fromImageViewFrame.origin.y, maxFrameWidth, fromImageViewFrame.size.height);
-    CGRect toFrame = CGRectMake(minFrameX, toImageViewFrame.origin.y, maxFrameWidth, toImageViewFrame.size.height);
+    CGRect fromFrame = CGRectMake(fromBackgroundFrame.origin.x, fromImageViewFrame.origin.y, fromBackgroundFrame.size.width, fromImageViewFrame.size.height);
+    CGRect toFrame = CGRectMake(toBackgroundFrame.origin.x, toImageViewFrame.origin.y, toBackgroundFrame.size.width, toImageViewFrame.size.height);
 
     // init the animating image view
     UIImageView *animatingImageView = [[UIImageView alloc] initWithFrame:fromFrame];
@@ -187,20 +242,46 @@ CGFloat const kMaxAnimatingImageRadius = 200;
     pathAnimation.timingFunction = [CAMediaTimingFunction     functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     pathAnimation.fromValue = (id)circleMask.path;
     pathAnimation.toValue = (id)toPath.CGPath;
-    pathAnimation.duration = kTransitionDuration;
+    pathAnimation.duration = kZoomTransitionDuration;
     circleMask.path = toPath.CGPath;
     [animatingImageView.layer.mask addAnimation:pathAnimation forKey:@"path"];
 
+    void (^completionHandler)(BOOL finished) = ^(BOOL finished) {
+        fromImageView.alpha = 1;
+        toImageView.alpha = 1;
+        detailViewController.view.backgroundColor = UIColorFromHEX(CLColorDarkGray);
+        detailViewController.titleBar.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+        detailViewController.titleBarBackgroundHackView.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+        detailViewController.contentView.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+        [animatingBackgroundView removeFromSuperview];
+        [viewWithOnlyTextSubviews removeFromSuperview];
+        [animatingImageView removeFromSuperview];
+        [transitionContext completeTransition:YES];
+    };
+
     // animate the actual views
-    [UIView animateWithDuration:kTransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kZoomTransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        animatingBackgroundView.frame = toBackgroundFrame;
+        viewWithOnlyTextSubviews.alpha = toTextSubviewsAlpha;
+        detailViewController.titleBar.alpha = toTitleBarAlpha;
         animatingImageView.frame = toFrame;
         fromViewController.view.alpha = 0;
         toViewController.view.alpha = 1;
     } completion:^(BOOL finished) {
-        fromImageView.alpha = 1;
-        toImageView.alpha = 1;
-        [animatingImageView removeFromSuperview];
-        [transitionContext completeTransition:YES];
+        // no slide transitions during dismissal
+        if (!self.presentingVC) {
+            completionHandler(finished);
+            return;
+        }
+
+        [UIView animateWithDuration:kSlide1TransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            detailViewController.traitDescriptionContainerView.transform = CGAffineTransformMakeTranslation(0, 0);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:kSlide2TransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                detailViewController.aboutLabel.transform = CGAffineTransformMakeTranslation(0, 0);
+                detailViewController.movieView.transform = CGAffineTransformMakeTranslation(0, 0);
+            } completion:completionHandler];
+        }];
     }];
 }
 

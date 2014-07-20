@@ -13,6 +13,8 @@
 
 @interface StudentCell ()
 
+@property (weak, nonatomic) IBOutlet UIView *topBackgroundView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasuredLabel;
@@ -39,13 +41,7 @@
 }
 
 - (void)setup {
-    self.backgroundColor = UIColorFromHEX(CLColorBackgroundGrey);
-
-    // add a shadow to the top
-    self.layer.shadowOffset = CGSizeMake(0, -1);
-    self.layer.shadowColor = [UIColorFromHEX(CLColorShadowGrey) CGColor];
-    self.layer.shadowRadius = 0.5;
-    self.layer.shadowOpacity = 1;
+    self.useDarkTopBackground = false;
 }
 
 - (void)setStudent:(Student *)student {
@@ -53,12 +49,17 @@
     [self reloadData];
 }
 
+- (void)setUseDarkTopBackground:(BOOL)useDarkTopBackground {
+    _useDarkTopBackground = useDarkTopBackground;
+    self.topBackgroundView.backgroundColor = useDarkTopBackground ? UIColorFromHEX(CLColorDarkGray) : UIColorFromHEX(CLColorBackgroundGrey);
+}
+
 - (void)reloadData {
+    self.containerView.layer.shadowColor = [UIColorFromHEX(CLColorShadowGrey) CGColor];
+
     self.initialsLabel.student = self.student;
     self.nameLabel.text = self.student.name;
-    self.nameLabel.font = [UIFont fontWithName:@"Avenir" size:15];
-    self.lastMeasuredLabel.font = [UIFont fontWithName:@"Avenir" size:15];
-    self.lastMeasuredLabel.text = self.student.lastAssessmentTS.timeAgoSinceNow;;
+    self.lastMeasuredLabel.text = self.student.lastAssessmentTS.timeAgoSinceNow;
 }
 
 @end
