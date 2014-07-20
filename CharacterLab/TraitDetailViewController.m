@@ -29,8 +29,6 @@ static NSInteger kDefaultNumOfStudents = 5;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *traitDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
-@property (weak, nonatomic) IBOutlet UIView *movieView;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsCollectionViewHeight;
