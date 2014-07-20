@@ -25,7 +25,6 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 @interface TraitDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *titleBar;
 - (IBAction)onBackButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -63,13 +62,6 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // setup navigation bar
-//    self.navigationController.navigationBar.barTintColor = UIColorFromHEX(CLColorBackgroundBeige);
-//    self.navigationController.navigationBar.tintColor = UIColorFromHEX(CLColorTextBrown);
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_navBackLight"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackButton:)];
-//    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromHEX(CLColorTextBrown), NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Medium" size:20.0]};
-//    self.navigationItem.title = self.trait.name;
 
     [self setupVideoPlayer];
     [self setupTipsCollectionView];

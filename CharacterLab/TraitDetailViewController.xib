@@ -9,12 +9,15 @@
                 <outlet property="aboutLabel" destination="FKj-Hb-vUr" id="pIu-w8-Bm3"/>
                 <outlet property="bottomStudentsCollectionView" destination="RGa-ny-sLF" id="cTW-6L-pf6"/>
                 <outlet property="buildLabel" destination="IiP-Av-ddJ" id="k35-RX-Zyd"/>
+                <outlet property="contentView" destination="Dxv-VF-FWR" id="FUf-t0-YEt"/>
                 <outlet property="movieView" destination="gF1-gQ-03T" id="0RR-5s-mSm"/>
+                <outlet property="scrollView" destination="f1A-xu-MOw" id="BOX-hf-U3Q"/>
                 <outlet property="tipsCollectionView" destination="etl-Lt-QHX" id="Vy6-rw-iro"/>
                 <outlet property="tipsCollectionViewHeight" destination="nML-0G-plM" id="jK3-QG-1Vm"/>
-                <outlet property="titleBar" destination="SeX-pg-YEW" id="T1w-hA-TJJ"/>
+                <outlet property="titleBar" destination="SeX-pg-YEW" id="sIQ-xV-O00"/>
                 <outlet property="titleLabel" destination="HpD-3q-Q4D" id="IAe-PU-Bba"/>
                 <outlet property="topStudentsCollectionView" destination="a5z-uQ-lGN" id="pNX-qK-sh6"/>
+                <outlet property="traitDescriptionContainerView" destination="kG0-r5-W1Y" id="P6U-3H-N7e"/>
                 <outlet property="traitDescriptionLabel" destination="Pj6-w1-BPU" id="jID-84-Blo"/>
                 <outlet property="traitImageView" destination="Vhc-vn-vYZ" id="CXV-fv-rxV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="NZ5-7E-75I"/>

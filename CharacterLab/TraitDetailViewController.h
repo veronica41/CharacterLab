@@ -12,6 +12,10 @@
 @interface TraitDetailViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) Trait *trait;
+@property (weak, nonatomic) IBOutlet UIView *titleBar;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *traitImageView;
+@property (weak, nonatomic) IBOutlet UIView *traitDescriptionContainerView;
 
 @end
