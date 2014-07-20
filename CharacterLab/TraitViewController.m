@@ -10,9 +10,9 @@
 #import "TraitViewController.h"
 #import "TraitDetailViewController.h"
 
-CGFloat const kZoomTransitionDuration = 0.5;
-CGFloat const kSlide1TransitionDuration = 0.3;
-CGFloat const kSlide2TransitionDuration = 0.3;
+CGFloat const kZoomTransitionDuration = 0.4;
+CGFloat const kSlide1TransitionDuration = 0.25;
+CGFloat const kSlide2TransitionDuration = 0.25;
 CGFloat const kMaxAnimatingImageRadius = 200;
 
 @interface TraitViewController ()
@@ -274,10 +274,10 @@ CGFloat const kMaxAnimatingImageRadius = 200;
             return;
         }
 
-        [UIView animateWithDuration:kSlide1TransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:kSlide1TransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             detailViewController.traitDescriptionContainerView.transform = CGAffineTransformMakeTranslation(0, 0);
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:kSlide2TransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [UIView animateWithDuration:kSlide2TransitionDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 detailViewController.aboutLabel.transform = CGAffineTransformMakeTranslation(0, 0);
                 detailViewController.movieView.transform = CGAffineTransformMakeTranslation(0, 0);
             } completion:completionHandler];

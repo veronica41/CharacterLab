@@ -131,6 +131,7 @@ static NSArray *sTraitDescriptions = nil;
     PFQuery *query = [PFQuery queryWithClassName:@"Assessment"];
     [query whereKey:@"measurement" equalTo:measurement];
     [query whereKey:@"trait" equalTo:trait];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
