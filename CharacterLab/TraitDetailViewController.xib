@@ -124,7 +124,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="154" id="3By-tn-Rtr"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="pJH-QD-x0p" customClass="CollectionLayoutAlignTop">
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pJH-QD-x0p">
                                         <size key="itemSize" width="280" height="0.0"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -146,7 +146,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="154" id="AGq-65-ODl"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="uW6-Ke-p6z" customClass="CollectionLayoutAlignTop">
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uW6-Ke-p6z">
                                         <size key="itemSize" width="280" height="0.0"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
