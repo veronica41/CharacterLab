@@ -91,7 +91,7 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 
     // setup barchart - the data points are fetched in the callbacks for the datasource
     self.barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 140, self.view.frame.size.width, 200)];
-    [self.view addSubview:self.barGraphView];
+    [self.mainWrapperView addSubview:self.barGraphView];
 
     CLModel *client = [CLModel sharedInstance];
     self.barGraphRendered = NO;
