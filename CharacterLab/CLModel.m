@@ -46,9 +46,7 @@ static NSArray *sTraitDescriptions = nil;
         }
     }
 
-    PFQuery *query = [Trait query];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [[Trait query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             if (failure) {
                 failure(error);
@@ -97,7 +95,6 @@ static NSArray *sTraitDescriptions = nil;
         [traitsToFetch addObject:tmp.trait];
     }
 
-    // TODO: add caching
     [Trait fetchAllIfNeededInBackground:traitsToFetch block:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
@@ -114,7 +111,6 @@ static NSArray *sTraitDescriptions = nil;
     PFQuery *query = [PFQuery queryWithClassName:@"Assessment"];
     [query whereKey:@"measurement" equalTo:measurement];
     [query orderByAscending:@"score"];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
@@ -150,7 +146,6 @@ static NSArray *sTraitDescriptions = nil;
                           failure:(void (^)(NSError *error))failure {
     PFQuery *query = [PFQuery queryWithClassName:@"Measurement"];
     [query whereKey:@"student" equalTo:student];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
@@ -163,9 +158,7 @@ static NSArray *sTraitDescriptions = nil;
 - (void)getStudentsForCurrentTeacherWithSuccess:(void (^)(NSArray *studentList))success
                                         failure:(void (^)(NSError *error))failure {
     // TODO(rajeev/pier): filter by logged in teacher
-    PFQuery *query = [Student query];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [[Student query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
         } else {
@@ -228,7 +221,6 @@ static NSArray *sTraitDescriptions = nil;
                 failure:(void(^)(NSError *error))failure {
     PFQuery *query = [PFQuery queryWithClassName:@"Tip"];
     [query whereKey:@"trait" equalTo:trait];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             failure(error);
