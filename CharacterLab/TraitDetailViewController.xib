@@ -23,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="1323"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1A-xu-MOw">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1A-xu-MOw">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="1323"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dxv-VF-FWR">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxv-VF-FWR">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="1323"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -103,21 +103,21 @@
                                     </collectionViewFlowLayout>
                                     <cells/>
                                 </collectionView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Learn more at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-q0-Znl">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn more at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-q0-Znl">
                                     <rect key="frame" x="110" y="1250" width="108" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="www.characterlab.org" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luB-kd-uvh">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.characterlab.org" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luB-kd-uvh">
                                     <rect key="frame" x="84" y="1272" width="152" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                     <color key="textColor" red="0.094117647058823528" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" ambiguous="YES" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="a5z-uQ-lGN">
+                                <collectionView autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="a5z-uQ-lGN">
                                     <rect key="frame" x="0.0" y="811" width="320" height="154"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -132,14 +132,14 @@
                                     </collectionViewFlowLayout>
                                     <cells/>
                                 </collectionView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STUDENTS, WHO ARE DOING GOOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVg-ta-dgj">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STUDENTS, WHO ARE DOING GOOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVg-ta-dgj">
                                     <rect key="frame" x="20" y="997" width="264" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" ambiguous="YES" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RGa-ny-sLF">
+                                <collectionView autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RGa-ny-sLF">
                                     <rect key="frame" x="0.0" y="1034" width="320" height="154"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -159,33 +159,44 @@
                             <constraints>
                                 <constraint firstItem="Vhc-vn-vYZ" firstAttribute="top" secondItem="Dxv-VF-FWR" secondAttribute="top" id="3Ba-dZ-TQ1"/>
                                 <constraint firstItem="FKj-Hb-vUr" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" constant="20" id="3gZ-hu-66U"/>
+                                <constraint firstItem="RGa-ny-sLF" firstAttribute="top" secondItem="gVg-ta-dgj" secondAttribute="bottom" constant="16" id="4pr-XA-b21"/>
+                                <constraint firstAttribute="trailing" secondItem="a5z-uQ-lGN" secondAttribute="trailing" id="5bf-PN-8fI"/>
                                 <constraint firstItem="etl-Lt-QHX" firstAttribute="top" secondItem="IiP-Av-ddJ" secondAttribute="bottom" constant="16" id="76b-6p-L4k"/>
                                 <constraint firstItem="IiP-Av-ddJ" firstAttribute="top" secondItem="gF1-gQ-03T" secondAttribute="bottom" constant="32" id="7Se-rk-mcg"/>
+                                <constraint firstItem="gVg-ta-dgj" firstAttribute="top" secondItem="a5z-uQ-lGN" secondAttribute="bottom" constant="32" id="7So-hC-6oW"/>
                                 <constraint firstItem="3hn-gI-8X2" firstAttribute="top" secondItem="etl-Lt-QHX" secondAttribute="bottom" constant="32" id="Agn-nw-PuN"/>
+                                <constraint firstItem="a5z-uQ-lGN" firstAttribute="top" secondItem="3hn-gI-8X2" secondAttribute="bottom" constant="16" id="Ama-ma-tfc"/>
                                 <constraint firstItem="gF1-gQ-03T" firstAttribute="top" secondItem="FKj-Hb-vUr" secondAttribute="bottom" constant="16" id="AoZ-m2-JeC"/>
                                 <constraint firstItem="Vhc-vn-vYZ" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" id="Lam-rI-ROq"/>
                                 <constraint firstAttribute="trailing" secondItem="kG0-r5-W1Y" secondAttribute="trailing" id="MIK-bw-71b"/>
+                                <constraint firstItem="gVg-ta-dgj" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" constant="20" id="MvV-y6-TOQ"/>
                                 <constraint firstItem="luB-kd-uvh" firstAttribute="top" secondItem="Vin-q0-Znl" secondAttribute="bottom" constant="1" id="PyS-8K-BgX"/>
                                 <constraint firstItem="luB-kd-uvh" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" constant="84" id="Rvj-lm-JwC"/>
                                 <constraint firstItem="gF1-gQ-03T" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" constant="20" id="SME-V5-2HU"/>
+                                <constraint firstItem="a5z-uQ-lGN" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" id="Y4a-xt-hxc"/>
                                 <constraint firstItem="Vin-q0-Znl" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" constant="110" id="aFe-XK-IOL"/>
                                 <constraint firstItem="kG0-r5-W1Y" firstAttribute="top" secondItem="Vhc-vn-vYZ" secondAttribute="bottom" id="exX-ci-m4j"/>
                                 <constraint firstItem="etl-Lt-QHX" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" id="fUk-1p-a6D"/>
                                 <constraint firstAttribute="trailing" secondItem="Vin-q0-Znl" secondAttribute="trailing" constant="102" id="fs1-lc-VfE"/>
+                                <constraint firstItem="Vin-q0-Znl" firstAttribute="top" secondItem="RGa-ny-sLF" secondAttribute="bottom" constant="62" id="gtX-CT-YYB"/>
+                                <constraint firstItem="RGa-ny-sLF" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" id="gwk-mO-Kk3"/>
+                                <constraint firstAttribute="trailing" secondItem="RGa-ny-sLF" secondAttribute="trailing" id="iHG-3n-x3X"/>
                                 <constraint firstItem="FKj-Hb-vUr" firstAttribute="top" secondItem="kG0-r5-W1Y" secondAttribute="bottom" constant="24" id="iNa-35-6TW"/>
                                 <constraint firstAttribute="trailing" secondItem="etl-Lt-QHX" secondAttribute="trailing" id="kfk-fk-aTT"/>
                                 <constraint firstAttribute="trailing" secondItem="gF1-gQ-03T" secondAttribute="trailing" constant="20" id="t3n-Og-zTl"/>
                                 <constraint firstAttribute="trailing" secondItem="luB-kd-uvh" secondAttribute="trailing" constant="84" id="tXw-w6-R4N"/>
                                 <constraint firstItem="kG0-r5-W1Y" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" id="uxF-Ox-OEg"/>
+                                <constraint firstAttribute="bottom" secondItem="luB-kd-uvh" secondAttribute="bottom" constant="30" id="wP9-WU-bEn"/>
                                 <constraint firstItem="IiP-Av-ddJ" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" constant="20" id="y0L-oP-thf"/>
                                 <constraint firstItem="3hn-gI-8X2" firstAttribute="leading" secondItem="Dxv-VF-FWR" secondAttribute="leading" constant="20" id="zYE-cF-D4c"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Dxv-VF-FWR" secondAttribute="trailing" id="33C-Gw-O19"/>
-                        <constraint firstItem="Dxv-VF-FWR" firstAttribute="leading" secondItem="f1A-xu-MOw" secondAttribute="leading" id="B4F-7x-3sw"/>
-                        <constraint firstItem="Dxv-VF-FWR" firstAttribute="top" secondItem="f1A-xu-MOw" secondAttribute="top" id="kzh-Du-kCw"/>
+                        <constraint firstAttribute="trailing" secondItem="Dxv-VF-FWR" secondAttribute="trailing" id="3hB-Jc-hqD"/>
+                        <constraint firstItem="Dxv-VF-FWR" firstAttribute="leading" secondItem="f1A-xu-MOw" secondAttribute="leading" id="7gn-qp-W5E"/>
+                        <constraint firstAttribute="bottom" secondItem="Dxv-VF-FWR" secondAttribute="bottom" id="8p5-nj-HVQ"/>
+                        <constraint firstItem="Dxv-VF-FWR" firstAttribute="top" secondItem="f1A-xu-MOw" secondAttribute="top" id="BGo-Nw-ag7"/>
                     </constraints>
                 </scrollView>
             </subviews>

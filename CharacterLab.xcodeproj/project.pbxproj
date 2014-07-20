@@ -32,6 +32,8 @@
 		960937D019735CB100414B21 /* TipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937CF19735CB100414B21 /* TipCell.m */; };
 		960937D219735CC400414B21 /* TipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 960937D119735CC400414B21 /* TipCell.xib */; };
 		960937D51973AADC00414B21 /* CollectionLayoutAlignTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937D41973AADC00414B21 /* CollectionLayoutAlignTop.m */; };
+		96B20A51197B2E1C0082B048 /* StudentsRankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B20A50197B2E1C0082B048 /* StudentsRankingCell.m */; };
+		96B20A53197B2E370082B048 /* StudentsRankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B20A52197B2E370082B048 /* StudentsRankingCell.xib */; };
 		96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3C7196B75720071F8FD /* LoginViewController.m */; };
 		96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B3A3C8196B75720071F8FD /* LoginViewController.xib */; };
 		96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3CC196B8C130071F8FD /* TraitDetailViewController.m */; };
@@ -119,6 +121,9 @@
 		960937D119735CC400414B21 /* TipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCell.xib; sourceTree = "<group>"; };
 		960937D31973AADC00414B21 /* CollectionLayoutAlignTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionLayoutAlignTop.h; sourceTree = "<group>"; };
 		960937D41973AADC00414B21 /* CollectionLayoutAlignTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionLayoutAlignTop.m; sourceTree = "<group>"; };
+		96B20A4F197B2E1C0082B048 /* StudentsRankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsRankingCell.h; sourceTree = "<group>"; };
+		96B20A50197B2E1C0082B048 /* StudentsRankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsRankingCell.m; sourceTree = "<group>"; };
+		96B20A52197B2E370082B048 /* StudentsRankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentsRankingCell.xib; sourceTree = "<group>"; };
 		96B3A3C6196B75720071F8FD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		96B3A3C7196B75720071F8FD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		96B3A3C8196B75720071F8FD /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -271,6 +276,9 @@
 				B30CD43C197571A2006EB3C1 /* ImprovementTraitViewCell.h */,
 				B30CD43D197571A2006EB3C1 /* ImprovementTraitViewCell.m */,
 				B30CD43E197571A2006EB3C1 /* ImprovementTraitViewCell.xib */,
+				96B20A4F197B2E1C0082B048 /* StudentsRankingCell.h */,
+				96B20A50197B2E1C0082B048 /* StudentsRankingCell.m */,
+				96B20A52197B2E370082B048 /* StudentsRankingCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -465,6 +473,7 @@
 			files = (
 				96B3A3CA196B75720071F8FD /* LoginViewController.xib in Resources */,
 				B30CD43B19756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib in Resources */,
+				96B20A53197B2E370082B048 /* StudentsRankingCell.xib in Resources */,
 				13E01C0819675C7300A94277 /* TraitViewController.xib in Resources */,
 				1329E269197254D300C839F8 /* StudentsCollectionHeaderView.xib in Resources */,
 				B30CD43119749E0D006EB3C1 /* MeasurementViewCell.xib in Resources */,
@@ -559,6 +568,7 @@
 				960937D51973AADC00414B21 /* CollectionLayoutAlignTop.m in Sources */,
 				960937D019735CB100414B21 /* TipCell.m in Sources */,
 				B3A92FE21971EED200101EE4 /* AssessmentInputViewController.m in Sources */,
+				96B20A51197B2E1C0082B048 /* StudentsRankingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

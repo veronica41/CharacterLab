@@ -203,14 +203,16 @@ static NSArray *sTraitDescriptions = nil;
                                         failure:(void (^)(NSError *error))failure {
     PFQuery *query = [PFQuery queryWithClassName:@"Measurement"];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    [query getObjectInBackgroundWithId:student.lastMeasurementID block:^(PFObject *object, NSError *error) {
-        if (error) {
-            failure(error);
-        }
-        else {
-            success((Measurement *)object);
-        }
-    }];
+    if (student.lastMeasurementID) {
+        [query getObjectInBackgroundWithId:student.lastMeasurementID block:^(PFObject *object, NSError *error) {
+            if (error) {
+                failure(error);
+            }
+            else {
+                success((Measurement *)object);
+            }
+        }];
+    }
 }
 
 - (void)updateStudent:(Student *)student
