@@ -25,6 +25,10 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 @interface TraitDetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *titleBar;
+- (IBAction)onBackButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *traitDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
 @property (weak, nonatomic) IBOutlet UIView *movieView;
@@ -71,6 +75,7 @@ static NSInteger kDefaultNumOfStudents = 5;
     [self setupTipsCollectionView];
     [self setupStudentsCollectionView];
 
+    self.titleLabel.text = self.trait.name;
     self.traitImageView.image = [UIImage imageNamed:self.trait.name];
     self.traitDescriptionLabel.text = self.trait.desc;
     self.aboutLabel.text = [NSString stringWithFormat:@"ABOUT %@", self.trait.name.uppercaseString];
@@ -266,7 +271,7 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 # pragma mark - event handlers
 
-- (void)onBackButton:(id)sender {
+- (IBAction)onBackButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

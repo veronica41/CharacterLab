@@ -153,7 +153,7 @@ CGFloat const kMaxAnimatingImageRadius = 200;
     CGRect toImageViewFrame;
     // TODO(rajeev): this is hax, figure out why the rect isn't right
     if (self.presentingVC) {
-        toImageViewFrame = CGRectMake(0, 64, 320, 224);
+        toImageViewFrame = CGRectMake(0, 70, 320, 224);
     } else {
         toImageViewFrame = [toImageView convertRect:toImageView.bounds toView:containerView];
     }
