@@ -31,9 +31,7 @@
 - (void)setup {
     UINib *nib = [UINib nibWithNibName:@"StudentsCollectionHeaderView" bundle:nil];
     NSArray *objects = [nib instantiateWithOwner:self options:nil];
-    UIView *view = objects[0];
-    view.backgroundColor = UIColorFromHEX(CLColorDarkGray);
-    [self addSubview:view];
+    [self addSubview:objects[0]];
 }
 
 @end

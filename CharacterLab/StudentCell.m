@@ -57,9 +57,18 @@
 - (void)reloadData {
     self.containerView.layer.shadowColor = [UIColorFromHEX(CLColorShadowGrey) CGColor];
 
-    self.initialsLabel.student = self.student;
-    self.nameLabel.text = self.student.name;
-    self.lastMeasuredLabel.text = self.student.lastAssessmentTS.timeAgoSinceNow;
+    if (self.student != nil) {
+        self.initialsLabel.student = self.student;
+        self.initialsLabel.alpha = 1;
+        self.nameLabel.textColor = [UIColor whiteColor];
+        self.nameLabel.text = self.student.name;
+        self.lastMeasuredLabel.text = self.student.lastAssessmentTS.timeAgoSinceNow;
+    } else {
+        self.initialsLabel.alpha = 0;
+        self.nameLabel.textColor = UIColorFromHEX(CLColorAquamarine);
+        self.nameLabel.text = @"Add New Student";
+        self.lastMeasuredLabel.text = @"";
+    }
 }
 
 @end

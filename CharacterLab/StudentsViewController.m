@@ -41,7 +41,6 @@
     [super viewDidLoad];
 
     // init the collection view
-    self.collectionView.backgroundColor = UIColorFromHEX(CLColorBackgroundGrey);
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     UINib *studentCellNib = [UINib nibWithNibName:@"StudentCell" bundle:nil];
@@ -65,12 +64,17 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.students.count;
+    // +1 for the Add New Student item
+    return self.students.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     StudentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StudentCell" forIndexPath:indexPath];
-    cell.student = self.students[indexPath.row];
+    if (indexPath.row == self.students.count) {
+        cell.student = nil;
+    } else {
+        cell.student = self.students[indexPath.row];
+    }
     // give the first cell a dark top background to match the header view background
     cell.useDarkTopBackground = (indexPath.row == 0);
     return cell;
@@ -85,9 +89,14 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:NO];
 
-    StudentProfileViewController *spvc = [[StudentProfileViewController alloc] init];
-    spvc.student = self.students[indexPath.row];
-    [self presentViewController:spvc animated:YES completion:nil];
+    if (indexPath.row == self.students.count) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not implemented yet" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        StudentProfileViewController *spvc = [[StudentProfileViewController alloc] init];
+        spvc.student = self.students[indexPath.row];
+        [self presentViewController:spvc animated:YES completion:nil];
+    }
 }
 
 #pragma mark - event handlers

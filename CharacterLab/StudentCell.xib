@@ -36,6 +36,13 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32o-X5-P9J">
+                            <rect key="frame" x="12" y="0.0" width="36" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                            <color key="textColor" red="0.094117647058823528" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVb-U7-gbC" customClass="StudentInitialsLabel">
                             <rect key="frame" x="12" y="11" width="36" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,9 +62,13 @@
                         <constraint firstItem="TFu-jN-fmN" firstAttribute="leading" secondItem="f7f-r1-lq8" secondAttribute="trailing" constant="8" id="2bQ-80-6I4"/>
                         <constraint firstItem="f7f-r1-lq8" firstAttribute="leading" secondItem="GVb-U7-gbC" secondAttribute="trailing" constant="10" id="PDk-hg-MP6"/>
                         <constraint firstItem="f7f-r1-lq8" firstAttribute="centerY" secondItem="GVb-U7-gbC" secondAttribute="centerY" id="S7h-GA-Y8b"/>
+                        <constraint firstItem="32o-X5-P9J" firstAttribute="leading" secondItem="GVb-U7-gbC" secondAttribute="leading" id="TKa-bM-8GO"/>
                         <constraint firstItem="GVb-U7-gbC" firstAttribute="leading" secondItem="siO-5M-zys" secondAttribute="leading" constant="12" id="UTu-gz-59X"/>
+                        <constraint firstItem="32o-X5-P9J" firstAttribute="trailing" secondItem="GVb-U7-gbC" secondAttribute="trailing" id="aRr-QE-jHA"/>
                         <constraint firstAttribute="bottom" secondItem="GVb-U7-gbC" secondAttribute="bottom" constant="12" id="dIr-02-ooB"/>
+                        <constraint firstAttribute="bottom" secondItem="32o-X5-P9J" secondAttribute="bottom" constant="12" id="dvd-K3-DVd"/>
                         <constraint firstItem="TFu-jN-fmN" firstAttribute="centerY" secondItem="f7f-r1-lq8" secondAttribute="centerY" id="euX-yR-9nr"/>
+                        <constraint firstItem="32o-X5-P9J" firstAttribute="top" secondItem="siO-5M-zys" secondAttribute="top" id="s63-Rt-PcG"/>
                         <constraint firstAttribute="trailing" secondItem="TFu-jN-fmN" secondAttribute="trailing" constant="10" id="wfh-wk-aLf"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
