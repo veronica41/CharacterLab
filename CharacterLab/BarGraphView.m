@@ -8,6 +8,7 @@
 
 #import "BarGraphView.h"
 #import "CLColor.h"
+#import "Assessment.h"
 
 static NSInteger const kBarStep = 44;
 
@@ -49,21 +50,34 @@ static NSInteger const kBarStep = 44;
 }
 
 - (void)drawGraphWithAnimation:(BOOL)animate
-                     curiosity:(NSInteger)curiosity
-                     gratitude:(NSInteger)gratitude
-                          grit:(NSInteger)grit
-                      optimism:(NSInteger)optimism
-                   selfControl:(NSInteger)selfControl
-            socialIntelligence:(NSInteger)socialIntelligence
-                          zest:(NSInteger)zest {
+                assessmentList:(NSArray *)assessmentList {
 
-    assert(curiosity > 0 && curiosity <= 7);
-    assert(gratitude > 0 && gratitude <= 7);
-    assert(grit > 0 && grit <= 7);
-    assert(optimism > 0 && optimism <= 7);
-    assert(selfControl > 0 && selfControl <= 7);
-    assert(socialIntelligence > 0 && socialIntelligence <= 7);
-    assert(zest > 0 && zest <= 7);
+    NSInteger curiosity = ((Assessment *)assessmentList[kTraitCuriosity]).score;
+    NSInteger gratitude = ((Assessment *)assessmentList[kTraitGratitude]).score;
+    NSInteger grit = ((Assessment *)assessmentList[kTraitGrit]).score;
+    NSInteger optimism = ((Assessment *)assessmentList[kTraitOptimism]).score;
+    NSInteger selfControl = ((Assessment *)assessmentList[kTraitSelfControl]).score;
+    NSInteger socialIntelligence = ((Assessment *)assessmentList[kTraitSocialIntelligence]).score;
+    NSInteger zest = ((Assessment *)assessmentList[kTraitZest]).score;
+
+    static NSInteger const kMaxScoreInDB = 10;
+    assert(curiosity > 0 && curiosity <= kMaxScoreInDB);
+    assert(gratitude > 0 && gratitude <= kMaxScoreInDB);
+    assert(grit > 0 && grit <= kMaxScoreInDB);
+    assert(optimism > 0 && optimism <= kMaxScoreInDB);
+    assert(selfControl > 0 && selfControl <= kMaxScoreInDB);
+    assert(socialIntelligence > 0 && socialIntelligence <= kMaxScoreInDB);
+    assert(zest > 0 && zest <= kMaxScoreInDB);
+
+    // Clip data in the DB since we have some stuff that was going up to 10
+    static NSInteger const kMaxScore = 7;
+    curiosity = MIN(curiosity, kMaxScore);
+    gratitude = MIN(gratitude, kMaxScore);
+    grit = MIN(grit, kMaxScore);
+    optimism = MIN(optimism, kMaxScore);
+    selfControl = MIN(selfControl, kMaxScore);
+    socialIntelligence = MIN(socialIntelligence, kMaxScore);
+    zest = MIN(zest, kMaxScore);
 
     [self setFrame:self.curiosityBarView width:0];
     [self setFrame:self.gratitudeBarView width:0];
@@ -73,13 +87,15 @@ static NSInteger const kBarStep = 44;
     [self setFrame:self.socialIntelligenceBarView width:0];
     [self setFrame:self.zestBarView width:0];
 
-    [self setFrame:self.curiosityBarView width:curiosity * kBarStep];
-    [self setFrame:self.gratitudeBarView width:gratitude * kBarStep];
-    [self setFrame:self.gritBarView width:grit * kBarStep];
-    [self setFrame:self.optimismBarView width:optimism * kBarStep];
-    [self setFrame:self.selfControlBarView width:selfControl * kBarStep];
-    [self setFrame:self.socialIntelligenceBarView width:socialIntelligence * kBarStep];
-    [self setFrame:self.zestBarView width:zest * kBarStep];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self setFrame:self.curiosityBarView width:curiosity * kBarStep];
+        [self setFrame:self.gratitudeBarView width:gratitude * kBarStep];
+        [self setFrame:self.gritBarView width:grit * kBarStep];
+        [self setFrame:self.optimismBarView width:optimism * kBarStep];
+        [self setFrame:self.selfControlBarView width:selfControl * kBarStep];
+        [self setFrame:self.socialIntelligenceBarView width:socialIntelligence * kBarStep];
+        [self setFrame:self.zestBarView width:zest * kBarStep];
+    }];
 }
 
 

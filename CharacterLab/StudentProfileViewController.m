@@ -38,10 +38,11 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 // Private support variables
 @property (nonatomic, strong) NSArray *traitsToImprove;
 @property (nonatomic, strong) NSArray *measurementList;
-@property (nonatomic, strong) NSArray *latestAssessmentScores;
+@property (nonatomic, strong) NSArray *latestAssessmentList;
 @property (nonatomic, strong) NSMutableDictionary *traitDescriptions;
 @property (nonatomic, strong) Measurement *lastMeasurement;
-@property (weak, nonatomic) BarGraphView *barGraphView;
+@property (nonatomic, strong) BarGraphView *barGraphView;
+@property (nonatomic) BOOL barGraphRendered;
 
 - (IBAction)onBackButton:(UIButton *)sender;
 - (IBAction)onMeasurePress:(UIButton *)sender;
@@ -71,7 +72,7 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.mainWrapperView.backgroundColor = [UIColor darkGrayColor];
     self.initialsBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGray);
     
@@ -89,19 +90,23 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     [self setupImprovementsSuggestionsCollectionView];
 
     // setup barchart - the data points are fetched in the callbacks for the datasource
-    BarGraphView *barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 140, self.view.frame.size.width, 200)];
-    [self.view addSubview:barGraphView];
+    self.barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 140, self.view.frame.size.width, 200)];
+    [self.view addSubview:self.barGraphView];
 
     CLModel *client = [CLModel sharedInstance];
+    self.barGraphRendered = NO;
     if (self.student.lastMeasurementID) {
         // store the last measurement object
         [client getLatestMeasurementForStudent:self.student success:^(Measurement *measurement) {
             self.lastMeasurement = measurement;
             // Pull data for traits that need improvement
-            if (self.measurementList.count > 0) {
-                [[CLModel sharedInstance] getAssessmentsForMeasurement:[self.measurementList objectAtIndex:0] success:^(NSArray *assessmentList) {
-                    self.latestAssessmentScores = assessmentList;
-                    [self updateBarChart];
+            if (self.lastMeasurement) {
+                [[CLModel sharedInstance] getAssessmentsForMeasurement:self.lastMeasurement success:^(NSArray *assessmentList) {
+                    self.latestAssessmentList = assessmentList;
+                    if (!self.barGraphRendered) {
+                        self.barGraphRendered = YES;
+                        [self updateBarChart];
+                    }
                     [client getLowestScoringTraitsForAssessment:assessmentList limit:3 success:^(NSArray *traitList) {
                         self.traitsToImprove = traitList;
                         [self.improvementsCollection reloadData];
@@ -146,7 +151,8 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 }
 
 - (void)updateBarChart {
-    NSLog(@"PIER scores are %@", self.latestAssessmentScores);
+    NSLog(@"PIER printing scores!");
+    [self.barGraphView drawGraphWithAnimation:YES assessmentList:self.latestAssessmentList];
 }
 
 #pragma mark - ImprovementSuggestionViewCellDelegate

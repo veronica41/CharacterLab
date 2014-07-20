@@ -11,12 +11,6 @@
 @interface BarGraphView : UIView
 
 - (void)drawGraphWithAnimation:(BOOL)animate
-                     curiosity:(NSInteger)curiosity
-                     gratitude:(NSInteger)gratitude
-                          grit:(NSInteger)grit
-                      optimism:(NSInteger)optimism
-                   selfControl:(NSInteger)selfControl
-            socialIntelligence:(NSInteger)socialIntelligence
-                          zest:(NSInteger)zest;
+                assessmentList:(NSArray *)assessmentList;
 
 @end
