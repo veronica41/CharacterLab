@@ -34,7 +34,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 @property (weak, nonatomic) IBOutlet UITableView *measurementTable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *measurementTableHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *improvementsCollection;
-@property (weak, nonatomic) IBOutlet UIView *chartView;
+@property (weak, nonatomic) IBOutlet BarGraphView *chartView;
 
 // Private support variables
 @property (nonatomic, strong) NSArray *traitsToImprove;
@@ -42,7 +42,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 @property (nonatomic, strong) NSArray *latestAssessmentList;
 @property (nonatomic, strong) NSMutableDictionary *traitDescriptions;
 @property (nonatomic, strong) Measurement *lastMeasurement;
-@property (nonatomic, strong) BarGraphView *barGraphView;
+//@property (nonatomic, strong) BarGraphView *barGraphView;
 @property (nonatomic) BOOL barGraphRendered;
 
 - (IBAction)onBackButton:(UIButton *)sender;
@@ -81,10 +81,6 @@ static CGFloat kMeasurementTableRowHeight = 44;
 
     [self setupMeasurementsTable];
     [self setupImprovementsSuggestionsCollectionView];
-
-    // setup barchart - the data points are fetched in the callbacks for the datasource
-    //self.barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 300, 320, 268)];
-    //[self.view addSubview:self.barGraphView];
 
     CLModel *client = [CLModel sharedInstance];
     self.barGraphRendered = NO;
@@ -143,7 +139,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 }
 
 - (void)updateBarChart {
-    [self.barGraphView drawGraphWithAnimation:YES assessmentList:self.latestAssessmentList];
+    [self.chartView drawGraphWithAnimation:YES assessmentList:self.latestAssessmentList];
 }
 
 #pragma mark - ImprovementSuggestionViewCellDelegate

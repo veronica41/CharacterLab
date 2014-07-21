@@ -43,12 +43,19 @@ static NSInteger const kBarStep = 44;
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
 - (void)setup {
     if (self.subviews.count == 0) {
         UINib *nib = [UINib nibWithNibName:@"BarGraphView" bundle:nil];
         UIView *subview = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
         subview.frame = self.bounds;
-        subview.backgroundColor = UIColorFromHEX(CLColorDarkGray);
         [self addSubview:subview];
     }
 }

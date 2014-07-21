@@ -105,14 +105,6 @@
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wyr-6b-Gb5">
-                                    <rect key="frame" x="0.0" y="214" width="319" height="240"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="240" id="MIf-m9-ZhY"/>
-                                    </constraints>
-                                </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO IMPROVE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8h-eO-cxt">
                                     <rect key="frame" x="14" y="474" width="129" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,11 +153,19 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wyr-6b-Gb5" customClass="BarGraphView">
+                                    <rect key="frame" x="14" y="214" width="291" height="240"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.1450980392" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="240" id="MIf-m9-ZhY"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.1764705882" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="A8h-eO-cxt" firstAttribute="top" secondItem="Wyr-6b-Gb5" secondAttribute="bottom" constant="20" id="0fz-qc-fQW"/>
-                                <constraint firstItem="Wyr-6b-Gb5" firstAttribute="leading" secondItem="LfP-5D-VLp" secondAttribute="leading" id="1bC-ul-kTm"/>
+                                <constraint firstItem="Wyr-6b-Gb5" firstAttribute="leading" secondItem="LfP-5D-VLp" secondAttribute="leading" constant="14" id="1bC-ul-kTm"/>
                                 <constraint firstItem="6nZ-jY-shW" firstAttribute="leading" secondItem="LfP-5D-VLp" secondAttribute="leading" constant="14" id="6b7-5f-DQF"/>
                                 <constraint firstItem="6nZ-jY-shW" firstAttribute="top" secondItem="cv6-Ts-IPe" secondAttribute="bottom" constant="11" id="CMb-Ps-deX"/>
                                 <constraint firstItem="Ar9-WE-JHR" firstAttribute="top" secondItem="rR2-LV-CQI" secondAttribute="bottom" constant="26" id="G4q-7H-d5D"/>
@@ -177,7 +177,7 @@
                                 <constraint firstAttribute="trailing" secondItem="rR2-LV-CQI" secondAttribute="trailing" constant="14" id="bo6-N2-RMy"/>
                                 <constraint firstItem="786-6p-rQa" firstAttribute="top" secondItem="LfP-5D-VLp" secondAttribute="top" constant="50" id="csj-ty-dpw"/>
                                 <constraint firstItem="786-6p-rQa" firstAttribute="leading" secondItem="LfP-5D-VLp" secondAttribute="leading" id="dT3-Dc-BKO"/>
-                                <constraint firstAttribute="trailing" secondItem="Wyr-6b-Gb5" secondAttribute="trailing" id="fdk-VQ-MIb"/>
+                                <constraint firstAttribute="trailing" secondItem="Wyr-6b-Gb5" secondAttribute="trailing" constant="14" id="fdk-VQ-MIb"/>
                                 <constraint firstAttribute="trailing" secondItem="Ar9-WE-JHR" secondAttribute="trailing" constant="14" id="jwi-xY-5fR"/>
                                 <constraint firstItem="rR2-LV-CQI" firstAttribute="top" secondItem="6nZ-jY-shW" secondAttribute="bottom" constant="12" id="mZw-ib-kCY"/>
                                 <constraint firstItem="Ar9-WE-JHR" firstAttribute="leading" secondItem="LfP-5D-VLp" secondAttribute="leading" constant="14" id="nCM-hT-AdU"/>
