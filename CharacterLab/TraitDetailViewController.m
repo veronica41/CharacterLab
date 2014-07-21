@@ -130,17 +130,19 @@ static NSInteger kDefaultNumOfStudents = 5;
                             [assessments addObject:assessment];
                             self.studentAsessment[assessment.objectId] = student;
                             if (assessments.count == studentList.count) {
-                                NSMutableArray *orderedArray = [NSMutableArray arrayWithArray:assessments];
-                                [orderedArray sortUsingComparator:^NSComparisonResult(id a, id b) {
-                                    NSInteger first = ((Assessment*)a).score;
-                                    NSInteger second = ((Assessment*)b).score;
-                                    return second < first;
-                                }];
-                                NSInteger numOfStudents = MIN(kDefaultNumOfStudents, orderedArray.count);
-                                self.bottomAssessments = [orderedArray subarrayWithRange:NSMakeRange(0, numOfStudents)];
-                                self.topAssessments = [orderedArray subarrayWithRange:NSMakeRange(orderedArray.count-numOfStudents, numOfStudents)];
-                                [self.topStudentsCollectionView reloadData];
-                                [self.bottomStudentsCollectionView reloadData];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    NSMutableArray *orderedArray = [NSMutableArray arrayWithArray:assessments];
+                                    [orderedArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+                                        NSInteger first = ((Assessment*)a).score;
+                                        NSInteger second = ((Assessment*)b).score;
+                                        return second < first;
+                                    }];
+                                    NSInteger numOfStudents = MIN(kDefaultNumOfStudents, orderedArray.count);
+                                    self.bottomAssessments = [orderedArray subarrayWithRange:NSMakeRange(0, numOfStudents)];
+                                    self.topAssessments = [orderedArray subarrayWithRange:NSMakeRange(orderedArray.count-numOfStudents, numOfStudents)];
+                                    [self.topStudentsCollectionView reloadData];
+                                    [self.bottomStudentsCollectionView reloadData];
+                                });
                             }
                         }
                     } failure:^(NSError *error) {
@@ -216,12 +218,6 @@ static NSInteger kDefaultNumOfStudents = 5;
 // helper methods
 - (void)shrinkExpandedItemInCollectionView:(UICollectionView *)collectionView completion:(void (^)(void))completion {
     if (collectionView == self.tipsCollectionView) {
-        if (self.expandedIndexPath == nil) {
-            if (completion) {
-                completion();
-            }
-        }
-
         self.expandedIndexPath = nil;
         [self.tipsCollectionView performBatchUpdates:nil completion:^(BOOL finished) {
             if (completion) {
@@ -235,16 +231,19 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 - (void)collectionView:(UICollectionView *)collectionView expandSelectedItemAtIndexPath:(NSIndexPath *)indexPath {
     self.expandedIndexPath = indexPath;
+    //TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
+    //[self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
+    //[cell layoutSubviews];
+    //CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
     [self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
-    [cell layoutSubviews];
-    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    if (size.height > kTipsCollectionViewDefaultHeight) {
+    CGFloat height = cell.contentHeight;
+    if (height > kTipsCollectionViewDefaultHeight) {
         [UIView animateWithDuration: 0
                               delay: 0
                             options: 0
                          animations:^{
-                             self.tipsCollectionViewHeight.constant = size.height;
+                             self.tipsCollectionViewHeight.constant = height;
                              [self.tipsCollectionView setNeedsLayout];
                          } completion:^(BOOL finished){
                              [collectionView performBatchUpdates:nil completion:nil];
@@ -261,9 +260,10 @@ static NSInteger kDefaultNumOfStudents = 5;
         } else {
             [self shrinkExpandedItemInCollectionView:self.tipsCollectionView completion:^{
                 [self collectionView:collectionView expandSelectedItemAtIndexPath:indexPath];
+                 [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             }];
         }
-        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+       
     }
 }
 

@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pageNumLabel;
 
+- (CGFloat)contentHeight;
+
 @end

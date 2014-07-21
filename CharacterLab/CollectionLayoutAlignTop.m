@@ -7,6 +7,7 @@
 //
 
 #import "CollectionLayoutAlignTop.h"
+#import "TipCell.h"
 
 @implementation CollectionLayoutAlignTop
 
@@ -27,7 +28,6 @@
     attributes.frame = CGRectMake(originX, 0, self.itemSize.width, attributes.frame.size.height);
     return attributes;
 }
-
 
 - (CGSize)collectionViewContentSize {
     NSInteger columns = [self.collectionView numberOfItemsInSection:0];
