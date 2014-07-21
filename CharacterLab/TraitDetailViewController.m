@@ -14,6 +14,7 @@
 #import "CLColor.h"
 #import "CLModel.h"
 #import "CollectionLayoutAlignTop.h"
+#import "TTTAttributedLabel.h"
 
 static NSString *kTipCellIdentifier = @"TipCell";
 static NSString *kStudentCellIdentifier = @"StudentsRankingCell";
@@ -32,6 +33,7 @@ static NSInteger kDefaultNumOfStudents = 5;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsCollectionViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *linkLabel;
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
 @property (nonatomic, strong) MPMoviePlayerController *playerController;
@@ -70,6 +72,11 @@ static NSInteger kDefaultNumOfStudents = 5;
     self.traitDescriptionLabel.text = self.trait.desc;
     self.aboutLabel.text = [NSString stringWithFormat:@"ABOUT %@", self.trait.name.uppercaseString];
     self.buildLabel.text = [NSString stringWithFormat:@"BUILD %@", self.trait.name.uppercaseString];
+
+    self.linkLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickLink:)];
+    //[tapRecognizer setNumberOfTouchesRequired:1];
+    [self.linkLabel addGestureRecognizer:tapRecognizer];
 }
 
 - (void)setupVideoPlayer {
@@ -198,7 +205,7 @@ static NSInteger kDefaultNumOfStudents = 5;
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item+1, (unsigned long)self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -263,6 +270,10 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 - (IBAction)onBackButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)onClickLink:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.characterlab.org"]];
 }
 
 @end
