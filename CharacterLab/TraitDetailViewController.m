@@ -75,14 +75,13 @@ static NSInteger kDefaultNumOfStudents = 5;
 
     self.linkLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickLink:)];
-    //[tapRecognizer setNumberOfTouchesRequired:1];
     [self.linkLabel addGestureRecognizer:tapRecognizer];
 }
 
 - (void)setupVideoPlayer {
     [YTVimeoExtractor fetchVideoURLFromURL:self.trait.videoUrl quality:YTVimeoVideoQualityLow completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
         if (error) {
-            // TODO: (veronica) show video cannot be load
+            NSLog(@"Fetch video url error: %@", error);
         } else {
             self.playerController = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
             self.playerController.shouldAutoplay = NO;
@@ -203,57 +202,74 @@ static NSInteger kDefaultNumOfStudents = 5;
     cell.imageView.image = nil;
     Assessment *assessment;
     if (collectionView == self.topStudentsCollectionView) {
-        assessment = self.topAssessments[indexPath.row];
+        assessment = self.topAssessments[indexPath.item];
     } else if (collectionView == self.bottomStudentsCollectionView) {
-        assessment = self.bottomAssessments[indexPath.row];
+        assessment = self.bottomAssessments[indexPath.item];
     }
     Student *student = self.studentAsessment[assessment.objectId];
     [cell.imageView setImageWithURL:[NSURL URLWithString:student.photoUrl]];
     cell.nameLabel.text = student.name;
 }
 
-
 #pragma mark - UICollectionViewDelegate
+
+// helper methods
+- (void)shrinkExpandedItemInCollectionView:(UICollectionView *)collectionView completion:(void (^)(void))completion {
+    if (collectionView == self.tipsCollectionView) {
+        if (self.expandedIndexPath == nil) {
+            if (completion) {
+                completion();
+            }
+        }
+
+        self.expandedIndexPath = nil;
+        [self.tipsCollectionView performBatchUpdates:nil completion:^(BOOL finished) {
+            if (completion) {
+                completion();
+            } else {
+                self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
+            }
+        }];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView expandSelectedItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.expandedIndexPath = indexPath;
+    TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
+    [self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
+    [cell layoutSubviews];
+    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    if (size.height > kTipsCollectionViewDefaultHeight) {
+        [UIView animateWithDuration: 0
+                              delay: 0
+                            options: 0
+                         animations:^{
+                             self.tipsCollectionViewHeight.constant = size.height;
+                             [self.tipsCollectionView setNeedsLayout];
+                         } completion:^(BOOL finished){
+                             [collectionView performBatchUpdates:nil completion:nil];
+                         }];
+    }
+}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == self.tipsCollectionView) {
         NSIndexPath *prevExpanded = self.expandedIndexPath;
 
-        if (!prevExpanded) {
-            // expand collectionView
-            self.expandedIndexPath = indexPath;
-            TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
-            [self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
-            [cell layoutIfNeeded];
-            CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-            if (size.height > kTipsCollectionViewDefaultHeight) {
-                [UIView animateWithDuration: 0
-                                      delay: 0
-                                    options: 0
-                                 animations:^{
-                                     self.tipsCollectionViewHeight.constant = size.height;
-                                     [self.tipsCollectionView setNeedsLayout];
-                                 } completion:^(BOOL finished){
-                                     [collectionView performBatchUpdates:nil completion:nil];
-                                 }];
-            }
-        } else if (prevExpanded && prevExpanded.row == indexPath.item) {
-            // shrink collectionView
-            self.expandedIndexPath = nil;
-            [UIView animateWithDuration: 0
-                                  delay: 0
-                                options: 0
-                             animations:^{
-                                 [collectionView performBatchUpdates:nil completion:nil];
-                             } completion:^(BOOL finished){
-                                 self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
-                                 [self.tipsCollectionView setNeedsLayout];
-                             }];
+        if (prevExpanded && prevExpanded.item == indexPath.item) {
+            [self shrinkExpandedItemInCollectionView:collectionView completion:nil];
         } else {
-            // shrink previous selected cell, expand current selected cell
-            self.expandedIndexPath = indexPath;
-            [collectionView performBatchUpdates:nil completion:nil];
+            [self shrinkExpandedItemInCollectionView:self.tipsCollectionView completion:^{
+                [self collectionView:collectionView expandSelectedItemAtIndexPath:indexPath];
+            }];
         }
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (scrollView == self.tipsCollectionView) {
+        [self shrinkExpandedItemInCollectionView:self.tipsCollectionView completion:nil];
     }
 }
 
