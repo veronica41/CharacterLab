@@ -76,7 +76,7 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="0.23921568630000001" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                 <gestureRecognizers/>
                 <constraints>
                     <constraint firstItem="Pv1-nZ-UQF" firstAttribute="leading" secondItem="wVh-Ax-HBF" secondAttribute="trailing" constant="10" id="2Ht-H8-mNB"/>
