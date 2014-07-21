@@ -14,13 +14,13 @@
 #import "CLColor.h"
 #import "CLModel.h"
 #import "CollectionLayoutAlignTop.h"
-#import "TTTAttributedLabel.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString *kTipCellIdentifier = @"TipCell";
 static NSString *kStudentCellIdentifier = @"StudentsRankingCell";
 static CGFloat kTipCellDefaultWidth = 280.0;
 static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
-static CGFloat kStudentsCollectionViewDefaultWidth = 148.0;
+static CGFloat kStudentsCollectionViewDefaultWidth = 132.0;
 static CGFloat kStudentsCollectionViewDefaultHeight = 154.0;
 static NSInteger kDefaultNumOfStudents = 5;
 
@@ -180,33 +180,38 @@ static NSInteger kDefaultNumOfStudents = 5;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == self.tipsCollectionView) {
         TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
-        [self collectionView:collectionView configureCell:cell atIndexPath:indexPath];
+        [self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
         return cell;
-    } else if (collectionView == self.topStudentsCollectionView) {
+    } else if (collectionView == self.topStudentsCollectionView ||
+               collectionView == self.bottomStudentsCollectionView) {
         StudentsRankingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStudentCellIdentifier forIndexPath:indexPath];
-        Assessment *assessment = self.topAssessments[indexPath.row];
-        Student *student = self.studentAsessment[assessment.objectId];
-        cell.initialsLabel.student = student;
-        cell.nameLabel.text = student.name;
-        return cell;
-    } else if (collectionView == self.bottomStudentsCollectionView) {
-        StudentsRankingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStudentCellIdentifier forIndexPath:indexPath];
-        Assessment *assessment = self.bottomAssessments[indexPath.row];
-        Student *student = self.studentAsessment[assessment.objectId];
-        cell.initialsLabel.student = student;
-        cell.nameLabel.text = student.name;
+        [self collectionView:collectionView configureStudentCell:cell atIndexPath:indexPath];
         return cell;
     }
     return nil;
 }
 
 // helper method
-- (void)collectionView:(UICollectionView *)collectionView configureCell:(TipCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView configureTipCell:(TipCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
     cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
+
+- (void)collectionView:(UICollectionView *)collectionView configureStudentCell:(StudentsRankingCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    cell.imageView.image = nil;
+    Assessment *assessment;
+    if (collectionView == self.topStudentsCollectionView) {
+        assessment = self.topAssessments[indexPath.row];
+    } else if (collectionView == self.bottomStudentsCollectionView) {
+        assessment = self.bottomAssessments[indexPath.row];
+    }
+    Student *student = self.studentAsessment[assessment.objectId];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:student.photoUrl]];
+    cell.nameLabel.text = student.name;
+}
+
 
 #pragma mark - UICollectionViewDelegate
 
@@ -218,7 +223,7 @@ static NSInteger kDefaultNumOfStudents = 5;
             // expand collectionView
             self.expandedIndexPath = indexPath;
             TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
-            [self collectionView:collectionView configureCell:cell atIndexPath:indexPath];
+            [self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
             [cell layoutIfNeeded];
             CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
             if (size.height > kTipsCollectionViewDefaultHeight) {
