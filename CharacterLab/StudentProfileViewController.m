@@ -23,6 +23,7 @@
 static NSString *kMeasurementViewCell = @"MeasurementViewCell";
 static NSString *kImprovementTraitCell = @"ImprovementTraitViewCell";
 static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCell";
+static CGFloat kMeasurementTableRowHeight = 44;
 
 @interface StudentProfileViewController () <UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, ImprovementSuggestionViewCellDelegate>
 
@@ -31,6 +32,7 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UITableView *measurementTable;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *measurementTableHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *improvementsCollection;
 @property (weak, nonatomic) IBOutlet UIView *chartView;
 
@@ -115,11 +117,13 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 }
 
 - (void)setupMeasurementsTable {
+    self.measurementTable.layer.cornerRadius = 5.0;
     self.measurementTable.dataSource = self;
     UINib *cellNib = [UINib nibWithNibName:kMeasurementViewCell bundle:nil];
     [self.measurementTable registerNib:cellNib forCellReuseIdentifier:kMeasurementViewCell];
     [[CLModel sharedInstance] getMeasurementsForStudent:self.student success:^(NSArray *measurementList) {
         self.measurementList = measurementList;
+        self.measurementTableHeight.constant = self.measurementList.count * kMeasurementTableRowHeight;
         [self.measurementTable reloadData];
     } failure:^(NSError *error) {
         NSLog(@"Failure retrieving the measurements for %@", self.student);
@@ -220,10 +224,10 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     cell.titleLabel.text = [NSString stringWithString:measurement.title];
     cell.dateLabel.text = [dateFormatter stringFromDate:measurement.createdAt];
     if (indexPath.row % 2 == 0) {
-        cell.backgroundColor = UIColorFromHEX(CLColorDarkGray);
+        cell.backgroundColor = UIColorFromHEX(CLColorShadowGrey);
     }
     else {
-        cell.backgroundColor = [UIColor blackColor];
+        cell.backgroundColor = UIColorFromHEX(CLColorDarkGray);
     }
     return cell;
 }

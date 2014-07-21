@@ -32,6 +32,7 @@
 		960937D019735CB100414B21 /* TipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937CF19735CB100414B21 /* TipCell.m */; };
 		960937D219735CC400414B21 /* TipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 960937D119735CC400414B21 /* TipCell.xib */; };
 		960937D51973AADC00414B21 /* CollectionLayoutAlignTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 960937D41973AADC00414B21 /* CollectionLayoutAlignTop.m */; };
+		969117E6197DC54A00EAB125 /* MeasurementViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 969117E5197DC54A00EAB125 /* MeasurementViewCell.m */; };
 		96B20A51197B2E1C0082B048 /* StudentsRankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B20A50197B2E1C0082B048 /* StudentsRankingCell.m */; };
 		96B20A53197B2E370082B048 /* StudentsRankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B20A52197B2E370082B048 /* StudentsRankingCell.xib */; };
 		96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B3A3C7196B75720071F8FD /* LoginViewController.m */; };
@@ -53,7 +54,6 @@
 		B3021B25196A2470006751D3 /* StudentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3021B23196A2470006751D3 /* StudentProfileViewController.m */; };
 		B3021B26196A2470006751D3 /* StudentProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3021B24196A2470006751D3 /* StudentProfileViewController.xib */; };
 		B30CD42119740F90006EB3C1 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD42019740F90006EB3C1 /* Measurement.m */; };
-		B30CD43019749E0D006EB3C1 /* MeasurementViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD42E19749E0D006EB3C1 /* MeasurementViewCell.m */; };
 		B30CD43119749E0D006EB3C1 /* MeasurementViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CD42F19749E0D006EB3C1 /* MeasurementViewCell.xib */; };
 		B30CD43A19756FD9006EB3C1 /* ImprovementSuggestionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CD43819756FD9006EB3C1 /* ImprovementSuggestionViewCell.m */; };
 		B30CD43B19756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CD43919756FD9006EB3C1 /* ImprovementSuggestionViewCell.xib */; };
@@ -123,6 +123,7 @@
 		960937D119735CC400414B21 /* TipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCell.xib; sourceTree = "<group>"; };
 		960937D31973AADC00414B21 /* CollectionLayoutAlignTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionLayoutAlignTop.h; sourceTree = "<group>"; };
 		960937D41973AADC00414B21 /* CollectionLayoutAlignTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionLayoutAlignTop.m; sourceTree = "<group>"; };
+		969117E5197DC54A00EAB125 /* MeasurementViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementViewCell.m; sourceTree = "<group>"; };
 		96B20A4F197B2E1C0082B048 /* StudentsRankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsRankingCell.h; sourceTree = "<group>"; };
 		96B20A50197B2E1C0082B048 /* StudentsRankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsRankingCell.m; sourceTree = "<group>"; };
 		96B20A52197B2E370082B048 /* StudentsRankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentsRankingCell.xib; sourceTree = "<group>"; };
@@ -154,7 +155,6 @@
 		B30CD41F19740F90006EB3C1 /* Measurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Measurement.h; sourceTree = "<group>"; };
 		B30CD42019740F90006EB3C1 /* Measurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Measurement.m; sourceTree = "<group>"; };
 		B30CD42D19749E0D006EB3C1 /* MeasurementViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementViewCell.h; sourceTree = "<group>"; };
-		B30CD42E19749E0D006EB3C1 /* MeasurementViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementViewCell.m; sourceTree = "<group>"; };
 		B30CD42F19749E0D006EB3C1 /* MeasurementViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasurementViewCell.xib; sourceTree = "<group>"; };
 		B30CD43719756FD9006EB3C1 /* ImprovementSuggestionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImprovementSuggestionViewCell.h; sourceTree = "<group>"; };
 		B30CD43819756FD9006EB3C1 /* ImprovementSuggestionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImprovementSuggestionViewCell.m; sourceTree = "<group>"; };
@@ -230,7 +230,6 @@
 		13E01C0319675C5800A94277 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B30CD42D19749E0D006EB3C1 /* MeasurementViewCell.h */,
 				13E01C0419675C7300A94277 /* TraitViewController.h */,
 				13E01C0519675C7300A94277 /* TraitViewController.m */,
 				13E01C0619675C7300A94277 /* TraitViewController.xib */,
@@ -273,7 +272,8 @@
 				960937CE19735CB100414B21 /* TipCell.h */,
 				960937CF19735CB100414B21 /* TipCell.m */,
 				960937D119735CC400414B21 /* TipCell.xib */,
-				B30CD42E19749E0D006EB3C1 /* MeasurementViewCell.m */,
+				B30CD42D19749E0D006EB3C1 /* MeasurementViewCell.h */,
+				969117E5197DC54A00EAB125 /* MeasurementViewCell.m */,
 				B30CD42F19749E0D006EB3C1 /* MeasurementViewCell.xib */,
 				B30CD43719756FD9006EB3C1 /* ImprovementSuggestionViewCell.h */,
 				B30CD43819756FD9006EB3C1 /* ImprovementSuggestionViewCell.m */,
@@ -550,7 +550,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13E01BFF196645AB00A94277 /* Teacher.m in Sources */,
-				B30CD43019749E0D006EB3C1 /* MeasurementViewCell.m in Sources */,
 				13E01BF6196642A100A94277 /* Trait.m in Sources */,
 				96B3A3C9196B75720071F8FD /* LoginViewController.m in Sources */,
 				1329E26419724DA000C839F8 /* StudentInitialsLabel.m in Sources */,
@@ -561,6 +560,7 @@
 				13E01BFC1966453500A94277 /* Student.m in Sources */,
 				13E01C181968A67800A94277 /* StudentCell.m in Sources */,
 				B300BA37196640790063E27D /* AppDelegate.m in Sources */,
+				969117E6197DC54A00EAB125 /* MeasurementViewCell.m in Sources */,
 				96B3A3CE196B8C130071F8FD /* TraitDetailViewController.m in Sources */,
 				1329E267197254B700C839F8 /* StudentsCollectionHeaderView.m in Sources */,
 				B30CD43F197571A2006EB3C1 /* ImprovementTraitViewCell.m in Sources */,
