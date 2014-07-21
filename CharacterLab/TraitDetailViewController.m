@@ -231,13 +231,12 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 - (void)collectionView:(UICollectionView *)collectionView expandSelectedItemAtIndexPath:(NSIndexPath *)indexPath {
     self.expandedIndexPath = indexPath;
-    //TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
-    //[self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
-    //[cell layoutSubviews];
-    //CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+
+    // calculate cell height
     TipCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTipCellIdentifier forIndexPath:indexPath];
     [self collectionView:collectionView configureTipCell:cell atIndexPath:indexPath];
     CGFloat height = cell.contentHeight;
+
     if (height > kTipsCollectionViewDefaultHeight) {
         [UIView animateWithDuration: 0
                               delay: 0

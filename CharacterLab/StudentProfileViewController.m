@@ -26,14 +26,13 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 
 @interface StudentProfileViewController () <UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, ImprovementSuggestionViewCellDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *mainWrapperView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
-@property (weak, nonatomic) IBOutlet UIView *initialsBackgroundView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UITableView *measurementTable;
 @property (weak, nonatomic) IBOutlet UICollectionView *improvementsCollection;
+@property (weak, nonatomic) IBOutlet UIView *chartView;
 
 // Private support variables
 @property (nonatomic, strong) NSArray *traitsToImprove;
@@ -55,7 +54,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         self.traitDescriptions = [NSMutableDictionary dictionary];
         CLModel *client = [CLModel sharedInstance];
         [client getTraitsWitSuccess:^(NSArray *traitList) {
@@ -72,13 +70,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.mainWrapperView.backgroundColor = [UIColor darkGrayColor];
-    self.initialsBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGray);
-    
-    self.nameLabel.font = [UIFont fontWithName:@"Avenir" size:20];
-    self.initialsLabel.font = [UIFont fontWithName:@"Avenir" size:15];
-    self.lastMeasurementTime.font = [UIFont fontWithName:@"Avenir" size:15];
 
     self.nameLabel.text = self.student.name;
     self.initialsLabel.student = self.student;
@@ -90,8 +81,8 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
     [self setupImprovementsSuggestionsCollectionView];
 
     // setup barchart - the data points are fetched in the callbacks for the datasource
-    self.barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 140, self.view.frame.size.width, 200)];
-    [self.mainWrapperView addSubview:self.barGraphView];
+    //self.barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 300, 320, 268)];
+    //[self.view addSubview:self.barGraphView];
 
     CLModel *client = [CLModel sharedInstance];
     self.barGraphRendered = NO;
@@ -125,8 +116,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 
 - (void)setupMeasurementsTable {
     self.measurementTable.dataSource = self;
-    self.measurementTable.backgroundColor = [UIColor clearColor];
-    self.measurementTable.opaque = NO;
     UINib *cellNib = [UINib nibWithNibName:kMeasurementViewCell bundle:nil];
     [self.measurementTable registerNib:cellNib forCellReuseIdentifier:kMeasurementViewCell];
     [[CLModel sharedInstance] getMeasurementsForStudent:self.student success:^(NSArray *measurementList) {
@@ -147,7 +136,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
 
     UINib *improvementSuggestionCellNib = [UINib nibWithNibName:kImprovementTraitCell bundle:nil];
     [self.improvementsCollection registerNib:improvementSuggestionCellNib forCellWithReuseIdentifier:kImprovementTraitCell];
-    self.improvementsCollection.contentSize = CGSizeMake(320 * 4, 100);
 }
 
 - (void)updateBarChart {
@@ -204,7 +192,7 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
         cell.suggestion1Label.text = trait.suggestion1;
         cell.suggestion2Label.text = trait.suggestion2;
         cell.suggestion3Label.text = trait.suggestion3;
-        cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
+        cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
         return cell;
     }
 }
@@ -236,12 +224,6 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
         cell.backgroundColor = [UIColor blackColor];
     }
     return cell;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)onBackButton:(UIButton *)sender {
