@@ -10,10 +10,6 @@
 
 @interface ImprovementSuggestionViewCell ()
 
-- (IBAction)onTrait1Tap:(UITapGestureRecognizer *)sender;
-- (IBAction)onTrait2Tap:(UITapGestureRecognizer *)sender;
-- (IBAction)onTrait3Tap:(UITapGestureRecognizer *)sender;
-
 @property (nonatomic, strong) UITapGestureRecognizer *rec1;
 @property (nonatomic, strong) UITapGestureRecognizer *rec2;
 @property (nonatomic, strong) UITapGestureRecognizer *rec3;
@@ -26,7 +22,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setup];
+        self.contentView.layer.cornerRadius = 5.0;
     }
     return self;
 }
@@ -34,13 +30,12 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setup];
+        self.contentView.layer.cornerRadius = 5.0;
     }
     return self;
 }
 
 - (void)setup {
-    self.layer.cornerRadius = 5.0;
     if (self.rec1 == nil) {
         self.rec1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTrait1Tap:)];
         [self.traitImage1 addGestureRecognizer:self.rec1];
@@ -55,15 +50,15 @@
     }
 }
 
-- (IBAction)onTrait1Tap:(UITapGestureRecognizer *)sender {
+- (void)onTrait1Tap:(UITapGestureRecognizer *)sender {
     [self.delegate updateSelectedSuggestionItem:1];
 }
 
-- (IBAction)onTrait2Tap:(UITapGestureRecognizer *)sender {
+- (void)onTrait2Tap:(UITapGestureRecognizer *)sender {
     [self.delegate updateSelectedSuggestionItem:2];
 }
 
-- (IBAction)onTrait3Tap:(UITapGestureRecognizer *)sender {
+- (void)onTrait3Tap:(UITapGestureRecognizer *)sender {
     [self.delegate updateSelectedSuggestionItem:3];
 }
 

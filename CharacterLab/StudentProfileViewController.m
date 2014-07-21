@@ -180,6 +180,8 @@ static NSString *kImprovementSuggestionViewCell = @"ImprovementSuggestionViewCel
         cell.pageNumLabel.text = [NSString stringWithFormat:@"1/%ld", 1 + (unsigned long)self.traitsToImprove.count];
 
         cell.delegate = self;
+
+        // call setup after setting the images on image view
         [cell setup];
 
         return cell;

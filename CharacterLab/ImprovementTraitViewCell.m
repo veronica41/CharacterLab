@@ -28,7 +28,7 @@
 }
 
 - (void)setup {
-    self.layer.cornerRadius = 5.0;
+    self.contentView.layer.cornerRadius = 5.0;
 }
 
 @end
