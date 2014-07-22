@@ -74,6 +74,14 @@ static NSInteger const kBarStep = 39;
     NSInteger selfControl = ((Assessment *)assessmentList[kTraitSelfControl]).score;
     NSInteger socialIntelligence = ((Assessment *)assessmentList[kTraitSocialIntelligence]).score;
     NSInteger zest = ((Assessment *)assessmentList[kTraitZest]).score;
+    
+    self.curiosityBarView.layer.cornerRadius = 2;
+    self.gratitudeBarView.layer.cornerRadius = 2;
+    self.gritBarView.layer.cornerRadius = 2;
+    self.optimismBarView.layer.cornerRadius = 2;
+    self.selfControlBarView.layer.cornerRadius = 2;
+    self.socialIntelligenceBarView.layer.cornerRadius = 2;
+    self.zestBarView.layer.cornerRadius = 2;
 
     static NSInteger const kMaxScoreInDB = 10;
     assert(curiosity > 0 && curiosity <= kMaxScoreInDB);
