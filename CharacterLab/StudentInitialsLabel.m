@@ -38,7 +38,6 @@
 
 - (void)reloadData {
     self.text = [self.student initials];
-    self.text.font = [UIFont fontWithName:@"Avenir" size:30 * scale];
     self.backgroundColor = [self.student getColorForIcon];
 }
 
