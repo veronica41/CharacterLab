@@ -8,6 +8,7 @@
 
 #import "Student.h"
 #import <Parse/PFObject+Subclass.h>
+#import "CLColor.h"
 
 @implementation Student
 
@@ -39,17 +40,13 @@
 - (UIColor *)getColorForIcon {
     switch (self.iconColor) {
         case CLStudentColor_Red:
-            return [UIColor redColor];
+            return UIColorFromHEX(CLColorBlastOffRed);
         case CLStudentColor_Blue:
-            return [UIColor blueColor];
-        case CLStudentColor_Gray:
-            return [UIColor grayColor];
-        case CLStudentColor_Brown:
-            return [UIColor brownColor];
+            return UIColorFromHEX(CLColorTelescopeBlue);
         case CLStudentColor_Purple:
-            return [UIColor purpleColor];
-        case CLStudentColor_Orange:
-            return [UIColor orangeColor];
+            return UIColorFromHEX(CLColorPurpleMountains);
+        case CLStudentColor_Green:
+            return UIColorFromHEX(CLColorGreenGrass);
         default:
             // Default to white to show holes
             return [UIColor whiteColor];
