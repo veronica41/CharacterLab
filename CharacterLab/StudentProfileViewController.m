@@ -191,10 +191,10 @@ static CGFloat kMeasurementTableRowHeight = 44;
         Trait *trait = [self.traitsToImprove objectAtIndex:indexPath.item - 1];
         ImprovementTraitViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kImprovementTraitCell forIndexPath:indexPath];
         cell.titleLabel.text = [NSString stringWithFormat:@"Improve %@", trait.name];
-        cell.suggestion1Label.text = [NSString stringWithFormat:@"\u2022 %@", trait.suggestion1];
-        cell.suggestion2Label.text = [NSString stringWithFormat:@"\u2022 %@", trait.suggestion2];
-        cell.suggestion3Label.text = [NSString stringWithFormat:@"\u2022 %@", trait.suggestion3];
-        cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
+        cell.suggestion1Label.text = trait.suggestion1;
+        cell.suggestion2Label.text = trait.suggestion2;
+        cell.suggestion3Label.text = trait.suggestion3;
+        cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
         return cell;
     }
 }
