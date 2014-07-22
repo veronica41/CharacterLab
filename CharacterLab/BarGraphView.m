@@ -10,7 +10,7 @@
 #import "CLColor.h"
 #import "Assessment.h"
 
-static NSInteger const kBarStep = 44;
+static NSInteger const kBarStep = 39;
 
 @interface BarGraphView ()
 
