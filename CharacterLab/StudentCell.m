@@ -51,7 +51,7 @@
 
 - (void)setUseDarkTopBackground:(BOOL)useDarkTopBackground {
     _useDarkTopBackground = useDarkTopBackground;
-    self.topBackgroundView.backgroundColor = useDarkTopBackground ? UIColorFromHEX(CLColorDarkGray) : UIColorFromHEX(CLColorBackgroundGrey);
+    self.topBackgroundView.backgroundColor = useDarkTopBackground ? UIColorFromHEX(CLColorDarkGrey) : UIColorFromHEX(CLColorBackgroundGrey);
 }
 
 - (void)reloadData {

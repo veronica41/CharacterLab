@@ -230,10 +230,10 @@
 		13E01C0319675C5800A94277 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				13E01C0E1968A42000A94277 /* StudentsViewController.h */,
 				13E01C0419675C7300A94277 /* TraitViewController.h */,
 				13E01C0519675C7300A94277 /* TraitViewController.m */,
 				13E01C0619675C7300A94277 /* TraitViewController.xib */,
-				13E01C0E1968A42000A94277 /* StudentsViewController.h */,
 				13E01C0F1968A42000A94277 /* StudentsViewController.m */,
 				13E01C101968A42000A94277 /* StudentsViewController.xib */,
 				B3021B22196A2470006751D3 /* StudentProfileViewController.h */,

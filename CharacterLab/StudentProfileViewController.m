@@ -223,7 +223,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
         cell.backgroundColor = UIColorFromHEX(CLColorShadowGrey);
     }
     else {
-        cell.backgroundColor = UIColorFromHEX(CLColorDarkGray);
+        cell.backgroundColor = UIColorFromHEX(CLColorDarkGrey);
     }
     return cell;
 }
