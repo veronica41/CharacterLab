@@ -21,7 +21,7 @@ static NSString *kStudentCellIdentifier = @"StudentsRankingCell";
 static CGFloat kTipCellDefaultWidth = 280.0;
 static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
 static CGFloat kStudentsCollectionViewDefaultWidth = 80.0;
-static CGFloat kStudentsCollectionViewDefaultHeight = 154.0;
+static CGFloat kStudentsCollectionViewDefaultHeight = 103.0;
 static NSInteger kDefaultNumOfStudents = 5;
 
 @interface TraitDetailViewController ()
