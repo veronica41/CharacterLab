@@ -36,7 +36,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                     <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="See Character Strengths" image="See Character Traits">
+                    <state key="normal" title="See Character Strengths" image="icon_strengths">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -63,6 +63,6 @@
         </view>
     </objects>
     <resources>
-        <image name="See Character Traits" width="15" height="18"/>
+        <image name="icon_strengths" width="12" height="15"/>
     </resources>
 </document>

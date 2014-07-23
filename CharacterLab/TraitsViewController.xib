@@ -28,7 +28,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                     <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Manage Your Students" image="Manage Students">
+                    <state key="normal" title="Manage Your Students" image="icon_students">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -55,6 +55,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Manage Students" width="22" height="16"/>
+        <image name="icon_students" width="24" height="15"/>
     </resources>
 </document>
