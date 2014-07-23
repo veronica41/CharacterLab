@@ -59,15 +59,15 @@
 
 - (void)reloadData {
     if (!self.initializedShadow) {
-        CAShapeLayer* shadowLayer = [CAShapeLayer layer];
-        shadowLayer.frame = CGRectMake(0, 0.3, self.containerView.bounds.size.width, 10);
-        shadowLayer.backgroundColor = [UIColorFromHEX(CLColorBackgroundGrey) CGColor];
-        shadowLayer.cornerRadius = 10;
-        shadowLayer.shadowRadius = 0;
-        shadowLayer.shadowColor = [[UIColor whiteColor] CGColor];
-        shadowLayer.shadowOpacity = 0.1;
-        shadowLayer.shadowOffset = CGSizeMake(0, -0.3);
-        [self.containerView.layer addSublayer:shadowLayer];
+        CAShapeLayer* innerShadowLayer = [CAShapeLayer layer];
+        innerShadowLayer.frame = CGRectMake(0, 0.3, self.containerView.bounds.size.width, 10);
+        innerShadowLayer.backgroundColor = [UIColorFromHEX(CLColorBackgroundGrey) CGColor];
+        innerShadowLayer.cornerRadius = 10;
+        innerShadowLayer.shadowRadius = 0;
+        innerShadowLayer.shadowColor = [[UIColor whiteColor] CGColor];
+        innerShadowLayer.shadowOpacity = 0.1;
+        innerShadowLayer.shadowOffset = CGSizeMake(0, -0.3);
+        [self.containerView.layer addSublayer:innerShadowLayer];
 
         self.containerView.layer.shadowColor = [UIColorFromHEX(CLColorShadowGrey) CGColor];
 
