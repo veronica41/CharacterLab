@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -27,6 +27,14 @@
                     </collectionViewFlowLayout>
                     <cells/>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ii-zD-JQr">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.1215686275" green="0.14901960780000001" blue="0.14901960780000001" alpha="0.75" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="EpV-46-MDr"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGV-0C-fAJ">
                     <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,8 +63,11 @@
                 <constraint firstAttribute="trailing" secondItem="wGV-0C-fAJ" secondAttribute="trailing" id="Mli-Ma-qQ7"/>
                 <constraint firstItem="yTr-SM-qoz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="R3h-Ae-M52"/>
                 <constraint firstItem="yTr-SM-qoz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f4T-Ig-kvb"/>
+                <constraint firstItem="2ii-zD-JQr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ie3-gg-GEZ"/>
                 <constraint firstAttribute="bottom" secondItem="yTr-SM-qoz" secondAttribute="bottom" id="mT5-4s-0zj"/>
+                <constraint firstAttribute="trailing" secondItem="2ii-zD-JQr" secondAttribute="trailing" id="rF4-rx-vgF"/>
                 <constraint firstAttribute="bottom" secondItem="wGV-0C-fAJ" secondAttribute="bottom" id="wC6-dD-mqI"/>
+                <constraint firstItem="2ii-zD-JQr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yp7-UG-ok2"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

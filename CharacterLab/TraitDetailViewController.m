@@ -9,7 +9,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "YTVimeoExtractor.h"
 #import "TraitDetailViewController.h"
-#import "StudentsRankingCell.h"
+#import "StudentProfileViewController.h"
 #import "TipCell.h"
 #import "CLColor.h"
 #import "CLModel.h"
@@ -20,8 +20,8 @@ static NSString *kTipCellIdentifier = @"TipCell";
 static NSString *kStudentCellIdentifier = @"StudentsRankingCell";
 static CGFloat kTipCellDefaultWidth = 280.0;
 static CGFloat kTipsCollectionViewDefaultHeight = 154.0;
-static CGFloat kStudentsCollectionViewDefaultWidth = 132.0;
-static CGFloat kStudentsCollectionViewDefaultHeight = 154.0;
+static CGFloat kStudentsCollectionViewDefaultWidth = 80.0;
+static CGFloat kStudentsCollectionViewDefaultHeight = 103.0;
 static NSInteger kDefaultNumOfStudents = 5;
 
 @interface TraitDetailViewController ()
@@ -33,6 +33,7 @@ static NSInteger kDefaultNumOfStudents = 5;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsCollectionViewHeight;
+@property (weak, nonatomic) IBOutlet UIScrollView *tipsDummyScrollView;
 @property (weak, nonatomic) IBOutlet UILabel *linkLabel;
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
@@ -67,6 +68,12 @@ static NSInteger kDefaultNumOfStudents = 5;
     [self setupTipsCollectionView];
     [self setupStudentsCollectionView];
 
+    self.titleBarBorder = [CALayer layer];
+    self.titleBarBorder.frame = CGRectMake(0, self.titleBar.frame.size.height, self.titleBar.frame.size.width, 0.5);
+    self.titleBarBorder.backgroundColor = [UIColorFromHEX(CLColorTextBrown) CGColor];
+    self.titleBarBorder.opacity = 0.5;
+    [self.titleBar.layer addSublayer:self.titleBarBorder];
+
     self.titleLabel.text = self.trait.name;
     self.traitImageView.image = [UIImage imageNamed:self.trait.name];
     self.traitDescriptionLabel.text = self.trait.desc;
@@ -98,6 +105,10 @@ static NSInteger kDefaultNumOfStudents = 5;
     self.tipsCollectionView.delegate = self;
     UINib *tipCellNib = [UINib nibWithNibName:kTipCellIdentifier bundle:nil];
     [self.tipsCollectionView registerNib:tipCellNib forCellWithReuseIdentifier:kTipCellIdentifier];
+    self.tipsDummyScrollView.delegate = self;
+
+    [self.tipsCollectionView addGestureRecognizer:self.tipsDummyScrollView.panGestureRecognizer];
+    self.tipsCollectionView.panGestureRecognizer.enabled = NO;
     
     [[CLModel sharedInstance] getTipsForTrait:self.trait success:^(NSArray *tipsList) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -169,6 +180,7 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == self.tipsCollectionView) {
+        self.tipsDummyScrollView.contentSize = CGSizeMake(self.tipsDummyScrollView.frame.size.width * self.tips.count, self.tipsDummyScrollView.frame.size.height);
         return self.tips.count;
     } else if (collectionView == self.topStudentsCollectionView) {
         return self.topAssessments.count;
@@ -187,6 +199,7 @@ static NSInteger kDefaultNumOfStudents = 5;
                collectionView == self.bottomStudentsCollectionView) {
         StudentsRankingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStudentCellIdentifier forIndexPath:indexPath];
         [self collectionView:collectionView configureStudentCell:cell atIndexPath:indexPath];
+        cell.delegate = self;
         return cell;
     }
     return nil;
@@ -197,11 +210,10 @@ static NSInteger kDefaultNumOfStudents = 5;
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, (unsigned long)self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView configureStudentCell:(StudentsRankingCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.imageView.image = nil;
     Assessment *assessment;
     if (collectionView == self.topStudentsCollectionView) {
         assessment = self.topAssessments[indexPath.item];
@@ -209,8 +221,7 @@ static NSInteger kDefaultNumOfStudents = 5;
         assessment = self.bottomAssessments[indexPath.item];
     }
     Student *student = self.studentAsessment[assessment.objectId];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:student.photoUrl]];
-    cell.nameLabel.text = student.name;
+    [cell setStudent:student];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -223,7 +234,10 @@ static NSInteger kDefaultNumOfStudents = 5;
             if (completion) {
                 completion();
             } else {
-                self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
+                [UIView animateWithDuration:500 animations:^{
+                    self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
+                    [self.view updateConstraints];
+                }];
             }
         }];
     }
@@ -266,8 +280,17 @@ static NSInteger kDefaultNumOfStudents = 5;
     }
 }
 
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.tipsDummyScrollView) {
+        // reflect the scroll position of the dummy scroll view in the collection view
+        CGPoint contentOffset = scrollView.contentOffset;
+        contentOffset.x = contentOffset.x - self.tipsCollectionView.contentInset.left;
+        self.tipsCollectionView.contentOffset = contentOffset;
+    }
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (scrollView == self.tipsCollectionView) {
+    if (scrollView == self.tipsDummyScrollView) {
         [self shrinkExpandedItemInCollectionView:self.tipsCollectionView completion:nil];
     }
 }
@@ -284,6 +307,14 @@ static NSInteger kDefaultNumOfStudents = 5;
         return CGSizeMake(kStudentsCollectionViewDefaultWidth, kStudentsCollectionViewDefaultHeight);
     }
     return CGSizeZero;
+}
+
+# pragma mark - StudentsRankingCellDelegate
+
+- (void)studentOnTap:(Student *)student {
+    StudentProfileViewController *spvc = [[StudentProfileViewController alloc] init];
+    spvc.student = student;
+    [self presentViewController:spvc animated:YES completion:nil];
 }
 
 # pragma mark - event handlers
