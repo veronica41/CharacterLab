@@ -194,7 +194,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
         cell.suggestion1Label.text = trait.suggestion1;
         cell.suggestion2Label.text = trait.suggestion2;
         cell.suggestion3Label.text = trait.suggestion3;
-        cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
+        cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
         return cell;
     }
 }
