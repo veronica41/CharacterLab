@@ -33,6 +33,7 @@ static NSInteger kDefaultNumOfStudents = 5;
 @property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *tipsCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipsCollectionViewHeight;
+@property (weak, nonatomic) IBOutlet UIScrollView *tipsDummyScrollView;
 @property (weak, nonatomic) IBOutlet UILabel *linkLabel;
 
 @property (nonatomic, strong) YTVimeoExtractor *extrator;
@@ -104,6 +105,10 @@ static NSInteger kDefaultNumOfStudents = 5;
     self.tipsCollectionView.delegate = self;
     UINib *tipCellNib = [UINib nibWithNibName:kTipCellIdentifier bundle:nil];
     [self.tipsCollectionView registerNib:tipCellNib forCellWithReuseIdentifier:kTipCellIdentifier];
+    self.tipsDummyScrollView.delegate = self;
+
+    [self.tipsCollectionView addGestureRecognizer:self.tipsDummyScrollView.panGestureRecognizer];
+    self.tipsCollectionView.panGestureRecognizer.enabled = NO;
     
     [[CLModel sharedInstance] getTipsForTrait:self.trait success:^(NSArray *tipsList) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -175,6 +180,7 @@ static NSInteger kDefaultNumOfStudents = 5;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == self.tipsCollectionView) {
+        self.tipsDummyScrollView.contentSize = CGSizeMake(self.tipsDummyScrollView.frame.size.width * self.tips.count, self.tipsDummyScrollView.frame.size.height);
         return self.tips.count;
     } else if (collectionView == self.topStudentsCollectionView) {
         return self.topAssessments.count;
@@ -204,7 +210,7 @@ static NSInteger kDefaultNumOfStudents = 5;
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, (unsigned long)self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView configureStudentCell:(StudentsRankingCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -274,8 +280,17 @@ static NSInteger kDefaultNumOfStudents = 5;
     }
 }
 
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.tipsDummyScrollView) {
+        // reflect the scroll position of the dummy scroll view in the collection view
+        CGPoint contentOffset = scrollView.contentOffset;
+        contentOffset.x = contentOffset.x - self.tipsCollectionView.contentInset.left;
+        self.tipsCollectionView.contentOffset = contentOffset;
+    }
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (scrollView == self.tipsCollectionView) {
+    if (scrollView == self.tipsDummyScrollView) {
         [self shrinkExpandedItemInCollectionView:self.tipsCollectionView completion:nil];
     }
 }
