@@ -17,7 +17,6 @@
                 <outlet property="tipsCollectionViewHeight" destination="nML-0G-plM" id="jK3-QG-1Vm"/>
                 <outlet property="titleBar" destination="SeX-pg-YEW" id="sIQ-xV-O00"/>
                 <outlet property="titleBarBackgroundHackView" destination="b12-WY-Pmo" id="hYo-56-uXH"/>
-                <outlet property="titleBarBorder" destination="1id-S4-lzM" id="sed-e6-VZq"/>
                 <outlet property="titleLabel" destination="HpD-3q-Q4D" id="IAe-PU-Bba"/>
                 <outlet property="topStudentsCollectionView" destination="a5z-uQ-lGN" id="pNX-qK-sh6"/>
                 <outlet property="traitDescriptionContainerView" destination="kG0-r5-W1Y" id="P6U-3H-N7e"/>
@@ -252,23 +251,12 @@
                                         <action selector="onBackButton:" destination="-1" eventType="touchUpInside" id="jSt-32-xxG"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1id-S4-lzM">
-                                    <rect key="frame" x="0.0" y="49" width="320" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.40784313725490196" green="0.40000000000000002" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="sVH-eg-yea"/>
-                                    </constraints>
-                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.94901960780000005" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="centerY" secondItem="H9B-Lh-QFd" secondAttribute="centerY" id="HNm-HW-M45"/>
-                                <constraint firstItem="1id-S4-lzM" firstAttribute="leading" secondItem="SeX-pg-YEW" secondAttribute="leading" id="QKi-Ex-JWF"/>
                                 <constraint firstItem="H9B-Lh-QFd" firstAttribute="leading" secondItem="SeX-pg-YEW" secondAttribute="leading" constant="15" id="RVf-N5-MFa"/>
-                                <constraint firstAttribute="bottom" secondItem="1id-S4-lzM" secondAttribute="bottom" id="UMh-vZ-3Ax"/>
                                 <constraint firstAttribute="centerY" secondItem="HpD-3q-Q4D" secondAttribute="centerY" id="WYh-wS-rvz"/>
-                                <constraint firstAttribute="trailing" secondItem="1id-S4-lzM" secondAttribute="trailing" id="XZP-sL-b9k"/>
                                 <constraint firstAttribute="centerX" secondItem="HpD-3q-Q4D" secondAttribute="centerX" id="k6v-Yf-V9s"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>

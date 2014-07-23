@@ -204,8 +204,8 @@ CGFloat const kMaxAnimatingImageRadius = 200;
     detailViewController.titleBar.alpha = fromTitleBarAlpha;
     detailViewController.view.backgroundColor = [UIColor clearColor];
     detailViewController.titleBar.backgroundColor = [UIColor clearColor];
-    detailViewController.titleBarBackgroundHackView.alpha = 0;;
-    detailViewController.titleBarBorder.alpha = 0;
+    detailViewController.titleBarBackgroundHackView.alpha = 0;
+    detailViewController.titleBarBorder.opacity = 0;
     detailViewController.contentView.backgroundColor = [UIColor clearColor];
 
     // get the frames of fromImageView and toImageView in containerView's bounds
@@ -253,7 +253,7 @@ CGFloat const kMaxAnimatingImageRadius = 200;
         detailViewController.view.backgroundColor = UIColorFromHEX(CLColorDarkGrey);
         detailViewController.titleBar.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
         detailViewController.titleBarBackgroundHackView.alpha = 1;
-        detailViewController.titleBarBorder.alpha = 1;
+        detailViewController.titleBarBorder.opacity = 0.5;
         detailViewController.contentView.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
         [animatingBackgroundView removeFromSuperview];
         [viewWithOnlyTextSubviews removeFromSuperview];

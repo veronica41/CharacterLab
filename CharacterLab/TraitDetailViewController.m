@@ -67,6 +67,12 @@ static NSInteger kDefaultNumOfStudents = 5;
     [self setupTipsCollectionView];
     [self setupStudentsCollectionView];
 
+    self.titleBarBorder = [CALayer layer];
+    self.titleBarBorder.frame = CGRectMake(0, self.titleBar.frame.size.height, self.titleBar.frame.size.width, 0.5);
+    self.titleBarBorder.backgroundColor = [UIColorFromHEX(CLColorTextBrown) CGColor];
+    self.titleBarBorder.opacity = 0.5;
+    [self.titleBar.layer addSublayer:self.titleBarBorder];
+
     self.titleLabel.text = self.trait.name;
     self.traitImageView.image = [UIImage imageNamed:self.trait.name];
     self.traitDescriptionLabel.text = self.trait.desc;
@@ -198,7 +204,7 @@ static NSInteger kDefaultNumOfStudents = 5;
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item + 1, (unsigned long)self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, (unsigned long)self.tips.count];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView configureStudentCell:(StudentsRankingCell *)cell atIndexPath:(NSIndexPath *)indexPath {
