@@ -90,11 +90,14 @@ static NSInteger kDefaultNumOfStudents = 5;
         if (error) {
             NSLog(@"Fetch video url error: %@", error);
         } else {
-            self.playerController = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
-            self.playerController.shouldAutoplay = NO;
-            [self.playerController prepareToPlay];
-            self.playerController.view.frame = self.movieView.bounds;
-            [self.movieView addSubview:self.playerController.view];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.playerController = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
+                self.playerController.shouldAutoplay = NO;
+                [self.playerController prepareToPlay];
+                self.playerController.view.frame = self.movieView.bounds;
+                [self.movieView addSubview:self.playerController.view];
+
+            });
         }
     }];
 }
@@ -157,7 +160,7 @@ static NSInteger kDefaultNumOfStudents = 5;
                             }
                         }
                     } failure:^(NSError *error) {
-                        NSLog(@"Error getting assessment: %@", error);
+                        NSLog(@"Error getting assessment for student %@, measurement %@: %@", student, measurement, error);
                     }];
                 }
 
@@ -234,9 +237,9 @@ static NSInteger kDefaultNumOfStudents = 5;
             if (completion) {
                 completion();
             } else {
-                [UIView animateWithDuration:500 animations:^{
+                [UIView animateWithDuration:1 animations:^{
                     self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
-                    [self.view updateConstraints];
+                    [self.view layoutIfNeeded];
                 }];
             }
         }];
