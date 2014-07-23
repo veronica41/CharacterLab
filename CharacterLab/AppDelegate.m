@@ -42,7 +42,7 @@
         self.window.rootViewController = self.mainViewController;
     }
 
-    self.window.backgroundColor = UIColorFromHEX(CLColorFlipGrey);
+    self.window.backgroundColor = UIColorFromHEX(CLColorDarkGrey);
     [self.window makeKeyAndVisible];
     return YES;
 }
