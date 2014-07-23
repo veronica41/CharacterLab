@@ -27,6 +27,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 
 @interface StudentProfileViewController () <UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, ImprovementSuggestionViewCellDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *titleBar;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
@@ -34,6 +35,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 @property (weak, nonatomic) IBOutlet UITableView *measurementTable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *measurementTableHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *improvementsCollection;
+@property (weak, nonatomic) IBOutlet UIScrollView *improvementsDummyScrollView;
 @property (weak, nonatomic) IBOutlet BarGraphView *chartView;
 
 // Private support variables
@@ -106,6 +108,12 @@ static CGFloat kMeasurementTableRowHeight = 44;
     self.deleteButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
     self.deleteButton.layer.cornerRadius = 5;
 
+    CALayer *titleBarBorder = [CALayer layer];
+    titleBarBorder.frame = CGRectMake(0, self.titleBar.frame.size.height, self.titleBar.frame.size.width, 0.5);
+    titleBarBorder.backgroundColor = [UIColorFromHEX(CLColorDarkGrey) CGColor];
+    titleBarBorder.opacity = 1;
+    [self.titleBar.layer addSublayer:titleBarBorder];
+
     [self setupMeasurementsTable];
     [self setupImprovementsSuggestionsCollectionView];
 
@@ -156,6 +164,10 @@ static CGFloat kMeasurementTableRowHeight = 44;
 - (void)setupImprovementsSuggestionsCollectionView {
     self.improvementsCollection.dataSource = self;
     self.improvementsCollection.delegate = self;
+    self.improvementsDummyScrollView.delegate = self;
+
+    [self.improvementsCollection addGestureRecognizer:self.improvementsDummyScrollView.panGestureRecognizer];
+    self.improvementsCollection.panGestureRecognizer.enabled = NO;
 
     // preallocate one custom view for the improvement suggestions
     UINib *tmpCellNib = [UINib nibWithNibName:kImprovementSuggestionViewCell bundle:nil];
@@ -170,9 +182,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 - (void)updateSelectedSuggestionItem:(int)itemSelected {
     // scroll to the cell
     NSIndexPath *idx = [NSIndexPath indexPathForItem:itemSelected inSection:0];
-    [self.improvementsCollection scrollToItemAtIndexPath:idx
-                               atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-                                       animated:YES];
+    [self.improvementsDummyScrollView scrollRectToVisible:CGRectMake(self.improvementsDummyScrollView.frame.size.width * idx.row, 0, self.improvementsDummyScrollView.frame.size.width, self.improvementsDummyScrollView.frame.size.height) animated:YES];
 
     // call delegate method
     [self collectionView:self.improvementsCollection cellForItemAtIndexPath:idx];
@@ -181,6 +191,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    self.improvementsDummyScrollView.contentSize = CGSizeMake(self.improvementsDummyScrollView.frame.size.width * (self.traitsToImprove.count + 1), self.improvementsDummyScrollView.frame.size.height);
     return self.traitsToImprove.count + 1;
 }
 
@@ -217,8 +228,19 @@ static CGFloat kMeasurementTableRowHeight = 44;
         cell.suggestion1Label.text = trait.suggestion1;
         cell.suggestion2Label.text = trait.suggestion2;
         cell.suggestion3Label.text = trait.suggestion3;
-        cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
+        cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item + 1, 1 + (unsigned long)self.traitsToImprove.count];
         return cell;
+    }
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.improvementsDummyScrollView) {
+        // reflect the scroll position of the dummy scroll view in the collection view
+        CGPoint contentOffset = scrollView.contentOffset;
+        contentOffset.x = contentOffset.x - self.improvementsCollection.contentInset.left;
+        self.improvementsCollection.contentOffset = contentOffset;
     }
 }
 
