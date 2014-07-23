@@ -42,7 +42,6 @@ static CGFloat kMeasurementTableRowHeight = 44;
 @property (nonatomic, strong) NSArray *latestAssessmentList;
 @property (nonatomic, strong) NSMutableDictionary *traitDescriptions;
 @property (nonatomic, strong) Measurement *lastMeasurement;
-//@property (nonatomic, strong) BarGraphView *barGraphView;
 @property (nonatomic) BOOL barGraphRendered;
 
 - (IBAction)onBackButton:(UIButton *)sender;
@@ -70,6 +69,33 @@ static CGFloat kMeasurementTableRowHeight = 44;
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.barGraphRendered) {
+        CLModel *client = [CLModel sharedInstance];
+        // store the last measurement object
+        [client getLatestMeasurementForStudent:self.student success:^(Measurement *measurement) {
+            self.lastMeasurement = measurement;
+            // Pull data for traits that need improvement
+            if (self.lastMeasurement) {
+                [[CLModel sharedInstance] getAssessmentsForMeasurement:self.lastMeasurement success:^(NSArray *assessmentList) {
+                    self.latestAssessmentList = assessmentList;
+                    [self.chartView drawGraphWithAnimation:NO assessmentList:self.latestAssessmentList];
+                    [client getLowestScoringTraitsForAssessment:assessmentList limit:3 success:^(NSArray *traitList) {
+                        self.traitsToImprove = traitList;
+                        [self.improvementsCollection reloadData];
+                    } failure:^(NSError *error) {
+                        NSLog(@"Failed to fetch traits that need improvements");
+                    }];
+                } failure:^(NSError *error) {
+                    NSLog(@"Failure retrieving the assessments for %@", self.student);
+                }];
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"Error fetching last measurement: %@", error);
+        }];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -95,7 +121,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
                     self.latestAssessmentList = assessmentList;
                     if (!self.barGraphRendered) {
                         self.barGraphRendered = YES;
-                        [self updateBarChart];
+                        [self.chartView drawGraphWithAnimation:YES assessmentList:self.latestAssessmentList];
                     }
                     [client getLowestScoringTraitsForAssessment:assessmentList limit:3 success:^(NSArray *traitList) {
                         self.traitsToImprove = traitList;
@@ -137,10 +163,6 @@ static CGFloat kMeasurementTableRowHeight = 44;
 
     UINib *improvementSuggestionCellNib = [UINib nibWithNibName:kImprovementTraitCell bundle:nil];
     [self.improvementsCollection registerNib:improvementSuggestionCellNib forCellWithReuseIdentifier:kImprovementTraitCell];
-}
-
-- (void)updateBarChart {
-    [self.chartView drawGraphWithAnimation:YES assessmentList:self.latestAssessmentList];
 }
 
 #pragma mark - ImprovementSuggestionViewCellDelegate

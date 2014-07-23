@@ -119,7 +119,7 @@ static NSInteger const kBarStep = 39;
     self.socialIntelligenceLabel.alpha = 0;
     self.zestLabel.alpha = 0;
 
-    [UIView animateWithDuration:1 delay:0.25 options:UIViewAnimationOptionCurveLinear animations:^{
+    void (^blockReturningVoidWithVoidArgument)(void) = ^{
         [self setFrame:self.curiosityBarView width:curiosity * kBarStep];
         [self setFrame:self.gratitudeBarView width:gratitude * kBarStep];
         [self setFrame:self.gritBarView width:grit * kBarStep];
@@ -136,7 +136,14 @@ static NSInteger const kBarStep = 39;
         self.selfControlLabel.alpha = 1;
         self.socialIntelligenceLabel.alpha = 1;
         self.zestLabel.alpha = 1;
-    } completion:nil];
+    };
+
+    if (animate) {
+        [UIView animateWithDuration:1 delay:0.25 options:UIViewAnimationOptionCurveLinear animations:blockReturningVoidWithVoidArgument completion:nil];
+    }
+    else {
+        blockReturningVoidWithVoidArgument();
+    }
 }
 
 

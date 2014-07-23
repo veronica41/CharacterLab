@@ -210,7 +210,7 @@ static NSInteger kDefaultNumOfStudents = 5;
     Tip *tip = self.tips[indexPath.item];
     cell.summaryLabel.text = tip.summary;
     cell.descLabel.text = tip.desc;
-    cell.pageNumLabel.text = [NSString stringWithFormat:@"%d/%ld", indexPath.item+1, (unsigned long)self.tips.count];
+    cell.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%ld", indexPath.item+1, (unsigned long)self.tips.count];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView configureStudentCell:(StudentsRankingCell *)cell atIndexPath:(NSIndexPath *)indexPath {
