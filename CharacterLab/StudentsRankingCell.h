@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "StudentInitialsLabel.h"
 
+@protocol StudentRankCellDelegate <NSObject>
+
+- (void)studentOnTap:(Student *)student;
+
+@end
+
+
 @interface StudentsRankingCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (nonatomic, strong) Student *student;
+@property (nonatomic, strong) id<StudentRankCellDelegate> delegate;
 
 @end

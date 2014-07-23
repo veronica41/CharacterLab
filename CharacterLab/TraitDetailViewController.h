@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StudentsRankingCell.h"
 #import "CLModel.h"
 
-@interface TraitDetailViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TraitDetailViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, StudentRankCellDelegate>
 
 @property (nonatomic, strong) Trait *trait;
 @property (weak, nonatomic) IBOutlet UIView *titleBar;

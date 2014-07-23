@@ -9,7 +9,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "YTVimeoExtractor.h"
 #import "TraitDetailViewController.h"
-#import "StudentsRankingCell.h"
+#import "StudentProfileViewController.h"
 #import "TipCell.h"
 #import "CLColor.h"
 #import "CLModel.h"
@@ -187,6 +187,7 @@ static NSInteger kDefaultNumOfStudents = 5;
                collectionView == self.bottomStudentsCollectionView) {
         StudentsRankingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStudentCellIdentifier forIndexPath:indexPath];
         [self collectionView:collectionView configureStudentCell:cell atIndexPath:indexPath];
+        cell.delegate = self;
         return cell;
     }
     return nil;
@@ -201,7 +202,6 @@ static NSInteger kDefaultNumOfStudents = 5;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView configureStudentCell:(StudentsRankingCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.imageView.image = nil;
     Assessment *assessment;
     if (collectionView == self.topStudentsCollectionView) {
         assessment = self.topAssessments[indexPath.item];
@@ -209,8 +209,7 @@ static NSInteger kDefaultNumOfStudents = 5;
         assessment = self.bottomAssessments[indexPath.item];
     }
     Student *student = self.studentAsessment[assessment.objectId];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:student.photoUrl]];
-    cell.nameLabel.text = student.name;
+    [cell setStudent:student];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -223,7 +222,10 @@ static NSInteger kDefaultNumOfStudents = 5;
             if (completion) {
                 completion();
             } else {
-                self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
+                [UIView animateWithDuration:500 animations:^{
+                    self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
+                    [self.view updateConstraints];
+                }];
             }
         }];
     }
@@ -284,6 +286,14 @@ static NSInteger kDefaultNumOfStudents = 5;
         return CGSizeMake(kStudentsCollectionViewDefaultWidth, kStudentsCollectionViewDefaultHeight);
     }
     return CGSizeZero;
+}
+
+# pragma mark - StudentsRankingCellDelegate
+
+- (void)studentOnTap:(Student *)student {
+    StudentProfileViewController *spvc = [[StudentProfileViewController alloc] init];
+    spvc.student = student;
+    [self presentViewController:spvc animated:YES completion:nil];
 }
 
 # pragma mark - event handlers
