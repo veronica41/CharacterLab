@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasuredLabel;
 
+@property (nonatomic, assign) BOOL initializedShadow;
+
 @end
 
 @implementation StudentCell
@@ -41,7 +43,8 @@
 }
 
 - (void)setup {
-    self.useDarkTopBackground = false;
+    self.useDarkTopBackground = NO;
+    self.initializedShadow = NO;
 }
 
 - (void)setStudent:(Student *)student {
@@ -55,7 +58,21 @@
 }
 
 - (void)reloadData {
-    self.containerView.layer.shadowColor = [UIColorFromHEX(CLColorShadowGrey) CGColor];
+    if (!self.initializedShadow) {
+        CAShapeLayer* innerShadowLayer = [CAShapeLayer layer];
+        innerShadowLayer.frame = CGRectMake(0, 0.3, self.containerView.bounds.size.width, 10);
+        innerShadowLayer.backgroundColor = [UIColorFromHEX(CLColorBackgroundGrey) CGColor];
+        innerShadowLayer.cornerRadius = 10;
+        innerShadowLayer.shadowRadius = 0;
+        innerShadowLayer.shadowColor = [[UIColor whiteColor] CGColor];
+        innerShadowLayer.shadowOpacity = 0.1;
+        innerShadowLayer.shadowOffset = CGSizeMake(0, -0.3);
+        [self.containerView.layer addSublayer:innerShadowLayer];
+
+        self.containerView.layer.shadowColor = [UIColorFromHEX(CLColorShadowGrey) CGColor];
+
+        self.initializedShadow = YES;
+    }
 
     if (self.student != nil) {
         self.initialsLabel.student = self.student;

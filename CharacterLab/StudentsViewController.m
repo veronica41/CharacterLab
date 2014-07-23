@@ -43,6 +43,9 @@
     // init the collection view
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    UIView *darkBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, -500, self.collectionView.frame.size.width, 500)];
+    darkBackgroundView.backgroundColor = UIColorFromHEX(CLColorDarkGrey);
+    [self.collectionView addSubview:darkBackgroundView];
     UINib *studentCellNib = [UINib nibWithNibName:@"StudentCell" bundle:nil];
     [self.collectionView registerNib:studentCellNib forCellWithReuseIdentifier:@"StudentCell"];
     [self.collectionView registerClass:[StudentsCollectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];

@@ -108,11 +108,23 @@ static CGFloat kMeasurementTableRowHeight = 44;
     self.deleteButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
     self.deleteButton.layer.cornerRadius = 5;
 
+    self.titleBar.layer.shadowColor = [UIColorFromHEX(CLColorShadowGrey) CGColor];
+
     CALayer *titleBarBorder = [CALayer layer];
     titleBarBorder.frame = CGRectMake(0, self.titleBar.frame.size.height, self.titleBar.frame.size.width, 0.5);
     titleBarBorder.backgroundColor = [UIColorFromHEX(CLColorDarkGrey) CGColor];
     titleBarBorder.opacity = 1;
     [self.titleBar.layer addSublayer:titleBarBorder];
+
+    CAShapeLayer* innerShadowLayer = [CAShapeLayer layer];
+    innerShadowLayer.frame = CGRectMake(0, 0.3, self.titleBar.bounds.size.width, 10);
+    innerShadowLayer.backgroundColor = [UIColorFromHEX(CLColorBackgroundGrey) CGColor];
+    innerShadowLayer.cornerRadius = 10;
+    innerShadowLayer.shadowRadius = 0;
+    innerShadowLayer.shadowColor = [[UIColor whiteColor] CGColor];
+    innerShadowLayer.shadowOpacity = 0.1;
+    innerShadowLayer.shadowOffset = CGSizeMake(0, -0.3);
+    [self.titleBar.layer addSublayer:innerShadowLayer];
 
     self.chartView.hidden = YES;
     [self setupMeasurementsTable];
