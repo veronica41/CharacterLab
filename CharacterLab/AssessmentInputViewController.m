@@ -27,6 +27,7 @@
 - (IBAction)onDone:(UIButton *)sender;
 - (IBAction)onDescriptionEditBegin:(UITextField *)sender;
 - (IBAction)onDescriptionEditEnd:(UITextField *)sender;
+- (IBAction)onTap:(UITapGestureRecognizer *)sender;
 
 @end
 
@@ -56,7 +57,7 @@
             self.traitObjects[x] = @"";
         }
         for (Trait *traitObject in traitList) {
-            self.traitObjects[traitObject.order - 1] = traitObject;
+            self.traitObjects[traitObject.order] = traitObject;
         }
     } failure:^(NSError *error) {
         @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Cannot proceed. Failed to fetch traits" userInfo:nil];
@@ -127,6 +128,10 @@
 }
 
 - (IBAction)onDescriptionEditEnd:(UITextField *)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
 

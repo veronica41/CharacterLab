@@ -85,8 +85,17 @@
                 </textField>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="5Of-jo-Uy9" appends="YES" id="SAO-yf-gBk"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="5Of-jo-Uy9">
+            <connections>
+                <action selector="onTap:" destination="-1" id="SgD-t6-Q5o"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

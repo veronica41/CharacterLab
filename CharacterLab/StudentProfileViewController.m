@@ -47,6 +47,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 
 - (IBAction)onBackButton:(UIButton *)sender;
 - (IBAction)onMeasurePress:(UIButton *)sender;
+- (IBAction)onMeasurementButton:(UIButton *)sender;
 
 @end
 
@@ -233,6 +234,18 @@ static CGFloat kMeasurementTableRowHeight = 44;
 }
 
 - (IBAction)onMeasurePress:(UIButton *)sender {
+    [self onMeasureShare];
+}
+
+- (IBAction)onMeasurementButton:(UIButton *)sender {
+    [self onMeasureShare];
+}
+
+- (IBAction)onMeasurementTap:(UITapGestureRecognizer *)sender {
+    [self onMeasureShare];
+}
+
+- (void)onMeasureShare {
     AssessmentInputViewController *avc = [[AssessmentInputViewController alloc] init];
     avc.student = self.student;
     [self presentViewController:avc animated:YES completion:nil];
