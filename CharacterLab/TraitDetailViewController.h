@@ -14,6 +14,7 @@
 @property (nonatomic, strong) Trait *trait;
 @property (weak, nonatomic) IBOutlet UIView *titleBar;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIView *titleBarBorder;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *titleBarBackgroundHackView;
 @property (weak, nonatomic) IBOutlet UIImageView *traitImageView;
