@@ -25,7 +25,7 @@
 
 - (NSString *)initials {
     NSArray *nameComponents = [self.name componentsSeparatedByString: @" "];
-    int cnt = [nameComponents count];
+    int cnt = (int)[nameComponents count];
     NSMutableString *ret_val = [@"" mutableCopy];
 
     if (cnt > 0) {

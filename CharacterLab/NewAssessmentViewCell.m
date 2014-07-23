@@ -40,10 +40,10 @@
 }
 
 - (IBAction)onSliderUpdate:(UISlider *)sender {
-    int val = lroundf(sender.value);
+    long val = lroundf(sender.value);
     [sender setValue:val animated:YES];
     self.assessmentValue = val;
-    self.assessmentLabel.text = [NSString stringWithFormat:@"%d", val];
+    self.assessmentLabel.text = [NSString stringWithFormat:@"%ld", val];
     [self.delegate updateAssessmentForTrait:self.traitType value:val];
 }
 
