@@ -15,6 +15,7 @@
                 <outlet property="measurementTable" destination="rR2-LV-CQI" id="Zf0-e3-A5h"/>
                 <outlet property="measurementTableHeight" destination="att-pg-t2y" id="4nF-Yw-Apw"/>
                 <outlet property="nameLabel" destination="UXc-rg-P60" id="eKq-6Q-69W"/>
+                <outlet property="titleBar" destination="nPc-6E-yig" id="pxC-sV-B1p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,11 +29,11 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfP-5D-VLp">
-                            <rect key="frame" x="0.0" y="0.0" width="319" height="1073"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1073"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="786-6p-rQa" userLabel="InitialsView">
-                                    <rect key="frame" x="0.0" y="50" width="319" height="112"/>
+                                    <rect key="frame" x="0.0" y="50" width="320" height="112"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V43-cc-lAk" customClass="StudentInitialsLabel">
@@ -84,7 +85,7 @@
                                     <color key="backgroundColor" red="0.12156862745098039" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="lIk-X9-LV3" firstAttribute="top" secondItem="jnT-If-qSG" secondAttribute="bottom" constant="2" id="5jt-vf-iap"/>
-                                        <constraint firstAttribute="trailing" secondItem="jnT-If-qSG" secondAttribute="trailing" constant="117" id="9Xa-l0-y6r"/>
+                                        <constraint firstAttribute="trailing" secondItem="jnT-If-qSG" secondAttribute="trailing" constant="118" id="9Xa-l0-y6r"/>
                                         <constraint firstItem="V43-cc-lAk" firstAttribute="leading" secondItem="786-6p-rQa" secondAttribute="leading" constant="22" id="G7m-hX-Yy5"/>
                                         <constraint firstItem="HzJ-By-g7n" firstAttribute="top" secondItem="lIk-X9-LV3" secondAttribute="bottom" constant="8" id="GES-pw-ZzK"/>
                                         <constraint firstItem="lIk-X9-LV3" firstAttribute="leading" secondItem="jnT-If-qSG" secondAttribute="leading" id="I93-xO-myj"/>
@@ -114,7 +115,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-Ts-IPe">
-                                    <rect key="frame" x="0.0" y="506" width="319" height="177"/>
+                                    <rect key="frame" x="0.0" y="506" width="320" height="177"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -136,7 +137,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rR2-LV-CQI" userLabel="measurementTable">
-                                    <rect key="frame" x="14" y="726" width="291" height="264"/>
+                                    <rect key="frame" x="14" y="726" width="292" height="264"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" red="0.1215686275" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -147,7 +148,7 @@
                                     <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ar9-WE-JHR">
-                                    <rect key="frame" x="14" y="1016" width="291" height="37"/>
+                                    <rect key="frame" x="14" y="1016" width="292" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                     <state key="normal" title="Delete this Student">
@@ -155,7 +156,7 @@
                                     </state>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wyr-6b-Gb5" customClass="BarGraphView">
-                                    <rect key="frame" x="14" y="214" width="291" height="240"/>
+                                    <rect key="frame" x="14" y="214" width="292" height="240"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.1450980392" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>

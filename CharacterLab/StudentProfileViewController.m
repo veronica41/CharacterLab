@@ -27,6 +27,7 @@ static CGFloat kMeasurementTableRowHeight = 44;
 
 @interface StudentProfileViewController () <UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, ImprovementSuggestionViewCellDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *titleBar;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet StudentInitialsLabel *initialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMeasurementTime;
@@ -80,6 +81,12 @@ static CGFloat kMeasurementTableRowHeight = 44;
     self.lastMeasurementTime.text = self.student.lastAssessmentTS.timeAgoSinceNow;
     self.deleteButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
     self.deleteButton.layer.cornerRadius = 5;
+
+    CALayer *titleBarBorder = [CALayer layer];
+    titleBarBorder.frame = CGRectMake(0, self.titleBar.frame.size.height, self.titleBar.frame.size.width, 0.5);
+    titleBarBorder.backgroundColor = [UIColorFromHEX(CLColorDarkGrey) CGColor];
+    titleBarBorder.opacity = 1;
+    [self.titleBar.layer addSublayer:titleBarBorder];
 
     [self setupMeasurementsTable];
     [self setupImprovementsSuggestionsCollectionView];
