@@ -234,7 +234,7 @@ static NSInteger kDefaultNumOfStudents = 5;
             if (completion) {
                 completion();
             } else {
-                [UIView animateWithDuration:0.4 animations:^{
+                [UIView animateWithDuration:0.01 animations:^{
                     self.tipsCollectionViewHeight.constant = kTipsCollectionViewDefaultHeight;
                     [self.view layoutIfNeeded];
                 }];
@@ -252,7 +252,7 @@ static NSInteger kDefaultNumOfStudents = 5;
     CGFloat height = cell.contentHeight;
 
     if (height > kTipsCollectionViewDefaultHeight) {
-        [UIView animateWithDuration: 0
+        [UIView animateWithDuration: 0.01
                               delay: 0
                             options: 0
                          animations:^{
