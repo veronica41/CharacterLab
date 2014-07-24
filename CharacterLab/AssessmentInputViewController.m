@@ -14,13 +14,17 @@
 
 @interface AssessmentInputViewController () <UITableViewDataSource, UITableViewDelegate, NewAssessmentViewCellDelegate,UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *assessmentValues;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionText;
+@property (weak, nonatomic) IBOutlet UIView *navbarView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
+@property (nonatomic, strong) CALayer *titleBarBorder;
 @property (nonatomic, strong) NSMutableArray *traitObjects;
 
 - (IBAction)onCancel:(UIButton *)sender;
@@ -49,7 +53,16 @@
 {
     [super viewDidLoad];
 
+    
+    self.titleBarBorder = [CALayer layer];
+    self.titleBarBorder.frame = CGRectMake(0, self.navbarView.frame.size.height, self.navbarView.frame.size.width, 0.5);
+    self.titleBarBorder.backgroundColor = [UIColorFromHEX(CLColorTextBrown) CGColor];
+    self.titleBarBorder.opacity = 0.5;
+    [self.navbarView.layer addSublayer:self.titleBarBorder];
+    
+    
     self.nameLabel.text = self.student.name;
+    
     // Need to store the objects corresponding to traits for later
     [[CLModel sharedInstance] getTraitsWitSuccess:^(NSArray *traitList) {
         self.traitObjects = [[NSMutableArray alloc] initWithCapacity:NUM_TRAITS];
@@ -67,14 +80,26 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewAssessmentViewCell"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
     self.descriptionText.delegate = self;
-    [self.descriptionText becomeFirstResponder];
+    // [self.descriptionText becomeFirstResponder];
 
-    self.view.backgroundColor = UIColorFromHEX(CLColorGray);
-    self.doneButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
-    self.cancelButton.backgroundColor = UIColorFromHEX(CLColorBlastOffRed);
+    
+    self.view.backgroundColor = UIColorFromHEX(CLColorShadowGrey);
+    
+    self.backgroundView.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+    
+    self.navbarView.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+
+    
+    self.tableView.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
+    
+    self.infoView.backgroundColor = UIColorFromHEX(CLColorShadowBeige);
+    
     self.doneButton.layer.cornerRadius = 5;
-    self.cancelButton.layer.cornerRadius = 5;
+    self.backgroundView.layer.cornerRadius = 10;
+    
+    self.backgroundView.clipsToBounds = YES;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -84,7 +109,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewAssessmentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewAssessmentViewCell"];
     cell.traitType = indexPath.row;
-    cell.backgroundColor = UIColorFromHEX(CLColorGray);
+    cell.backgroundColor = UIColorFromHEX(CLColorBackgroundBeige);
     cell.delegate = self;
     return cell;
 }
